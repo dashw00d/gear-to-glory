@@ -1,0 +1,50 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="DragDrop Inventory"
+run/main_scene="res://scenes/boot/godot/GodotBootsplashScene.tscn"
+config/features=PackedStringArray("4.2", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+EquipmentManager="*res://core/equipment_manager.gd"
+CharacterState="*res://core/character_state.gd"
+GameState="*res://core/game_state.gd"
+UserSettings="*res://settings/UserSettings.gd"
+
+[debug]
+
+settings/stdout/verbose_stdout=true
+
+[display]
+
+window/stretch/mode="canvas_items"
+
+[editor]
+
+movie_writer/movie_file="D:/Documents/Active_Projects/Godot/RPG_Auto/video/test.avi"
+version_control/autoload_on_startup=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AS2P/plugin.cfg", "res://addons/SignalVisualizer/plugin.cfg", "res://addons/finite_state_machine/plugin.cfg", "res://addons/fontawesome/plugin.cfg")
+
+[gui]
+
+timers/tooltip_delay_sec=0.0
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

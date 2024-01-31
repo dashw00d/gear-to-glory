@@ -1,0 +1,372 @@
+[gd_scene load_steps=22 format=3 uid="uid://by3j8l8vci052"]
+
+[ext_resource type="Theme" uid="uid://d24xi7m4k637h" path="res://theme/default_theme.tres" id="1_cha7x"]
+[ext_resource type="Script" path="res://scenes/ui/components/char_stats.gd" id="1_k3blf"]
+[ext_resource type="FontFile" uid="uid://3laylbry7cvb" path="res://theme/Fonts/Inter-VariableFont_slnt,wght.ttf" id="2_kbuxx"]
+[ext_resource type="StyleBox" uid="uid://cpwj4bd1efh0p" path="res://theme/tab_theme.tres" id="3_7cemo"]
+[ext_resource type="Texture2D" uid="uid://5oerlj3xal2m" path="res://resources/sprites/Item__01.png" id="4_75m53"]
+[ext_resource type="FontFile" uid="uid://dk3fktj181k2b" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="5_0oty1"]
+[ext_resource type="Texture2D" uid="uid://c3mff6f3clhyh" path="res://resources/sprites/Item__16.png" id="6_0lb4f"]
+[ext_resource type="Texture2D" uid="uid://dwjsh247otcxp" path="res://resources/sprites/Item__32.png" id="7_atcd0"]
+[ext_resource type="Texture2D" uid="uid://deeqbhkj1cv42" path="res://resources/sprites/Item__29.png" id="8_l3q6h"]
+[ext_resource type="Texture2D" uid="uid://x3h13mjklmbs" path="res://resources/sprites/Item__57.png" id="9_6rjex"]
+
+[sub_resource type="Theme" id="Theme_nduqj"]
+default_font = ExtResource("2_kbuxx")
+TabBar/constants/h_separation = 4
+TabBar/fonts/font = ExtResource("2_kbuxx")
+TabContainer/constants/side_margin = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6lu3l"]
+content_margin_left = 60.0
+content_margin_top = 10.0
+content_margin_right = 60.0
+content_margin_bottom = 10.0
+bg_color = Color(0.25098, 0.25098, 0.25098, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a6n38"]
+content_margin_left = 60.0
+content_margin_top = 10.0
+content_margin_right = 60.0
+content_margin_bottom = 10.0
+bg_color = Color(0.380392, 0.380392, 0.380392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_moyli"]
+content_margin_left = 60.0
+content_margin_top = 10.0
+content_margin_right = 60.0
+content_margin_bottom = 10.0
+bg_color = Color(0.179688, 0.179688, 0.179688, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_thmre"]
+content_margin_left = 60.0
+content_margin_top = 10.0
+content_margin_right = 60.0
+content_margin_bottom = 10.0
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7dryv"]
+content_margin_top = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xv1nq"]
+bg_color = Color(0.179688, 0.179688, 0.179688, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xba7q"]
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.179688, 0.179688, 0.179688, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ub6fo"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+
+[sub_resource type="Theme" id="Theme_wb5rj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tfcxq"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+
+[node name="Char Stats" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_cha7x")
+script = ExtResource("1_k3blf")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+offset_right = 256.0
+offset_bottom = 226.0
+theme = SubResource("Theme_nduqj")
+theme_override_constants/side_margin = 0
+theme_override_fonts/font = ExtResource("2_kbuxx")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_6lu3l")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_a6n38")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_moyli")
+theme_override_styles/tab_disabled = ExtResource("3_7cemo")
+theme_override_styles/tab_focus = SubResource("StyleBoxFlat_thmre")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7dryv")
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_xv1nq")
+
+[node name="Stats" type="VBoxContainer" parent="TabContainer"]
+layout_mode = 2
+
+[node name="Attack" type="PanelContainer" parent="TabContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_xba7q")
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Stats/Attack"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Icon" type="TextureRect" parent="TabContainer/Stats/Attack/MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("4_75m53")
+expand_mode = 2
+
+[node name="Type" type="Label" parent="TabContainer/Stats/Attack/MarginContainer"]
+layout_mode = 2
+text = "Attack"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Stats/Attack"]
+layout_mode = 2
+
+[node name="AttackTotal" type="Label" parent="TabContainer/Stats/Attack/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ub6fo")
+text = "5"
+horizontal_alignment = 1
+
+[node name="AddAttack" type="Button" parent="TabContainer/Stats/Attack/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.827451, 0.827451, 0.827451, 1)
+theme_override_colors/font_hover_color = Color(0.752941, 0.752941, 0.752941, 1)
+theme_override_fonts/font = ExtResource("5_0oty1")
+theme_override_font_sizes/font_size = 24
+text = ""
+flat = true
+
+[node name="AttackSpeed" type="PanelContainer" parent="TabContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_xba7q")
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Stats/AttackSpeed"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Icon" type="TextureRect" parent="TabContainer/Stats/AttackSpeed/MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("6_0lb4f")
+expand_mode = 2
+
+[node name="Type" type="Label" parent="TabContainer/Stats/AttackSpeed/MarginContainer"]
+layout_mode = 2
+text = "Attack Speed
+"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Stats/AttackSpeed"]
+layout_mode = 2
+
+[node name="AttackSpeedTotal" type="Label" parent="TabContainer/Stats/AttackSpeed/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ub6fo")
+text = "5"
+horizontal_alignment = 1
+
+[node name="AddAttackSpeed" type="Button" parent="TabContainer/Stats/AttackSpeed/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.827451, 0.827451, 0.827451, 1)
+theme_override_colors/font_hover_color = Color(0.752941, 0.752941, 0.752941, 1)
+theme_override_fonts/font = ExtResource("5_0oty1")
+theme_override_font_sizes/font_size = 24
+text = ""
+flat = true
+
+[node name="Crit" type="PanelContainer" parent="TabContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_xba7q")
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Stats/Crit"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Icon" type="TextureRect" parent="TabContainer/Stats/Crit/MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("7_atcd0")
+expand_mode = 2
+
+[node name="Type" type="Label" parent="TabContainer/Stats/Crit/MarginContainer"]
+layout_mode = 2
+text = "Crit
+"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Stats/Crit"]
+layout_mode = 2
+
+[node name="CritTotal" type="Label" parent="TabContainer/Stats/Crit/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ub6fo")
+text = "5"
+horizontal_alignment = 1
+
+[node name="AddCrit" type="Button" parent="TabContainer/Stats/Crit/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.827451, 0.827451, 0.827451, 1)
+theme_override_colors/font_hover_color = Color(0.752941, 0.752941, 0.752941, 1)
+theme_override_fonts/font = ExtResource("5_0oty1")
+theme_override_font_sizes/font_size = 24
+text = ""
+flat = true
+
+[node name="Health" type="PanelContainer" parent="TabContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_xba7q")
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Stats/Health"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Icon" type="TextureRect" parent="TabContainer/Stats/Health/MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("8_l3q6h")
+expand_mode = 2
+
+[node name="Type" type="Label" parent="TabContainer/Stats/Health/MarginContainer"]
+layout_mode = 2
+text = "Health"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Stats/Health"]
+layout_mode = 2
+
+[node name="HealthTotal" type="Label" parent="TabContainer/Stats/Health/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ub6fo")
+text = "5"
+horizontal_alignment = 1
+
+[node name="AddHealth" type="Button" parent="TabContainer/Stats/Health/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.827451, 0.827451, 0.827451, 1)
+theme_override_colors/font_hover_color = Color(0.752941, 0.752941, 0.752941, 1)
+theme_override_fonts/font = ExtResource("5_0oty1")
+theme_override_font_sizes/font_size = 24
+text = ""
+flat = true
+
+[node name="Defense" type="PanelContainer" parent="TabContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_xba7q")
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Stats/Defense"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Icon" type="TextureRect" parent="TabContainer/Stats/Defense/MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("9_6rjex")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Stats/Defense/MarginContainer"]
+layout_mode = 2
+text = "Defense"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Stats/Defense"]
+layout_mode = 2
+
+[node name="DefenseTotal" type="Label" parent="TabContainer/Stats/Defense/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ub6fo")
+text = "5"
+horizontal_alignment = 1
+
+[node name="AddDefense" type="Button" parent="TabContainer/Stats/Defense/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.827451, 0.827451, 0.827451, 1)
+theme_override_colors/font_hover_color = Color(0.752941, 0.752941, 0.752941, 1)
+theme_override_fonts/font = ExtResource("5_0oty1")
+theme_override_font_sizes/font_size = 24
+text = ""
+flat = true
+
+[node name="Skills" type="VBoxContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 1
+offset_left = 351.0
+offset_right = 511.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_wb5rj")
+theme_override_fonts/font = ExtResource("2_kbuxx")
+text = "Available Points:"
+
+[node name="SkillPoints" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_fonts/font = ExtResource("2_kbuxx")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_tfcxq")
+text = "6"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="TabContainer/Stats/Attack/HBoxContainer/AddAttack" to="." method="_on_add_attack_pressed"]
+[connection signal="pressed" from="TabContainer/Stats/AttackSpeed/HBoxContainer/AddAttackSpeed" to="." method="_on_add_attack_speed_pressed"]
+[connection signal="pressed" from="TabContainer/Stats/Crit/HBoxContainer/AddCrit" to="." method="_on_add_crit_pressed"]
+[connection signal="pressed" from="TabContainer/Stats/Health/HBoxContainer/AddHealth" to="." method="_on_add_health_pressed"]
+[connection signal="pressed" from="TabContainer/Stats/Defense/HBoxContainer/AddDefense" to="." method="_on_add_defense_pressed"]

@@ -1,0 +1,53 @@
+[gd_scene load_steps=12 format=3 uid="uid://c24idfsm46oni"]
+
+[ext_resource type="Script" path="res://scenes/battle.gd" id="1_7743i"]
+[ext_resource type="PackedScene" uid="uid://fyhb6ixjiv8t" path="res://scenes/enemy.tscn" id="3_kf7eu"]
+[ext_resource type="PackedScene" uid="uid://cchf1y12qq15v" path="res://scenes/player/player.tscn" id="3_xkxwp"]
+[ext_resource type="Script" path="res://resources/states/simultaneous_action_state.gd" id="4_ts1l6"]
+[ext_resource type="Script" path="res://addons/finite_state_machine/scripts/state_machine.gd" id="4_xj66j"]
+[ext_resource type="Script" path="res://resources/states/check_end_conditions_state.gd" id="5_dvgxr"]
+[ext_resource type="Script" path="res://resources/states/defeat_state.gd" id="6_a18xf"]
+[ext_resource type="Script" path="res://resources/states/enemy_turn_state.gd" id="7_tm0rl"]
+[ext_resource type="Script" path="res://resources/states/idle_state.gd" id="8_ja2fh"]
+[ext_resource type="Script" path="res://resources/states/player_turn_state.gd" id="9_6umu3"]
+[ext_resource type="Script" path="res://resources/states/victory_state.gd" id="10_o2xpo"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_7743i")
+
+[node name="Enemy" parent="." groups=["enemy"] instance=ExtResource("3_kf7eu")]
+position = Vector2(776, 288)
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("3_xkxwp")]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_xj66j")
+initial_state = NodePath("PlayerTurnState")
+
+[node name="EnemyTurnState" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("7_tm0rl")
+actor = NodePath("../../Enemy")
+
+[node name="CheckEndConditionsState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("5_dvgxr")
+player = NodePath("../../Player")
+
+[node name="DefeatState" type="Node" parent="StateMachine"]
+script = ExtResource("6_a18xf")
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("8_ja2fh")
+
+[node name="PlayerTurnState" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
+script = ExtResource("9_6umu3")
+actor = NodePath("../../Player")
+
+[node name="VictoryState" type="Node" parent="StateMachine"]
+script = ExtResource("10_o2xpo")
+
+[node name="SimultaneousActionState" type="Node" parent="StateMachine"]
+script = ExtResource("4_ts1l6")
