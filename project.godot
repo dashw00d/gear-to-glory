@@ -21,6 +21,7 @@ EquipmentManager="*res://core/equipment_manager.gd"
 CharacterState="*res://core/character_state.gd"
 GameState="*res://core/game_state.gd"
 UserSettings="*res://settings/UserSettings.gd"
+SaveItemTool="*res://tools/save_item_tool.gd"
 
 [debug]
 

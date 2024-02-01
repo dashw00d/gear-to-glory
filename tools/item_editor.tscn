@@ -1,3 +1,205 @@
-[gd_scene format=3 uid="uid://bx2r3ccae6wp6"]
+[gd_scene load_steps=9 format=3 uid="uid://4i6i04xnehmx"]
 
-[node name="ItemEditor" type="Node2D"]
+[ext_resource type="Script" path="res://tools/item_editor.gd" id="1_e4pjh"]
+[ext_resource type="Texture2D" uid="uid://5oerlj3xal2m" path="res://resources/sprites/Item__01.png" id="2_lnjmk"]
+[ext_resource type="Texture2D" uid="uid://c3mff6f3clhyh" path="res://resources/sprites/Item__16.png" id="2_mfqbs"]
+[ext_resource type="Texture2D" uid="uid://dwjsh247otcxp" path="res://resources/sprites/Item__32.png" id="4_u52ow"]
+[ext_resource type="Texture2D" uid="uid://bmq4jv8cyfh3x" path="res://resources/sprites/Item__44.png" id="5_wny7j"]
+[ext_resource type="Texture2D" uid="uid://x3h13mjklmbs" path="res://resources/sprites/Item__57.png" id="6_sfomm"]
+[ext_resource type="Texture2D" uid="uid://dqe6hxh214ij5" path="res://resources/sprites/Item__48.png" id="7_abl3i"]
+[ext_resource type="Texture2D" uid="uid://deeqbhkj1cv42" path="res://resources/sprites/Item__29.png" id="10_osjgj"]
+
+[node name="ItemEditor" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e4pjh")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+
+[node name="ItemNameLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Item Name"
+
+[node name="ItemName" type="LineEdit" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Sword of Anger"
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="Cosmetics" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Cosmetics"]
+layout_mode = 2
+text = "Cosmetics"
+
+[node name="FileDialog" type="FileDialog" parent="Cosmetics"]
+unique_name_in_owner = true
+title = "Open File(s)"
+ok_button_text = "Open"
+file_mode = 1
+root_subfolder = "res://resources/sprites/gear/"
+
+[node name="CosmeticsList" type="ItemList" parent="Cosmetics"]
+unique_name_in_owner = true
+layout_mode = 2
+auto_height = true
+
+[node name="GridContainer" type="GridContainer" parent="Cosmetics"]
+layout_mode = 2
+columns = 2
+
+[node name="SelectCosmetics" type="Button" parent="Cosmetics/GridContainer"]
+layout_mode = 2
+text = "Select Cosmetics"
+
+[node name="ClearCosmetics" type="Button" parent="Cosmetics/GridContainer"]
+layout_mode = 2
+text = "Clear"
+
+[node name="HSeparator2" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="PossibleStatsLabel" type="Label" parent="."]
+layout_mode = 2
+text = "Possible Stats
+"
+
+[node name="StatsContainer" type="GridContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 2
+
+[node name="StatsDropdown" type="OptionButton" parent="StatsContainer"]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "attack_speed"
+popup/item_0/icon = ExtResource("2_lnjmk")
+popup/item_0/id = 0
+popup/item_1/text = "crit_percent"
+popup/item_1/icon = ExtResource("2_mfqbs")
+popup/item_1/id = 1
+popup/item_2/text = "health_percent"
+popup/item_2/icon = ExtResource("4_u52ow")
+popup/item_2/id = 2
+
+[node name="WeightSlider" type="HSlider" parent="StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 3.0
+rounded = true
+
+[node name="GridContainer2" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+
+[node name="AddStats" type="Button" parent="GridContainer2"]
+layout_mode = 2
+text = "Add Stats"
+
+[node name="RemoveStats" type="Button" parent="GridContainer2"]
+layout_mode = 2
+text = "Remove Stats"
+
+[node name="HSeparator3" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureFile" type="FileDialog" parent="VBoxContainer"]
+unique_name_in_owner = true
+title = "Open a File"
+ok_button_text = "Open"
+file_mode = 0
+root_subfolder = "res://resources/sprites/gear/"
+
+[node name="ItemTexture" type="TextureRect" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("5_wny7j")
+
+[node name="GridContainer4" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="AddTexture" type="Button" parent="VBoxContainer/GridContainer4"]
+layout_mode = 2
+text = "Add Texture"
+
+[node name="ClearTexture" type="Button" parent="VBoxContainer/GridContainer4"]
+layout_mode = 2
+text = "Clear Texture"
+
+[node name="HSeparator5" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="GridContainer4" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="GridContainer4"]
+layout_mode = 2
+text = "Select Type"
+
+[node name="OptionButton" type="OptionButton" parent="GridContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 7
+popup/item_0/text = "HEAD"
+popup/item_0/icon = ExtResource("5_wny7j")
+popup/item_0/id = 0
+popup/item_1/text = "CHEST"
+popup/item_1/icon = ExtResource("6_sfomm")
+popup/item_1/id = 1
+popup/item_2/text = "HANDS"
+popup/item_2/icon = ExtResource("7_abl3i")
+popup/item_2/id = 2
+popup/item_3/text = "FEET"
+popup/item_3/icon = ExtResource("7_abl3i")
+popup/item_3/id = 3
+popup/item_4/text = "WEAPON"
+popup/item_4/icon = ExtResource("2_lnjmk")
+popup/item_4/id = 4
+popup/item_5/text = "ACCESSORY"
+popup/item_5/icon = ExtResource("4_u52ow")
+popup/item_5/id = 5
+popup/item_6/text = "MAIN"
+popup/item_6/icon = ExtResource("10_osjgj")
+popup/item_6/id = 6
+
+[node name="HSeparator4" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="GridContainer3" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+
+[node name="SaveButton" type="Button" parent="GridContainer3"]
+layout_mode = 2
+text = "Save"
+
+[node name="ClearAllButton" type="Button" parent="GridContainer3"]
+layout_mode = 2
+text = "Reset"
+
+[connection signal="files_selected" from="Cosmetics/FileDialog" to="." method="_on_file_dialog_files_selected"]
+[connection signal="button_up" from="Cosmetics/GridContainer/SelectCosmetics" to="." method="_on_select_cosmetics_button_up"]
+[connection signal="button_up" from="Cosmetics/GridContainer/ClearCosmetics" to="." method="_on_clear_cosmetics_button_up"]
+[connection signal="button_up" from="GridContainer2/AddStats" to="." method="_on_add_stats_button_up"]
+[connection signal="button_up" from="GridContainer2/RemoveStats" to="." method="_on_add_stats_button_up"]
+[connection signal="button_up" from="GridContainer2/RemoveStats" to="." method="_on_remove_stats_button_up"]
+[connection signal="file_selected" from="VBoxContainer/TextureFile" to="." method="_on_texture_file_file_selected"]
+[connection signal="button_up" from="VBoxContainer/GridContainer4/AddTexture" to="." method="_on_add_texture_button_up"]
+[connection signal="button_up" from="VBoxContainer/GridContainer4/ClearTexture" to="." method="_on_clear_texture_button_up"]
+[connection signal="pressed" from="GridContainer3/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="button_up" from="GridContainer3/ClearAllButton" to="." method="_on_clear_all_button_button_up"]
