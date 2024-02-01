@@ -3,6 +3,9 @@ extends VBoxContainer
 signal save_item(data: Dictionary)
 var cosmetics_paths = []
 
+@onready var stats_ref = get_node("StatsContainer/StatsDropdown").duplicate()
+@onready var weight_ref = get_node ("StatsContainer/WeightSlider").duplicate()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -16,28 +19,35 @@ func _on_save_button_pressed():
 	save_item.emit({"test":"test1"})
 
 func _on_add_stats_button_up():
-	var children = %StatsContainer.get_child_count()
-	var stats_dropdown = %StatsContainer.get_child(children - 2)
-	var weight_slider = %StatsContainer.get_child(children - 1)
+	var node = get_node("StatsContainer")
+	var children = node.get_child_count()
+	var stats_dropdown = node.get_child(children - 2)
+	var weight_slider = node.get_child(children - 1)
 	var stats_duplicate = stats_dropdown.duplicate()
 	var weight_duplicate = weight_slider.duplicate()
 	
 	stats_duplicate.selected = -1
 	weight_duplicate.value = 0
-	%StatsContainer.add_child(stats_duplicate)
-	%StatsContainer.add_child(weight_duplicate)
+	node.add_child(stats_duplicate)
+	node.add_child(weight_duplicate)
 
 func _on_remove_stats_button_up():
-	var children = $StatsContainer.get_child_count()
-	var stats_dropdown = $StatsContainer.get_child(children - 2)
-	var weight_slider = $StatsContainer.get_child(children - 1)
+	var node = get_node("StatsContainer")
+	var children = node.get_child_count()
 	
-	$StatsContainer.remove_child(stats_dropdown)
-	stats_dropdown.queue_free()  # Properly free the node
-	
-	$StatsContainer.remove_child(weight_slider)
-	weight_slider.queue_free()  # Properly free the node
-
+	var stats_dropdown = node.get_child(children - 2)
+	var weight_slider = node.get_child(children - 1)
+	if children > 2:
+		node.remove_child(stats_dropdown)
+		stats_dropdown.queue_free()  # Properly free the node
+		
+		node.remove_child(weight_slider)
+		weight_slider.queue_free()  # Properly free the node
+	else:
+		stats_dropdown.selected = -1
+		weight_slider.value = 0
+		
+		
 func _on_select_cosmetics_button_up():
 	%FileDialog.mode = FileDialog.FILE_MODE_OPEN_FILES  # Allow multiple file selection
 	%FileDialog.filters = ["*.png ; PNG Images", "*.jpg ; JPG Images", "*.jpeg ; JPEG Images"]
@@ -60,11 +70,21 @@ func _on_clear_cosmetics_button_up():
 	item_list.clear()
 	cosmetics_paths = []
 
+func reset_stats():
+	var node = get_node("StatsContainer")
+	for n in node.get_children():
+		node.remove_child(n)
+		n.queue_free()
+	node.add_child(stats_ref.duplicate())
+	node.add_child(weight_ref.duplicate())
+		
 func _on_clear_all_button_button_up():
-	var current_scene = get_tree().current_scene
-	var scene_path = "res://tools/item_editor.tscn"
-	get_tree().reload_current_scene()
-
+	_on_clear_cosmetics_button_up()
+	_on_clear_texture_button_up()
+	reset_stats()
+	get_node("GridContainer/ItemName").text = ""
+	get_node("GridContainer4/ItemType").selected = -1
+	
 func _on_add_texture_button_up():
 	%TextureFile.mode = FileDialog.FILE_MODE_OPEN_FILE  # Allow multiple file selection
 	%TextureFile.filters = ["*.png ; PNG Images", "*.jpg ; JPG Images", "*.jpeg ; JPEG Images"]
