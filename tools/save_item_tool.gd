@@ -7,7 +7,6 @@ func _enter_tree():
 	docked_scene = preload("res://tools/item_editor.tscn").instantiate()
 	add_control_to_dock(DOCK_SLOT_LEFT_UR, docked_scene)
 	docked_scene.connect("save_item", Callable(self, "_on_save_item"), CONNECT_PERSIST)
-	docked_scene.connect("reload_scene", Callable(self, "_reload_docked_scene"), CONNECT_PERSIST)
 
 func _exit_tree():
 	remove_control_from_docks(docked_scene)

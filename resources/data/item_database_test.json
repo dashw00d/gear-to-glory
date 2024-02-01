@@ -1,4 +1,38 @@
 {
+	"Bone Armor": {
+		"cosmetic_paths": [
+			"res://resources/sprites/gear/bone_armor_1/Armor.png"
+		],
+		"possible_stats": [
+			{
+				"name": "attack_speed",
+				"weight": 2
+			},
+			{
+				"name": "crit_percent",
+				"weight": 3
+			}
+		],
+		"texture_path": "res://resources/sprites/gear/bone_armor_1/Armor_i.png",
+		"type": 1
+	},
+	"Bone Helmet": {
+		"cosmetic_paths": [
+			"res://resources/sprites/gear/bone_armor_1/Helmet.png"
+		],
+		"possible_stats": [
+			{
+				"name": "attack_speed",
+				"weight": 2
+			},
+			{
+				"name": "health_percent",
+				"weight": 3
+			}
+		],
+		"texture_path": "res://resources/sprites/gear/bone_armor_1/Helmet_i.png",
+		"type": 0
+	},
 	"amulet_of_luck2": {
 		"cosmetic_paths": [],
 		"possible_stats": [
@@ -85,6 +119,19 @@
 		],
 		"texture_path": "res://resources/sprites/gear/bone_armor_1/Helmet_i.png",
 		"type": 0
+	},
+	"rwar": {
+		"cosmetic_paths": [
+			"res://resources/sprites/gear/bone_armor_1/Armor.png"
+		],
+		"possible_stats": [
+			{
+				"name": "attack_speed",
+				"weight": 2
+			}
+		],
+		"texture_path": "res://resources/sprites/gear/bone_armor_1/Greave_i.png",
+		"type": 2
 	},
 	"staff_of_wisdom": {
 		"cosmetic_paths": [],

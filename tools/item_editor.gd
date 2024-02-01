@@ -16,7 +16,7 @@ func _process(delta):
 	pass
 
 func _on_save_button_pressed():
-	await save_item.emit(get_all_values())
+	save_item.emit(get_all_values())
 	_on_clear_all_button_button_up()
 
 func get_all_values() -> Dictionary:
