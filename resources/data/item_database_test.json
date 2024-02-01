@@ -115,5 +115,35 @@
 		],
 		"texture_path": "res://resources/sprites/Item__01.png",
 		"type": 4
+	},
+	"test10": {
+		"cosmetic_paths": [
+			"res://resources/sprites/gear/bone_armor_1/Helmet.png"
+		],
+		"possible_stats": [
+			{
+				"name": "crit_percent",
+				"weight": 2
+			}
+		],
+		"texture_path": "res://resources/sprites/gear/bone_armor_1/Helmet_i.png",
+		"type": 0
+	},
+	"test9": {
+		"cosmetic_paths": [
+			"res://resources/sprites/gear/bone_armor_1/Armor.png"
+		],
+		"possible_stats": [
+			{
+				"name": "attack_speed",
+				"weight": 2
+			},
+			{
+				"name": "health_percent",
+				"weight": 3
+			}
+		],
+		"texture_path": "res://resources/sprites/gear/bone_armor_1/Armor_i.png",
+		"type": 1
 	}
 }

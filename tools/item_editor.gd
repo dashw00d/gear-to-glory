@@ -2,6 +2,7 @@
 extends VBoxContainer
 signal save_item(data: Dictionary)
 var cosmetics_paths = []
+var texture_path
 
 @onready var stats_ref = get_node("StatsContainer/StatsDropdown").duplicate()
 @onready var weight_ref = get_node ("StatsContainer/WeightSlider").duplicate()
@@ -15,9 +16,37 @@ func _process(delta):
 	pass
 
 func _on_save_button_pressed():
-	print('emitting')
-	save_item.emit({"test":"test1"})
+	await save_item.emit(get_all_values())
+	_on_clear_all_button_button_up()
 
+func get_all_values() -> Dictionary:
+	var item = get_node("GridContainer/ItemName").text
+	return {item : {
+		"cosmetic_paths": cosmetics_paths,
+		"possible_stats": get_all_stats(),
+		"texture_path": texture_path,
+		"type": get_node("GridContainer4/ItemType").selected,
+	}}
+			
+func get_all_stats() -> Array:
+	var possible_stats = []
+	var node = get_node("StatsContainer")
+	var children = node.get_children()
+	var temp_stat = {}
+
+	for i in range(0, len(children), 2):  # Assuming pairs of OptionButton and HSlider
+		var stat_name_node = children[i]
+		var weight_node = children[i + 1]
+
+		if stat_name_node is OptionButton and weight_node is HSlider:
+			temp_stat = {}  # Initialize a new dictionary for this pair
+			temp_stat['name'] = stat_name_node.get_item_text(stat_name_node.selected)  # Assuming you meant the selected item's text
+			temp_stat['weight'] = weight_node.value
+			possible_stats.append(temp_stat)
+		# else: You might want to handle the case where the pattern does not match.
+
+	return possible_stats
+	
 func _on_add_stats_button_up():
 	var node = get_node("StatsContainer")
 	var children = node.get_child_count()
@@ -92,8 +121,10 @@ func _on_add_texture_button_up():
 
 func _on_clear_texture_button_up():
 	%ItemTexture.texture = preload("res://resources/sprites/Item__44.png")
+	texture_path = ""
 
 func _on_texture_file_file_selected(path):
+	texture_path = path
 	var texture = load(path)  # Load the texture at runtime
 	if texture:  # Check if the texture was successfully loaded
 		#$ItemTexture.texture = texture

@@ -93,7 +93,9 @@ popup/item_2/id = 2
 [node name="WeightSlider" type="HSlider" parent="StatsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-max_value = 3.0
+min_value = 1.0
+max_value = 4.0
+value = 1.0
 rounded = true
 
 [node name="GridContainer2" type="GridContainer" parent="."]
