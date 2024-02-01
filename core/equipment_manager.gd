@@ -11,7 +11,8 @@ func _process(delta):
 	pass
 enum Type {HEAD, CHEST, HANDS, FEET, WEAPON, ACCESSORY, MAIN}
 
-var item_data = {
+var data_file_path = "res://resources/data/item_database.json"
+var example_data = {
 	"sword_of_truth": {
 		"texture_path": "res://resources/sprites/Item__01.png",
 		'cosmetic_paths': [],
@@ -84,9 +85,26 @@ var item_data = {
 		],
 		"type": Type.WEAPON
 	}
-	# ... add more items with possible stats and weights
 }
 
+@onready var test = save(item_data, "res://resources/data/item_database.json")
+
+func save(data: Dictionary, path: String):
+	var data_file = null
+	data_file = FileAccess.open(path, FileAccess.WRITE)
+	data_file.store_line(JSON.new().stringify(data, "\t"))
+	
+func load_json_file(file_path: String):
+	if FileAccess.file_exists(file_path):
+		var data_file = FileAccess.open(file_path, FileAccess.READ)
+		var parsed_result = JSON.parse_string(data_file.get_as_text())
+		
+		if parsed_result is Dictionary:
+			return parsed_result
+		else:
+			print('wrong type')
+	else:
+		print('no file')
 
 enum Rarity {
 	COMMON,

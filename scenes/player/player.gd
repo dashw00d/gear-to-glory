@@ -11,7 +11,7 @@ signal player_attack_finished
 	'weapon': ['Skeleton2D/torso/RightArm/Bone2D/LarmR/Weapon'],
 	'hands': ['Skeleton2D/LarmL/GreaveL', 'Skeleton2D/torso/RightArm/Bone2D/LarmR/GreaveR'],
 	'feet': ['Skeleton2D/torso/Legs/Bone2D/Bone2D/LlegR/BootR', 'Skeleton2D/LlegL/BootL'],  # Example for two feet
-	'accessory': ['Skeleton2D/torso/Head/Head'],
+	'accessory': [],
 }
 
 @onready var actions = {
@@ -96,13 +96,14 @@ func _on_equipment_updated():
 				print(CharacterState.state['equipment'][key]['base_stats'])
 				# Add gear stats to player state
 				# CharacterState.add_gear(key, CharacterState.state['equipment'][key]['base_stats'])
-			else:
-				for path in equipment_paths:
-					var resource_node = get_node(path)
-					resource_node.visible = false
+		else:
+			for path in equipment_paths:
+				var resource_node = get_node(path)
+				resource_node.visible = false
+				print('hi')
 
-				# Remove gear stats from player state if item is unequipped
-				if key in CharacterState.state['gear_modifiers']:
-					pass
-					# CharacterState.remove_gear(key)
+			# Remove gear stats from player state if item is unequipped
+			if key in CharacterState.state['gear_modifiers']:
+				pass
+				# CharacterState.remove_gear(key)
 

@@ -1,0 +1,119 @@
+{
+	"amulet_of_luck": {
+		"cosmetic_paths": [],
+		"possible_stats": [
+			{
+				"name": "crit_percent",
+				"weight": 2
+			},
+			{
+				"name": "health_percent",
+				"weight": 1
+			}
+		],
+		"texture_path": "res://resources/sprites/Item__32.png",
+		"type": 5
+	},
+	"boots_of_haste": {
+		"cosmetic_paths": [
+			"res://resources/sprites/gear/bone_armor_1/RBoot.png",
+			"res://resources/sprites/gear/bone_armor_1/LBoot.png"
+		],
+		"possible_stats": [
+			{
+				"name": "attack_speed",
+				"weight": 3
+			},
+			{
+				"name": "health_percent",
+				"weight": 1
+			}
+		],
+		"texture_path": "res://resources/sprites/gear/bone_armor_1/Boot_i.png",
+		"type": 3
+	},
+	"chest_of_fortitude": {
+		"cosmetic_paths": [
+			"res://resources/sprites/gear/bone_armor_1/Armor.png",
+			"res://resources/sprites/gear/bone_armor_1/LShoulder.png",
+			"res://resources/sprites/gear/bone_armor_1/RShoulder.png"
+		],
+		"possible_stats": [
+			{
+				"name": "defense",
+				"weight": 3
+			},
+			{
+				"name": "health",
+				"weight": 1
+			}
+		],
+		"texture_path": "res://resources/sprites/gear/bone_armor_1/Armor_i.png",
+		"type": 1
+	},
+	"greaves_of_swiftness": {
+		"cosmetic_paths": [
+			"res://resources/sprites/gear/bone_armor_1/LGreave.png",
+			"res://resources/sprites/gear/bone_armor_1/RGreave.png"
+		],
+		"possible_stats": [
+			{
+				"name": "attack_speed",
+				"weight": 2
+			},
+			{
+				"name": "defense",
+				"weight": 1
+			}
+		],
+		"texture_path": "res://resources/sprites/gear/bone_armor_1/Greave_i.png",
+		"type": 2
+	},
+	"helmet_of_valor": {
+		"cosmetic_paths": [
+			"res://resources/sprites/gear/bone_armor_1/Helmet.png"
+		],
+		"possible_stats": [
+			{
+				"name": "defense",
+				"weight": 2
+			},
+			{
+				"name": "health",
+				"weight": 1
+			}
+		],
+		"texture_path": "res://resources/sprites/gear/bone_armor_1/Helmet_i.png",
+		"type": 0
+	},
+	"staff_of_wisdom": {
+		"cosmetic_paths": [],
+		"possible_stats": [
+			{
+				"name": "attack",
+				"weight": 1
+			},
+			{
+				"name": "health",
+				"weight": 2
+			}
+		],
+		"texture_path": "res://resources/sprites/Item__01.png",
+		"type": 4
+	},
+	"sword_of_truth": {
+		"cosmetic_paths": [],
+		"possible_stats": [
+			{
+				"name": "attack",
+				"weight": 2
+			},
+			{
+				"name": "defense",
+				"weight": 1
+			}
+		],
+		"texture_path": "res://resources/sprites/Item__01.png",
+		"type": 4
+	}
+}
