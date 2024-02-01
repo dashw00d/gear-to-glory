@@ -3,8 +3,8 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	if !item_data:
+		item_data = get_item_data(example_data, "res://resources/data/item_database.json")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -12,6 +12,7 @@ func _process(delta):
 enum Type {HEAD, CHEST, HANDS, FEET, WEAPON, ACCESSORY, MAIN}
 
 var data_file_path = "res://resources/data/item_database.json"
+var item_data
 var example_data = {
 	"sword_of_truth": {
 		"texture_path": "res://resources/sprites/Item__01.png",
@@ -87,24 +88,28 @@ var example_data = {
 	}
 }
 
-@onready var test = save(item_data, "res://resources/data/item_database.json")
-
-func save(data: Dictionary, path: String):
-	var data_file = null
-	data_file = FileAccess.open(path, FileAccess.WRITE)
-	data_file.store_line(JSON.new().stringify(data, "\t"))
-	
-func load_json_file(file_path: String):
-	if FileAccess.file_exists(file_path):
-		var data_file = FileAccess.open(file_path, FileAccess.READ)
-		var parsed_result = JSON.parse_string(data_file.get_as_text())
-		
-		if parsed_result is Dictionary:
-			return parsed_result
+func get_item_data(data: Dictionary, path: String) -> Dictionary:
+	# Attempt to open the file for reading to check if it exists and is not empty
+	var file = FileAccess.open(path, FileAccess.ModeFlags.READ)
+	if file:
+		var file_content = file.get_buffer(file.get_length())
+		file.close()
+		var parsed = JSON.parse_string(file_content.get_string_from_utf8())
+		if parsed:
+			return parsed
 		else:
-			print('wrong type')
+			print("Failed to parse JSON data from file.")
 	else:
-		print('no file')
+		# File doesn't exist or couldn't be opened for reading, attempt to write
+		file = FileAccess.open(path, FileAccess.ModeFlags.WRITE)
+		if file:
+			var json_string = JSON.new().stringify(data, "\t")
+			file.store_string(json_string)
+			file.close()
+			return data
+		else:
+			print("Failed to open file for writing.")
+	return {}
 
 enum Rarity {
 	COMMON,
