@@ -9,7 +9,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-enum Type {HEAD, CHEST, HANDS, FEET, WEAPON, ACCESSORY, MAIN}
+enum Type {HEAD, CHEST, HANDS, FEET, WEAPON, SHIELD, ACCESSORY, MAIN}
 
 var data_file_path = "res://resources/data/item_database.json"
 var item_data

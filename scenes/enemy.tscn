@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://fyhb6ixjiv8t"]
+[gd_scene load_steps=15 format=3 uid="uid://fyhb6ixjiv8t"]
 
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_5nke3"]
 [ext_resource type="Texture2D" uid="uid://o20p4tpcgqqk" path="res://resources/sprite_sheets/poring.png" id="1_de2fo"]
+[ext_resource type="Theme" uid="uid://d24xi7m4k637h" path="res://theme/default_theme.tres" id="3_6owon"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qrdx8"]
 atlas = ExtResource("1_de2fo")
@@ -194,6 +195,7 @@ offset_top = -29.0
 offset_right = 113.0
 offset_bottom = -2.0
 scale = Vector2(0.3, 0.3)
+theme = ExtResource("3_6owon")
 theme_override_styles/background = SubResource("StyleBoxFlat_xyoir")
 theme_override_styles/fill = SubResource("StyleBoxFlat_yifgi")
 value = 50.0

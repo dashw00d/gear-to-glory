@@ -9,6 +9,7 @@ signal player_attack_finished
 	'head': ['Skeleton2D/torso/Head/Head/Helmet'],
 	'chest': ['Skeleton2D/torso/Torso/Armor', 'Skeleton2D/torso/Torso/ShoulderL', 'Skeleton2D/RShoulder'],
 	'weapon': ['Skeleton2D/torso/RightArm/Bone2D/LarmR/Weapon'],
+	'shield': [],
 	'hands': ['Skeleton2D/LarmL/GreaveL', 'Skeleton2D/torso/RightArm/Bone2D/LarmR/GreaveR'],
 	'feet': ['Skeleton2D/torso/Legs/Bone2D/Bone2D/LlegR/BootR', 'Skeleton2D/LlegL/BootL'],  # Example for two feet
 	'accessory': [],

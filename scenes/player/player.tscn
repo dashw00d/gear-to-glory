@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://x3h13mjklmbs" path="res://resources/sprites/Item__57.png" id="14_0trnl"]
 [ext_resource type="Texture2D" uid="uid://dsbeu7abeq34b" path="res://resources/sprites/gear/bone_armor_1/RBoot.png" id="16_xt22v"]
 [ext_resource type="Texture2D" uid="uid://c3uuccokcxjpj" path="res://resources/sprites/gear/bone_armor_1/RGreave.png" id="20_omphe"]
+[ext_resource type="Theme" uid="uid://d24xi7m4k637h" path="res://theme/default_theme.tres" id="24_pcyon"]
 
 [sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_225aa"]
 target_nodepath = NodePath("Targets/LeftArmTarget")
@@ -1206,10 +1207,10 @@ tracks/4/path = NodePath("torso/LeftArm:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.6, 0.7, 0.9, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5, 0.6, 0.7, 0.9, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(74, -35), Vector2(74, -35), Vector2(74, -35), Vector2(74, -35), Vector2(74, -35), Vector2(74, -35)]
+"values": [Vector2(74, -35), Vector2(74, -35), Vector2(74, -35), Vector2(74, -35), Vector2(74, -35), Vector2(74, -35), Vector2(74, -35)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -1218,10 +1219,10 @@ tracks/5/path = NodePath("torso/LeftArm:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.6, 0.7, 0.9, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5, 0.6, 0.7, 0.9, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.448394, 1.01002, 0.809792, 0.339579, -0.243948, -0.170645]
+"values": [0.448394, 0.426309, 1.01002, 0.809792, 0.339579, -0.243948, -0.170645]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -1401,7 +1402,7 @@ tracks/20/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.5, 0.9, 1, 1.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-33, 100), Vector2(30, 77), Vector2(0, 22), Vector2(140, 149), Vector2(33, 103), Vector2(12, 124)]
+"values": [Vector2(-33, 100), Vector2(30, 77), Vector2(210, -6), Vector2(140, 149), Vector2(33, 103), Vector2(12, 124)]
 }
 tracks/21/type = "value"
 tracks/21/imported = false
@@ -1518,10 +1519,10 @@ tracks/30/path = NodePath("torso/LeftArm/Bone2D:position")
 tracks/30/interp = 1
 tracks/30/loop_wrap = true
 tracks/30/keys = {
-"times": PackedFloat32Array(0.6, 0.7, 0.9, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.5, 0.6, 0.7, 0.9, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1.79317, 63.5819), Vector2(1.79317, 63.5819), Vector2(1.79317, 63.5819), Vector2(1.79317, 63.5819), Vector2(1.79317, 63.5819)]
+"values": [Vector2(1.79317, 63.5819), Vector2(1.79317, 63.5819), Vector2(1.79317, 63.5819), Vector2(1.79317, 63.5819), Vector2(1.79317, 63.5819), Vector2(1.79317, 63.5819)]
 }
 tracks/31/type = "value"
 tracks/31/imported = false
@@ -1530,10 +1531,10 @@ tracks/31/path = NodePath("torso/LeftArm/Bone2D:rotation")
 tracks/31/interp = 1
 tracks/31/loop_wrap = true
 tracks/31/keys = {
-"times": PackedFloat32Array(0.6, 0.7, 0.9, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.5, 0.6, 0.7, 0.9, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.681062, 0.681062, -0.651308, -0.249925, -0.244247]
+"values": [-1.08747, 0.681062, 0.681062, -0.651308, -0.249925, -0.244247]
 }
 tracks/32/type = "method"
 tracks/32/imported = false
@@ -2282,8 +2283,6 @@ _data = {
 "idle": SubResource("Animation_f7uc7")
 }
 
-[sub_resource type="Theme" id="Theme_x51fa"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bh87v"]
 bg_color = Color(0.952941, 0, 0.227451, 1)
 
@@ -2304,7 +2303,7 @@ texture = ExtResource("2_lvh0s")
 [node name="LarmL" type="Sprite2D" parent="Skeleton2D"]
 position = Vector2(102.934, 49.3995)
 rotation = -0.208525
-scale = Vector2(0.49984, 0.49984)
+scale = Vector2(0.499841, 0.499841)
 texture = ExtResource("3_jspbi")
 
 [node name="GreaveL" type="Sprite2D" parent="Skeleton2D/LarmL"]
@@ -2335,7 +2334,7 @@ texture = ExtResource("8_2hpdn")
 [node name="UlegR" type="Sprite2D" parent="Skeleton2D"]
 position = Vector2(-58.3762, 82.6968)
 rotation = -0.0506569
-scale = Vector2(0.499915, 0.499915)
+scale = Vector2(0.499914, 0.499914)
 texture = ExtResource("9_kayvq")
 
 [node name="torso" type="Bone2D" parent="Skeleton2D"]
@@ -2385,11 +2384,12 @@ texture = ExtResource("10_5afd7")
 [node name="LeftArm" type="Bone2D" parent="Skeleton2D/torso"]
 position = Vector2(74, -35)
 rotation = 0.047353
-scale = Vector2(0.999831, 0.999831)
+scale = Vector2(0.999832, 0.999832)
 rest = Transform2D(0.99871, 0.0473273, -0.0473273, 0.99871, 74, -35)
 auto_calculate_length_and_angle = false
 length = 78.0897
 bone_angle = 99.583
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/torso/LeftArm"]
 position = Vector2(-7, 32)
@@ -2399,11 +2399,12 @@ remote_path = NodePath("../../../UarmL")
 [node name="Bone2D" type="Bone2D" parent="Skeleton2D/torso/LeftArm"]
 position = Vector2(1.79317, 63.5819)
 rotation = -0.482771
-scale = Vector2(0.999848, 0.999848)
+scale = Vector2(0.999849, 0.999849)
 rest = Transform2D(0.885577, -0.464165, 0.464165, 0.885577, 1.79317, 63.5819)
 auto_calculate_length_and_angle = false
 length = 73.364
 bone_angle = 60.561
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/torso/LeftArm/Bone2D"]
 position = Vector2(18.565, 31.595)
@@ -2421,11 +2422,12 @@ bone_angle = -145.008
 [node name="Bone2D" type="Bone2D" parent="Skeleton2D/torso/Legs"]
 position = Vector2(-30, -21)
 rotation = -0.0506569
-scale = Vector2(0.99983, 0.99983)
+scale = Vector2(0.999828, 0.999828)
 rest = Transform2D(0.998547, -0.0506266, 0.0506266, 0.998547, -30, -21)
 auto_calculate_length_and_angle = false
 length = 98.4886
 bone_angle = 113.962
+metadata/_local_pose_override_enabled_ = true
 
 [node name="UlegR_T" type="RemoteTransform2D" parent="Skeleton2D/torso/Legs/Bone2D"]
 position = Vector2(-20.5546, 22.689)
@@ -2440,6 +2442,7 @@ rest = Transform2D(0.971125, -0.237974, 0.237974, 0.971125, -82.5845, 59.3967)
 auto_calculate_length_and_angle = false
 length = 78.607
 bone_angle = 114.207
+metadata/_local_pose_override_enabled_ = true
 
 [node name="LlegR" type="Sprite2D" parent="Skeleton2D/torso/Legs/Bone2D/Bone2D"]
 position = Vector2(-21.6496, 38.3331)
@@ -2459,6 +2462,7 @@ rest = Transform2D(0.997183, 0.0727243, -0.0727243, 0.997183, 22, -12)
 auto_calculate_length_and_angle = false
 length = 106.4
 bone_angle = 36.9776
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/torso/Legs/ULegL"]
 position = Vector2(27.3637, 22.5756)
@@ -2473,6 +2477,7 @@ rest = Transform2D(0.998794, -0.0458377, 0.0458377, 0.998794, 64.9196, 68.8005)
 auto_calculate_length_and_angle = false
 length = 77.746
 bone_angle = 85.06
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/torso/Legs/ULegL/LLegL"]
 position = Vector2(2.38002, 38.5266)
@@ -2482,11 +2487,12 @@ remote_path = NodePath("../../../../../LlegL")
 [node name="RightArm" type="Bone2D" parent="Skeleton2D/torso"]
 position = Vector2(-51, -51)
 rotation = -1.5732
-scale = Vector2(0.99983, 0.99983)
+scale = Vector2(0.999831, 0.999831)
 rest = Transform2D(-0.00240325, -0.999827, 0.999827, -0.00240325, -51, -51)
 auto_calculate_length_and_angle = false
 length = 86.9253
 bone_angle = 113.025
+metadata/_local_pose_override_enabled_ = true
 
 [node name="UarmR" type="Sprite2D" parent="Skeleton2D/torso/RightArm"]
 position = Vector2(-29.4446, 10.5027)
@@ -2501,6 +2507,7 @@ rest = Transform2D(0.0965924, 0.995188, -0.995188, 0.0965924, -56.9625, 18.2566)
 auto_calculate_length_and_angle = false
 length = 102.047
 bone_angle = 28.569
+metadata/_local_pose_override_enabled_ = true
 
 [node name="LarmR" type="Sprite2D" parent="Skeleton2D/torso/RightArm/Bone2D"]
 position = Vector2(46.2216, 46.7041)
@@ -2523,7 +2530,7 @@ texture = ExtResource("20_omphe")
 
 [node name="RShoulder" type="Sprite2D" parent="Skeleton2D"]
 visible = false
-position = Vector2(-193.243, -50.4254)
+position = Vector2(-202.533, -30.84)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_xlnyn")
 
@@ -2597,7 +2604,7 @@ offset_left = -443.0
 offset_top = -241.0
 offset_right = -187.0
 offset_bottom = -214.0
-theme = SubResource("Theme_x51fa")
+theme = ExtResource("24_pcyon")
 theme_override_styles/fill = SubResource("StyleBoxFlat_bh87v")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

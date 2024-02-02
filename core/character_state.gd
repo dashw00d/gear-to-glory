@@ -9,6 +9,7 @@ var wearable_types = [
 	'hands',
 	'feet',
 	'weapon',
+	'shield',
 	'accessory',
 ]
 

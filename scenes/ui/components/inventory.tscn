@@ -1,14 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://dgyp53n3k4kvp"]
+[gd_scene load_steps=14 format=3 uid="uid://dgyp53n3k4kvp"]
 
 [ext_resource type="Script" path="res://scenes/ui/components/inventory.gd" id="1_2016b"]
 [ext_resource type="Theme" uid="uid://d24xi7m4k637h" path="res://theme/default_theme.tres" id="1_g25qu"]
 [ext_resource type="Script" path="res://resources/inventory_slot.gd" id="2_6ejd2"]
 [ext_resource type="Texture2D" uid="uid://bmq4jv8cyfh3x" path="res://resources/sprites/Item__44.png" id="4_23uf0"]
 [ext_resource type="Texture2D" uid="uid://x3h13mjklmbs" path="res://resources/sprites/Item__57.png" id="5_3ln6t"]
-[ext_resource type="Texture2D" uid="uid://cer0pfxasiiu7" path="res://resources/sprites/character.png" id="6_x4p0y"]
+[ext_resource type="Texture2D" uid="uid://bqnfy508la6uw" path="res://resources/sprites/Item__25.png" id="5_tiwik"]
 [ext_resource type="Texture2D" uid="uid://dqe6hxh214ij5" path="res://resources/sprites/Item__48.png" id="7_bq6w7"]
+[ext_resource type="Texture2D" uid="uid://b07nawi7ehdbe" path="res://resources/sprites/Item__62.png" id="7_ubk0s"]
 [ext_resource type="Texture2D" uid="uid://5oerlj3xal2m" path="res://resources/sprites/Item__01.png" id="8_gmn1v"]
 [ext_resource type="Texture2D" uid="uid://dwjsh247otcxp" path="res://resources/sprites/Item__32.png" id="9_e5ad1"]
+[ext_resource type="Texture2D" uid="uid://cdid7cbm4nbit" path="res://resources/sprites/Item__43.png" id="10_umcrl"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_px2yv"]
 
@@ -35,62 +37,85 @@ theme_override_constants/separation = 16
 [node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 16
+theme_override_constants/separation = 24
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="HeadSlot" type="PanelContainer" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+[node name="WeaponSlot" type="PanelContainer" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("2_6ejd2")
 
-[node name="HeadIcon" type="TextureRect" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer2/HeadSlot"]
+[node name="Icon" type="TextureRect" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer2/WeaponSlot"]
+show_behind_parent = true
+texture_filter = 1
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("8_gmn1v")
+
+[node name="ShieldSlot" type="PanelContainer" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+script = ExtResource("2_6ejd2")
+type = 1
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer2/ShieldSlot"]
+show_behind_parent = true
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("5_tiwik")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="HeadSlot" type="PanelContainer" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer4"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+script = ExtResource("2_6ejd2")
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer4/HeadSlot"]
 show_behind_parent = true
 texture_filter = 1
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 texture = ExtResource("4_23uf0")
 
-[node name="ChestSlot" type="PanelContainer" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+[node name="ChestSlot" type="PanelContainer" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer4"]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 script = ExtResource("2_6ejd2")
 type = 1
 
-[node name="ChestIcon" type="TextureRect" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer2/ChestSlot"]
+[node name="Icon" type="TextureRect" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer4/ChestSlot"]
 show_behind_parent = true
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("5_3ln6t")
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(180, 0)
-layout_mode = 2
-size_flags_vertical = 3
-texture = ExtResource("6_x4p0y")
-stretch_mode = 5
-
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="LegsSlot" type="PanelContainer" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+[node name="HandSlot" type="PanelContainer" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 script = ExtResource("2_6ejd2")
 type = 2
 
-[node name="LegsIcon" type="TextureRect" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/LegsSlot"]
+[node name="Icon" type="TextureRect" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/HandSlot"]
 show_behind_parent = true
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("7_bq6w7")
+texture = ExtResource("7_ubk0s")
 
 [node name="FeetSlot" type="PanelContainer" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(96, 96)
@@ -98,7 +123,7 @@ layout_mode = 2
 script = ExtResource("2_6ejd2")
 type = 3
 
-[node name="FeetIcon" type="TextureRect" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/FeetSlot"]
+[node name="Icon" type="TextureRect" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer/FeetSlot"]
 show_behind_parent = true
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
@@ -110,18 +135,18 @@ layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="WeaponSlot" type="PanelContainer" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer3"]
+[node name="AccessorySlot2" type="PanelContainer" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer3"]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 script = ExtResource("2_6ejd2")
 type = 4
 
-[node name="WeaponIcon" type="TextureRect" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer3/WeaponSlot"]
+[node name="Icon" type="TextureRect" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer3/AccessorySlot2"]
 show_behind_parent = true
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("8_gmn1v")
+texture = ExtResource("10_umcrl")
 
 [node name="AccessorySlot" type="PanelContainer" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer3"]
 custom_minimum_size = Vector2(96, 96)
@@ -129,7 +154,7 @@ layout_mode = 2
 script = ExtResource("2_6ejd2")
 type = 5
 
-[node name="AccessoryIcon" type="TextureRect" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer3/AccessorySlot"]
+[node name="Icon" type="TextureRect" parent="PanelContainer/HBoxContainer/VBoxContainer2/HBoxContainer3/AccessorySlot"]
 show_behind_parent = true
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)

@@ -1,9 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://4i6i04xnehmx"]
+[gd_scene load_steps=20 format=3 uid="uid://4i6i04xnehmx"]
 
 [ext_resource type="Script" path="res://tools/item_editor.gd" id="1_e4pjh"]
+[ext_resource type="Theme" uid="uid://d24xi7m4k637h" path="res://theme/default_theme.tres" id="1_hj234"]
 [ext_resource type="Texture2D" uid="uid://5oerlj3xal2m" path="res://resources/sprites/Item__01.png" id="2_lnjmk"]
 [ext_resource type="Texture2D" uid="uid://bhmfthm5n1tnx" path="res://resources/sprites/ui/attack_speed_16.png" id="2_tma37"]
 [ext_resource type="Texture2D" uid="uid://cdn55u2018xnj" path="res://resources/sprites/ui/crit_percent_16.png" id="3_3mrsc"]
+[ext_resource type="FontFile" uid="uid://3laylbry7cvb" path="res://theme/Fonts/Inter-VariableFont_slnt,wght.ttf" id="3_nijkc"]
 [ext_resource type="Texture2D" uid="uid://c0kv0lhgf5evv" path="res://resources/sprites/ui/health_percent_16.png" id="4_14vt1"]
 [ext_resource type="Texture2D" uid="uid://dwjsh247otcxp" path="res://resources/sprites/Item__32.png" id="4_u52ow"]
 [ext_resource type="Texture2D" uid="uid://bmq4jv8cyfh3x" path="res://resources/sprites/Item__44.png" id="5_wny7j"]
@@ -16,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://brhdh7yn8hprw" path="res://resources/sprites/ui/defense_percent_16.png" id="9_pvhbm"]
 [ext_resource type="Texture2D" uid="uid://b07nawi7ehdbe" path="res://resources/sprites/Item__62.png" id="12_ege8x"]
 [ext_resource type="Texture2D" uid="uid://cxrtcfihc2fh4" path="res://resources/sprites/Item__36.png" id="16_4baeh"]
+[ext_resource type="Texture2D" uid="uid://bqnfy508la6uw" path="res://resources/sprites/Item__25.png" id="17_plboy"]
 
 [node name="ItemEditor" type="VBoxContainer"]
 anchors_preset = 15
@@ -23,6 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_hj234")
 script = ExtResource("1_e4pjh")
 
 [node name="GridContainer" type="GridContainer" parent="."]
@@ -87,6 +91,15 @@ columns = 2
 
 [node name="StatsDropdown" type="OptionButton" parent="StatsContainer"]
 layout_mode = 2
+theme = ExtResource("1_hj234")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_nijkc")
 expand_icon = true
 item_count = 8
 popup/item_0/text = "attack_speed"
@@ -180,7 +193,7 @@ text = "Select Type"
 [node name="ItemType" type="OptionButton" parent="GridContainer4"]
 layout_mode = 2
 size_flags_horizontal = 3
-item_count = 7
+item_count = 8
 popup/item_0/text = "HEAD"
 popup/item_0/icon = ExtResource("5_wny7j")
 popup/item_0/id = 0
@@ -196,12 +209,15 @@ popup/item_3/id = 3
 popup/item_4/text = "WEAPON"
 popup/item_4/icon = ExtResource("2_lnjmk")
 popup/item_4/id = 4
-popup/item_5/text = "ACCESSORY"
-popup/item_5/icon = ExtResource("4_u52ow")
+popup/item_5/text = "SHIELD"
+popup/item_5/icon = ExtResource("17_plboy")
 popup/item_5/id = 5
-popup/item_6/text = "MAIN"
-popup/item_6/icon = ExtResource("16_4baeh")
+popup/item_6/text = "ACCESSORY"
+popup/item_6/icon = ExtResource("4_u52ow")
 popup/item_6/id = 6
+popup/item_7/text = "MAIN"
+popup/item_7/icon = ExtResource("16_4baeh")
+popup/item_7/id = 7
 
 [node name="HSeparator4" type="HSeparator" parent="."]
 layout_mode = 2
