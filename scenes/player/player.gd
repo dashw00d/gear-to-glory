@@ -1,9 +1,20 @@
 extends Node2D
 
-@export var health: float = 100
+@onready var total_health: float = CharacterState.state['total_stats']['health']:
+	set(new_total_health):
+		# can apply temp health buffs here
+		total_health = new_total_health
+		get_node("ProgressBar").max_value = new_total_health
+		
+@onready var health: float = CharacterState.state['total_stats']['health']:
+	set(new_health):
+		health = new_health
+		get_node("ProgressBar").value = new_health
+		
 @export var animator: AnimationPlayer
 signal attack_hit
 signal player_attack_finished
+signal damage_taken(damage:int, location:Vector2)
 
 @onready var paths = {
 	'head': ['Skeleton2D/torso/Head/Head/Helmet'],
@@ -32,7 +43,7 @@ signal player_attack_finished
 
 func _ready():
 	CharacterState.equipment_updated.connect(_on_equipment_updated.bind())
-	# animator.play("basic_attack")
+	total_health = CharacterState.state['total_stats']['health']
 	
 func _process(delta):
 	$ProgressBar.value = health
@@ -45,8 +56,21 @@ func play_attack_animation(attack: BaseAttack):
 func _attack_hit() -> void:
 	emit_signal('attack_hit')
 
-func get_damage():
-	return CharacterState.state["total_stats"]["attack"]
+func get_damage() -> float:
+	var base_damage = CharacterState.state["total_stats"]["attack"]
+	var crit_chance = CharacterState.state["total_stats"]["crit"]  # Assuming this is a percentage (e.g., 25 for 25%)
+	
+	# Generate a random number between 0 and 100
+	var random_roll = randf() * 100.0
+	
+	# Check if the random roll is within the crit chance
+	if random_roll <= crit_chance:
+		# If it's a crit, apply a multiplier to the base damage
+		# For example, doubling the damage for a critical hit
+		return base_damage * 2.0
+	else:
+		return base_damage
+
 
 func get_actions():
 	return actions
@@ -61,8 +85,8 @@ func apply_damage(damage: int):
 	var overflow_damage = max(damage - defense, 0)  # Damage exceeding defense cap
 
 	var total_damage_taken = (reducible_damage - reduced_damage) + overflow_damage
-
 	health -= int(total_damage_taken)
+	emit_signal("damage_taken", int(total_damage_taken), %DamageTarget.get_global_transform_with_canvas())
 	if health <= 0:
 		queue_free()
 		get_tree().change_scene_to_file("res://scenes/main.tscn")

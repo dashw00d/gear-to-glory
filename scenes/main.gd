@@ -7,8 +7,6 @@ var battle_scene = preload("res://scenes/battle.tscn")
 func _ready():
 	$MainScene/Player.animator.speed_scale = 0.5
 	$MainScene/Player.animator.play("idle")
-	print(CharacterState.state['equipment'])
-	print(CharacterState.state['inventory'])
 	CharacterState.update_equipment_state()
 	$MainScene/Inventory.repopulate_inventory()
 

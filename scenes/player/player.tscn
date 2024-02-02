@@ -1183,10 +1183,10 @@ tracks/2/path = NodePath("torso/Head:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(32, -71)]
+"values": [Vector2(32, -71), Vector2(32, -71), Vector2(32, -71), Vector2(32, -71), Vector2(32, -71), Vector2(32, -71), Vector2(32, -71), Vector2(32, -71), Vector2(32, -71)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1195,10 +1195,10 @@ tracks/3/path = NodePath("torso/Head:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.166282]
+"values": [0.166282, 0.166282, 0.166282, 0.166282, 0.166282, 0.166282, 0.166282, 0.166282, 0.166282]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -2297,13 +2297,13 @@ modification_stack = SubResource("SkeletonModificationStack2D_hnmwo")
 [node name="UarmL" type="Sprite2D" parent="Skeleton2D"]
 position = Vector2(65.4941, -3.37097)
 rotation = 0.047353
-scale = Vector2(0.499916, 0.499916)
+scale = Vector2(0.499913, 0.499913)
 texture = ExtResource("2_lvh0s")
 
 [node name="LarmL" type="Sprite2D" parent="Skeleton2D"]
 position = Vector2(102.934, 49.3995)
 rotation = -0.208525
-scale = Vector2(0.499841, 0.499841)
+scale = Vector2(0.499839, 0.499839)
 texture = ExtResource("3_jspbi")
 
 [node name="GreaveL" type="Sprite2D" parent="Skeleton2D/LarmL"]
@@ -2369,6 +2369,12 @@ rotation = 0.166282
 scale = Vector2(0.49996, 0.49996)
 rest = Transform2D(0.493064, 0.0827518, -0.0827518, 0.493064, 32, -71)
 
+[node name="DamageTarget" type="Node2D" parent="Skeleton2D/torso/Head"]
+unique_name_in_owner = true
+position = Vector2(-124.703, -26.5588)
+rotation = -0.166282
+scale = Vector2(2.00016, 2.00016)
+
 [node name="Head" type="Sprite2D" parent="Skeleton2D/torso/Head"]
 visibility_layer = 2
 position = Vector2(0, -32)
@@ -2384,12 +2390,11 @@ texture = ExtResource("10_5afd7")
 [node name="LeftArm" type="Bone2D" parent="Skeleton2D/torso"]
 position = Vector2(74, -35)
 rotation = 0.047353
-scale = Vector2(0.999832, 0.999832)
+scale = Vector2(0.999826, 0.999826)
 rest = Transform2D(0.99871, 0.0473273, -0.0473273, 0.99871, 74, -35)
 auto_calculate_length_and_angle = false
 length = 78.0897
 bone_angle = 99.583
-metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/torso/LeftArm"]
 position = Vector2(-7, 32)
@@ -2399,12 +2404,11 @@ remote_path = NodePath("../../../UarmL")
 [node name="Bone2D" type="Bone2D" parent="Skeleton2D/torso/LeftArm"]
 position = Vector2(1.79317, 63.5819)
 rotation = -0.482771
-scale = Vector2(0.999849, 0.999849)
+scale = Vector2(0.999852, 0.999852)
 rest = Transform2D(0.885577, -0.464165, 0.464165, 0.885577, 1.79317, 63.5819)
 auto_calculate_length_and_angle = false
 length = 73.364
 bone_angle = 60.561
-metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/torso/LeftArm/Bone2D"]
 position = Vector2(18.565, 31.595)
@@ -2427,7 +2431,6 @@ rest = Transform2D(0.998547, -0.0506266, 0.0506266, 0.998547, -30, -21)
 auto_calculate_length_and_angle = false
 length = 98.4886
 bone_angle = 113.962
-metadata/_local_pose_override_enabled_ = true
 
 [node name="UlegR_T" type="RemoteTransform2D" parent="Skeleton2D/torso/Legs/Bone2D"]
 position = Vector2(-20.5546, 22.689)
@@ -2442,7 +2445,6 @@ rest = Transform2D(0.971125, -0.237974, 0.237974, 0.971125, -82.5845, 59.3967)
 auto_calculate_length_and_angle = false
 length = 78.607
 bone_angle = 114.207
-metadata/_local_pose_override_enabled_ = true
 
 [node name="LlegR" type="Sprite2D" parent="Skeleton2D/torso/Legs/Bone2D/Bone2D"]
 position = Vector2(-21.6496, 38.3331)
@@ -2462,7 +2464,6 @@ rest = Transform2D(0.997183, 0.0727243, -0.0727243, 0.997183, 22, -12)
 auto_calculate_length_and_angle = false
 length = 106.4
 bone_angle = 36.9776
-metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/torso/Legs/ULegL"]
 position = Vector2(27.3637, 22.5756)
@@ -2477,7 +2478,6 @@ rest = Transform2D(0.998794, -0.0458377, 0.0458377, 0.998794, 64.9196, 68.8005)
 auto_calculate_length_and_angle = false
 length = 77.746
 bone_angle = 85.06
-metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/torso/Legs/ULegL/LLegL"]
 position = Vector2(2.38002, 38.5266)
@@ -2487,12 +2487,11 @@ remote_path = NodePath("../../../../../LlegL")
 [node name="RightArm" type="Bone2D" parent="Skeleton2D/torso"]
 position = Vector2(-51, -51)
 rotation = -1.5732
-scale = Vector2(0.999831, 0.999831)
+scale = Vector2(0.99983, 0.99983)
 rest = Transform2D(-0.00240325, -0.999827, 0.999827, -0.00240325, -51, -51)
 auto_calculate_length_and_angle = false
 length = 86.9253
 bone_angle = 113.025
-metadata/_local_pose_override_enabled_ = true
 
 [node name="UarmR" type="Sprite2D" parent="Skeleton2D/torso/RightArm"]
 position = Vector2(-29.4446, 10.5027)
@@ -2507,7 +2506,6 @@ rest = Transform2D(0.0965924, 0.995188, -0.995188, 0.0965924, -56.9625, 18.2566)
 auto_calculate_length_and_angle = false
 length = 102.047
 bone_angle = 28.569
-metadata/_local_pose_override_enabled_ = true
 
 [node name="LarmR" type="Sprite2D" parent="Skeleton2D/torso/RightArm/Bone2D"]
 position = Vector2(46.2216, 46.7041)
@@ -2530,7 +2528,7 @@ texture = ExtResource("20_omphe")
 
 [node name="RShoulder" type="Sprite2D" parent="Skeleton2D"]
 visible = false
-position = Vector2(-202.533, -30.84)
+position = Vector2(-193.243, -50.4254)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_xlnyn")
 
@@ -2606,5 +2604,10 @@ offset_right = -187.0
 offset_bottom = -214.0
 theme = ExtResource("24_pcyon")
 theme_override_styles/fill = SubResource("StyleBoxFlat_bh87v")
+max_value = 40.0
+step = 1.0
+value = 20.0
+rounded = true
+show_percentage = false
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

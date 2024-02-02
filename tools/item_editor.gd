@@ -1,11 +1,17 @@
 @tool
 extends VBoxContainer
-signal save_item(data: Dictionary)
+signal save_item(data: Dictionary, save_path: String)
 var cosmetics_paths = []
 var texture_path
 
-@onready var stats_ref = get_node("StatsContainer/StatsDropdown").duplicate()
-@onready var weight_ref = get_node ("StatsContainer/WeightSlider").duplicate()
+@onready var data_file_path = "res://resources/data/item_database_test.json":
+	set(new_value):
+		data_file_path = new_value
+		get_node("GridContainer5/DataPath").text = new_value.replace("res://resources/data/", "")
+	get:
+		return "res://resources/data/" + get_node("GridContainer5/DataPath").text
+		
+@onready var stats_ref = get_node("StatsContainer/StatsGrid").duplicate()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,10 +22,11 @@ func _process(delta):
 	pass
 
 func _on_save_button_pressed():
-	save_item.emit(get_all_values())
+	save_item.emit(get_all_values(), data_file_path)
 	_on_clear_all_button_button_up()
 
 func get_all_values() -> Dictionary:
+	print(data_file_path)
 	var item = get_node("GridContainer/ItemName").text
 	return {item : {
 		"cosmetic_paths": cosmetics_paths,
@@ -30,7 +37,7 @@ func get_all_values() -> Dictionary:
 			
 func get_all_stats() -> Array:
 	var possible_stats = []
-	var node = get_node("StatsContainer")
+	var node = get_node("StatsContainer/StatsGrid")
 	var children = node.get_children()
 	var temp_stat = {}
 
@@ -48,35 +55,19 @@ func get_all_stats() -> Array:
 	return possible_stats
 	
 func _on_add_stats_button_up():
-	var node = get_node("StatsContainer")
-	var children = node.get_child_count()
-	var stats_dropdown = node.get_child(children - 2)
-	var weight_slider = node.get_child(children - 1)
-	var stats_duplicate = stats_dropdown.duplicate()
-	var weight_duplicate = weight_slider.duplicate()
-	
-	stats_duplicate.selected = -1
-	weight_duplicate.value = 0
-	node.add_child(stats_duplicate)
-	node.add_child(weight_duplicate)
+	var container = get_node("StatsContainer")
+	var new_node = get_node("StatsContainer/StatsGrid").duplicate()
+	new_node.get_child(0).selected = -1
+	new_node.get_child(1).value = 0
+	new_node.get_child(2).text = "1"
+	container.add_child(new_node)
 
 func _on_remove_stats_button_up():
 	var node = get_node("StatsContainer")
-	var children = node.get_child_count()
-	
-	var stats_dropdown = node.get_child(children - 2)
-	var weight_slider = node.get_child(children - 1)
-	if children > 2:
-		node.remove_child(stats_dropdown)
-		stats_dropdown.queue_free()  # Properly free the node
-		
-		node.remove_child(weight_slider)
-		weight_slider.queue_free()  # Properly free the node
-	else:
-		stats_dropdown.selected = -1
-		weight_slider.value = 0
-		
-		
+	var child = node.get_child(-1)
+	node.remove_child(child)
+	child.queue_free()  # Properly free the node
+
 func _on_select_cosmetics_button_up():
 	%FileDialog.mode = FileDialog.FILE_MODE_OPEN_FILES  # Allow multiple file selection
 	%FileDialog.filters = ["*.png ; PNG Images", "*.jpg ; JPG Images", "*.jpeg ; JPEG Images"]
@@ -105,7 +96,6 @@ func reset_stats():
 		node.remove_child(n)
 		n.queue_free()
 	node.add_child(stats_ref.duplicate())
-	node.add_child(weight_ref.duplicate())
 		
 func _on_clear_all_button_button_up():
 	_on_clear_cosmetics_button_up()
@@ -121,6 +111,7 @@ func _on_add_texture_button_up():
 
 func _on_clear_texture_button_up():
 	%ItemTexture.texture = preload("res://resources/sprites/Item__44.png")
+	%ItemTexture.self_modulate.a = .1
 	texture_path = ""
 
 func _on_texture_file_file_selected(path):
@@ -128,6 +119,20 @@ func _on_texture_file_file_selected(path):
 	var texture = load(path)  # Load the texture at runtime
 	if texture:  # Check if the texture was successfully loaded
 		#$ItemTexture.texture = texture
-		get_node("VBoxContainer/ItemTexture").texture = load(path)
+		var item_texture = get_node("VBoxContainer/ItemTexture")
+		item_texture.texture = load(path)
+		item_texture.self_modulate.a = 1
 	else:
 		print("Failed to load texture from path:", path)
+
+func _on_select_data_button_button_up():
+	%DataFile.mode = FileDialog.FILE_MODE_OPEN_FILE  # Allow multiple file selection
+	%DataFile.filters = ["*.json ; JSON Files"]
+	%DataFile.popup_centered_ratio()
+
+func _on_data_file_file_selected(path):
+	data_file_path = path
+
+func _on_weight_slider_value_changed(value):
+	for child in get_node("StatsContainer").get_children():
+		child.get_child(2).text = str(int(child.get_child(1).value))

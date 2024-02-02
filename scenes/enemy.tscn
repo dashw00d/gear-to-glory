@@ -189,6 +189,10 @@ animator = NodePath("AnimationPlayer")
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_pg312")
 
+[node name="DamageTarget" type="Node2D" parent="AnimatedSprite2D"]
+unique_name_in_owner = true
+position = Vector2(14.6667, -8)
+
 [node name="HealthBar" type="ProgressBar" parent="AnimatedSprite2D"]
 offset_left = -20.0
 offset_top = -29.0
@@ -199,6 +203,7 @@ theme = ExtResource("3_6owon")
 theme_override_styles/background = SubResource("StyleBoxFlat_xyoir")
 theme_override_styles/fill = SubResource("StyleBoxFlat_yifgi")
 value = 50.0
+show_percentage = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

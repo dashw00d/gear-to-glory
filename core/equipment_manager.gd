@@ -1,19 +1,16 @@
 extends Node
 
-
+@onready var item_data = {}
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if !item_data:
+	if item_data.size() < 1:
 		item_data = get_item_data(example_data, "res://resources/data/item_database.json")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 enum Type {HEAD, CHEST, HANDS, FEET, WEAPON, SHIELD, ACCESSORY, MAIN}
 
 var data_file_path = "res://resources/data/item_database.json"
-var item_data
-var example_data = {
+
+@onready var example_data = {
 	"sword_of_truth": {
 		"texture_path": "res://resources/sprites/Item__01.png",
 		'cosmetic_paths': [],
@@ -32,42 +29,6 @@ var example_data = {
 		],
 		"type": Type.HEAD
 	},
-	"chest_of_fortitude": {
-		"texture_path": "res://resources/sprites/gear/bone_armor_1/Armor_i.png",
-		'cosmetic_paths': [
-			"res://resources/sprites/gear/bone_armor_1/Armor.png",
-			"res://resources/sprites/gear/bone_armor_1/LShoulder.png",
-			"res://resources/sprites/gear/bone_armor_1/RShoulder.png"],
-		"possible_stats": [
-			{"name": "defense", "weight": 3},
-			{"name": "health", "weight": 1}
-		],
-		"type": Type.CHEST
-	},
-	"greaves_of_swiftness": {
-		"texture_path": "res://resources/sprites/gear/bone_armor_1/Greave_i.png",
-		'cosmetic_paths': [
-			"res://resources/sprites/gear/bone_armor_1/LGreave.png",
-			"res://resources/sprites/gear/bone_armor_1/RGreave.png"
-		],
-		"possible_stats": [
-			{"name": "attack_speed", "weight": 2},
-			{"name": "defense", "weight": 1}
-		],
-		"type": Type.HANDS
-	},
-	"boots_of_haste": {
-		"texture_path": "res://resources/sprites/gear/bone_armor_1/Boot_i.png",
-		'cosmetic_paths': [
-			"res://resources/sprites/gear/bone_armor_1/RBoot.png",
-			"res://resources/sprites/gear/bone_armor_1/LBoot.png"
-		],
-		"possible_stats": [
-			{"name": "attack_speed", "weight": 3},
-			{"name": "health_percent", "weight": 1}
-		],
-		"type": Type.FEET
-	},
 	"amulet_of_luck": {
 		"texture_path": "res://resources/sprites/Item__32.png",
 		'cosmetic_paths': [],
@@ -76,40 +37,29 @@ var example_data = {
 			{"name": "health_percent", "weight": 1}
 		],
 		"type": Type.ACCESSORY
-	},
-	"staff_of_wisdom": {
-		"texture_path": "res://resources/sprites/Item__01.png",
-		'cosmetic_paths': [],
-		"possible_stats": [
-			{"name": "attack", "weight": 1},
-			{"name": "health", "weight": 2}
-		],
-		"type": Type.WEAPON
 	}
 }
 
 func get_item_data(data: Dictionary, path: String) -> Dictionary:
 	# Attempt to open the file for reading to check if it exists and is not empty
 	var file = FileAccess.open(path, FileAccess.ModeFlags.READ)
-	if file:
-		var file_content = file.get_buffer(file.get_length())
-		file.close()
-		var parsed = JSON.parse_string(file_content.get_string_from_utf8())
-		if parsed:
-			return parsed
-		else:
-			print("Failed to parse JSON data from file.")
+	var json = JSON.new()
+	var error = json.parse(file.get_as_text())
+	file.close()
+	if error == OK:
+		print(json.get_data())
+		return json.get_data()
 	else:
-		# File doesn't exist or couldn't be opened for reading, attempt to write
-		file = FileAccess.open(path, FileAccess.ModeFlags.WRITE)
-		if file:
-			var json_string = JSON.new().stringify(data, "\t")
-			file.store_string(json_string)
-			file.close()
-			return data
-		else:
-			print("Failed to open file for writing.")
-	return {}
+		print("Failed to parse JSON data from file.")
+		# make_item_data(data, path)
+	return data
+
+func make_item_data(data, path: String) -> void:
+	var file = FileAccess.open(path, FileAccess.ModeFlags.WRITE)
+	if file: 
+		var json_string = JSON.new().stringify(data, "\t")
+		file.store_string(json_string)
+		file.close()
 
 enum Rarity {
 	COMMON,

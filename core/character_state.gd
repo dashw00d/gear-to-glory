@@ -88,7 +88,8 @@ func calculate_final_stats():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	# calls the randomizer in the project
+	randomize()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

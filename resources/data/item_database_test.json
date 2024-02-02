@@ -192,5 +192,18 @@
 		],
 		"texture_path": "res://resources/sprites/gear/bone_armor_1/Armor_i.png",
 		"type": 1
+	},
+	"testy": {
+		"cosmetic_paths": [
+			"res://resources/sprites/gear/bone_armor_1/Helmet.png"
+		],
+		"possible_stats": [
+			{
+				"name": "health_percent",
+				"weight": 2
+			}
+		],
+		"texture_path": "res://resources/sprites/gear/bone_armor_1/Boot_i.png",
+		"type": 3
 	}
 }

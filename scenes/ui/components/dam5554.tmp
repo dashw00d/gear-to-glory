@@ -1,0 +1,94 @@
+[gd_scene load_steps=4 format=3 uid="uid://2t22pbojmsqo"]
+
+[ext_resource type="Script" path="res://scenes/ui/components/damage_effect.gd" id="1_r2qex"]
+[ext_resource type="Texture2D" uid="uid://bye1e7n3l2q5k" path="res://resources/sprites/Circuit pattern.png" id="2_6qjxd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bltxw"]
+font_size = 23
+
+[node name="2D Demo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_r2qex")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("2_6qjxd")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="SpawnPoint" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -125.0
+offset_bottom = -125.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_layout_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 18.0
+offset_right = 581.0
+offset_bottom = 113.0
+
+[node name="Controls" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Left Click or Hold Right Click to Spawn Damage Numbers"
+label_settings = SubResource("LabelSettings_bltxw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Spread"
+
+[node name="Spread" type="HSlider" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1000.0
+step = 0.1
+
+[node name="Spread Value" type="Label" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Height"
+
+[node name="Height" type="HSlider" parent="VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1000.0
+step = 0.1
+value = 100.0
+
+[node name="Height Value" type="Label" parent="VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "100"
+
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/Spread" to="." method="_on_spread_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/Height" to="." method="_on_height_value_changed"]

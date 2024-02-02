@@ -12,8 +12,9 @@ func _exit_tree():
 	remove_control_from_docks(docked_scene)
 	docked_scene.free()
 
-func _on_save_item(item_data: Dictionary):
-	var path = "res://resources/data/item_database_test.json"
+func _on_save_item(item_data: Dictionary, path: String):
+	if !path:
+		path = "res://resources/data/item_database_test.json"
 	
 	# Assuming 'item_data' contains an ID or unique name at the top level, like "test6" in your example.
 	# Extracting the ID or name from 'item_data'
@@ -23,7 +24,7 @@ func _on_save_item(item_data: Dictionary):
 	var data: Dictionary = {}
 	
 	# Open the file for reading
-	var file = FileAccess.open(path, FileAccess.ModeFlags.READ)
+	var file = FileAccess.open(path, FileAccess.ModeFlags.READ_WRITE)
 	if file:
 		var content = file.get_as_text()  # Get the entire file content as text
 		file.close()  # Close the file after reading

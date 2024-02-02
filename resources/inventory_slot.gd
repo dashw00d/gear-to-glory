@@ -37,6 +37,7 @@ func update_equipment_state(type, data, action):
 		EquipmentManager.Type.HANDS: "hands",
 		EquipmentManager.Type.FEET: "feet",
 		EquipmentManager.Type.WEAPON: "weapon",
+		EquipmentManager.Type.SHIELD: "shield",
 		EquipmentManager.Type.ACCESSORY: "accessory"
 	}
 

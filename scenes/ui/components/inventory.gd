@@ -11,6 +11,7 @@ func add_new_items(items: Array):
 		
 func add_item_to_available_slot(item_resource: InventoryItem):
 	for i in range($PanelContainer/HBoxContainer/ScrollContainer/GridContainer.get_child_count()):
+		print('my god')
 		var slot = $PanelContainer/HBoxContainer/ScrollContainer/GridContainer.get_child(i)
 		if slot is InventorySlot and slot.get_child_count() == 0 and slot.type == EquipmentManager.Type.MAIN:
 			# slot.modulate = Color(item_resource.get_rarity_color()) # needs to be on item

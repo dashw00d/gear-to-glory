@@ -38,11 +38,18 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AS2P/plugin.cfg", "res://addons/SignalVisualizer/plugin.cfg", "res://addons/finite_state_machine/plugin.cfg", "res://addons/fontawesome/plugin.cfg")
+enabled=PackedStringArray("res://addons/AS2P/plugin.cfg", "res://addons/finite_state_machine/plugin.cfg", "res://addons/fontawesome/plugin.cfg")
 
 [gui]
 
 timers/tooltip_delay_sec=0.0
+
+[input]
+
+click={
+"deadzone": 0.5,
+"events": []
+}
 
 [rendering]
 

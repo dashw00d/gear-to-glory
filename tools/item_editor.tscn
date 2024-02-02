@@ -29,6 +29,35 @@ grow_vertical = 2
 theme = ExtResource("1_hj234")
 script = ExtResource("1_e4pjh")
 
+[node name="GridContainer5" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 3
+
+[node name="Label" type="Label" parent="GridContainer5"]
+layout_mode = 2
+text = "Data Path"
+
+[node name="DataPath" type="LineEdit" parent="GridContainer5"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "item_database_test.json"
+expand_to_text_length = true
+
+[node name="SelectDataButton" type="Button" parent="GridContainer5"]
+layout_mode = 2
+text = "Select Data"
+
+[node name="DataFile" type="FileDialog" parent="GridContainer5"]
+unique_name_in_owner = true
+title = "Open a File"
+ok_button_text = "Open"
+file_mode = 0
+root_subfolder = "res://resources/data/"
+
+[node name="HSeparator6" type="HSeparator" parent="."]
+layout_mode = 2
+
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 2
 columns = 2
@@ -79,17 +108,29 @@ text = "Clear"
 [node name="HSeparator2" type="HSeparator" parent="."]
 layout_mode = 2
 
-[node name="PossibleStatsLabel" type="Label" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PossibleStatsLabel" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 text = "Possible Stats
 "
 
-[node name="StatsContainer" type="GridContainer" parent="."]
+[node name="WeightLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Stat Weight"
+horizontal_alignment = 1
+
+[node name="StatsContainer" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
-columns = 2
 
-[node name="StatsDropdown" type="OptionButton" parent="StatsContainer"]
+[node name="StatsGrid" type="GridContainer" parent="StatsContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="StatsDropdown" type="OptionButton" parent="StatsContainer/StatsGrid"]
 layout_mode = 2
 theme = ExtResource("1_hj234")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -127,13 +168,21 @@ popup/item_7/text = "defense_percent"
 popup/item_7/icon = ExtResource("9_pvhbm")
 popup/item_7/id = 7
 
-[node name="WeightSlider" type="HSlider" parent="StatsContainer"]
+[node name="WeightSlider" type="HSlider" parent="StatsContainer/StatsGrid"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 min_value = 1.0
-max_value = 4.0
+max_value = 5.0
 value = 1.0
 rounded = true
+
+[node name="WeightLabel" type="Label" parent="StatsContainer/StatsGrid"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1"
+horizontal_alignment = 1
 
 [node name="GridContainer2" type="GridContainer" parent="."]
 layout_mode = 2
@@ -162,6 +211,7 @@ root_subfolder = "res://resources/sprites/gear/"
 
 [node name="ItemTexture" type="TextureRect" parent="VBoxContainer"]
 unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.101961)
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -234,9 +284,12 @@ text = "Save"
 layout_mode = 2
 text = "Reset"
 
+[connection signal="button_up" from="GridContainer5/SelectDataButton" to="." method="_on_select_data_button_button_up"]
+[connection signal="file_selected" from="GridContainer5/DataFile" to="." method="_on_data_file_file_selected"]
 [connection signal="files_selected" from="Cosmetics/FileDialog" to="." method="_on_file_dialog_files_selected"]
 [connection signal="button_up" from="Cosmetics/GridContainer/SelectCosmetics" to="." method="_on_select_cosmetics_button_up"]
 [connection signal="button_up" from="Cosmetics/GridContainer/ClearCosmetics" to="." method="_on_clear_cosmetics_button_up"]
+[connection signal="value_changed" from="StatsContainer/StatsGrid/WeightSlider" to="." method="_on_weight_slider_value_changed"]
 [connection signal="button_up" from="GridContainer2/AddStats" to="." method="_on_add_stats_button_up"]
 [connection signal="button_up" from="GridContainer2/RemoveStats" to="." method="_on_remove_stats_button_up"]
 [connection signal="file_selected" from="VBoxContainer/TextureFile" to="." method="_on_texture_file_file_selected"]
