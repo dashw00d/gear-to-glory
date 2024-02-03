@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/inventory/inventory.gd" id="1_2016b"]
 [ext_resource type="Theme" uid="uid://d24xi7m4k637h" path="res://assets/theme/default_theme.tres" id="1_q1prd"]
-[ext_resource type="Script" path="res://assets/scripts/inventory_slot.gd" id="3_muru4"]
+[ext_resource type="Script" path="res://assets/classes/inventory_slot.gd" id="3_muru4"]
 [ext_resource type="Texture2D" uid="uid://5oerlj3xal2m" path="res://assets/sprites/Item__01.png" id="4_dxam5"]
 [ext_resource type="Texture2D" uid="uid://bqnfy508la6uw" path="res://assets/sprites/Item__25.png" id="5_brwnt"]
 [ext_resource type="Texture2D" uid="uid://bmq4jv8cyfh3x" path="res://assets/sprites/Item__44.png" id="6_jxt2k"]
