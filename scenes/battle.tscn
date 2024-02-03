@@ -4,13 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://fyhb6ixjiv8t" path="res://scenes/enemy/enemy.tscn" id="2_6ci4s"]
 [ext_resource type="PackedScene" uid="uid://cchf1y12qq15v" path="res://scenes/player/player.tscn" id="3_xkxwp"]
 [ext_resource type="Script" path="res://addons/finite_state_machine/scripts/state_machine.gd" id="4_xj66j"]
-[ext_resource type="Script" path="res://assets/classes/states/enemy_turn_state.gd" id="5_jq1lr"]
-[ext_resource type="Script" path="res://assets/classes/states/check_end_conditions_state.gd" id="6_o5cwr"]
-[ext_resource type="Script" path="res://assets/classes/states/defeat_state.gd" id="7_df6sc"]
-[ext_resource type="Script" path="res://assets/classes/states/idle_state.gd" id="8_vhbsq"]
-[ext_resource type="Script" path="res://assets/classes/states/player_turn_state.gd" id="9_h26s8"]
-[ext_resource type="Script" path="res://assets/classes/states/victory_state.gd" id="10_o3f0e"]
-[ext_resource type="Script" path="res://assets/classes/states/simultaneous_action_state.gd" id="11_6amg3"]
+[ext_resource type="Script" path="res://assets/classes/states/enemy_turn_state.gd" id="5_36sgr"]
+[ext_resource type="Script" path="res://assets/classes/states/check_end_conditions_state.gd" id="6_bkuyh"]
+[ext_resource type="Script" path="res://assets/classes/states/defeat_state.gd" id="7_waokg"]
+[ext_resource type="Script" path="res://assets/classes/states/idle_state.gd" id="8_s6unc"]
+[ext_resource type="Script" path="res://assets/classes/states/player_turn_state.gd" id="9_vuhux"]
+[ext_resource type="Script" path="res://assets/classes/states/victory_state.gd" id="10_wybnr"]
+[ext_resource type="Script" path="res://assets/classes/states/simultaneous_action_state.gd" id="11_7y4ll"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_7743i")
@@ -29,25 +29,25 @@ script = ExtResource("4_xj66j")
 initial_state = NodePath("PlayerTurnState")
 
 [node name="EnemyTurnState" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
-script = ExtResource("5_jq1lr")
+script = ExtResource("5_36sgr")
 actor = NodePath("../../Enemy")
 
 [node name="CheckEndConditionsState" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
-script = ExtResource("6_o5cwr")
+script = ExtResource("6_bkuyh")
 player = NodePath("../../Player")
 
 [node name="DefeatState" type="Node" parent="StateMachine"]
-script = ExtResource("7_df6sc")
+script = ExtResource("7_waokg")
 
 [node name="IdleState" type="Node" parent="StateMachine"]
-script = ExtResource("8_vhbsq")
+script = ExtResource("8_s6unc")
 
 [node name="PlayerTurnState" type="Node" parent="StateMachine" node_paths=PackedStringArray("actor")]
-script = ExtResource("9_h26s8")
+script = ExtResource("9_vuhux")
 actor = NodePath("../../Player")
 
 [node name="VictoryState" type="Node" parent="StateMachine"]
-script = ExtResource("10_o3f0e")
+script = ExtResource("10_wybnr")
 
 [node name="SimultaneousActionState" type="Node" parent="StateMachine"]
-script = ExtResource("11_6amg3")
+script = ExtResource("11_7y4ll")
