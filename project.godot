@@ -17,11 +17,11 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-EquipmentManager="*res://core/equipment_manager.gd"
-CharacterState="*res://core/character_state.gd"
-GameState="*res://core/game_state.gd"
+EquipmentManager="*res://global/equipment_manager.gd"
+CharacterState="*res://global/character_state.gd"
+GameState="*res://global/game_state.gd"
 UserSettings="*res://settings/UserSettings.gd"
-SaveItemTool="*res://tools/save_item_tool.gd"
+SaveItemTool="*res://global/tools/save_item_tool.gd"
 
 [debug]
 
@@ -33,7 +33,7 @@ window/stretch/mode="canvas_items"
 
 [editor]
 
-movie_writer/movie_file="D:/Documents/Active_Projects/Godot/RPG_Auto/video/test.avi"
+movie_writer/movie_file="D:/Documents/Active_Projects/Godot/RPG_Auto/assets/test.avi"
 version_control/autoload_on_startup=true
 
 [editor_plugins]
@@ -45,14 +45,14 @@ enabled=PackedStringArray("res://addons/AS2P/plugin.cfg", "res://addons/finite_s
 folder_colors={
 "res://_assets/": "gray",
 "res://addons/": "gray",
-"res://core/": "orange",
-"res://resources/": "purple",
+"res://assets/": "purple",
+"res://assets/theme/": "gray",
+"res://global/": "orange",
+"res://global/tools/": "red",
 "res://scenes/": "green",
 "res://scenes/player/": "yellow",
 "res://scenes/ui/": "teal",
-"res://scenes/ui/components/": "purple",
-"res://theme/": "gray",
-"res://tools/": "red"
+"res://scenes/ui/components/": "purple"
 }
 
 [gui]

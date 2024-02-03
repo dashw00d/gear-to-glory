@@ -3,27 +3,27 @@
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_t0jjd"]
 [ext_resource type="Texture2D" uid="uid://cxhcgcxyix5fw" path="res://scenes/player/assets/main/UArmL.png" id="2_lvh0s"]
 [ext_resource type="Texture2D" uid="uid://cw7ft1smbbxen" path="res://scenes/player/assets/main/LArmL.png" id="3_jspbi"]
+[ext_resource type="Texture2D" uid="uid://ytpek0grspvy" path="res://assets/sprites/gear/bone_armor_1/LGreave.png" id="4_imcxt"]
 [ext_resource type="Texture2D" uid="uid://b6mf2htk70cjx" path="res://scenes/player/assets/main/ULegL.png" id="4_m1yk0"]
-[ext_resource type="Texture2D" uid="uid://ytpek0grspvy" path="res://resources/sprites/gear/bone_armor_1/LGreave.png" id="4_mydpv"]
 [ext_resource type="Texture2D" uid="uid://cc1bofv6rhht7" path="res://scenes/player/assets/main/HandL.png" id="5_170ng"]
 [ext_resource type="Texture2D" uid="uid://2ms54ut5l8cl" path="res://scenes/player/assets/main/LLegL.png" id="5_xynj5"]
 [ext_resource type="Texture2D" uid="uid://c1k85r4ro5y5e" path="res://scenes/player/assets/main/Body.png" id="6_7xjjb"]
 [ext_resource type="Texture2D" uid="uid://b76kdcy2t0yk" path="res://scenes/player/assets/main/Head.png" id="7_2jrlk"]
-[ext_resource type="Texture2D" uid="uid://1axrk7xy855d" path="res://resources/sprites/gear/bone_armor_1/LBoot.png" id="8_2hpdn"]
-[ext_resource type="Texture2D" uid="uid://d2gadcjmdg6eo" path="res://resources/sprites/gear/bone_armor_1/Armor.png" id="8_7y0vn"]
+[ext_resource type="Texture2D" uid="uid://1axrk7xy855d" path="res://assets/sprites/gear/bone_armor_1/LBoot.png" id="8_pac06"]
 [ext_resource type="Texture2D" uid="uid://dleadtwsrmwiy" path="res://scenes/player/assets/main/ULegR.png" id="9_kayvq"]
-[ext_resource type="Texture2D" uid="uid://c4ryajdym0hj5" path="res://resources/sprites/gear/bone_armor_1/RShoulder.png" id="9_xlnyn"]
 [ext_resource type="Texture2D" uid="uid://bdto6jiaugnc7" path="res://scenes/player/assets/main/LLegR.png" id="10_4lhkh"]
-[ext_resource type="Texture2D" uid="uid://iypovslrk53r" path="res://resources/sprites/gear/bone_armor_1/Helmet.png" id="10_5afd7"]
+[ext_resource type="Texture2D" uid="uid://d2gadcjmdg6eo" path="res://assets/sprites/gear/bone_armor_1/Armor.png" id="11_3eu3g"]
 [ext_resource type="Texture2D" uid="uid://c2xlisndl3uqf" path="res://scenes/player/assets/main/UArmR.png" id="11_31840"]
-[ext_resource type="Texture2D" uid="uid://bdajgjma3ows1" path="res://resources/sprites/gear/bone_armor_1/LShoulder.png" id="12_67p8p"]
-[ext_resource type="Texture2D" uid="uid://5oerlj3xal2m" path="res://resources/sprites/Item__01.png" id="12_71his"]
+[ext_resource type="Texture2D" uid="uid://bdajgjma3ows1" path="res://assets/sprites/gear/bone_armor_1/LShoulder.png" id="12_5a82x"]
 [ext_resource type="Texture2D" uid="uid://6d4ppuubam3i" path="res://scenes/player/assets/main/LArmR.png" id="12_y66n5"]
-[ext_resource type="Texture2D" uid="uid://bmq4jv8cyfh3x" path="res://resources/sprites/Item__44.png" id="13_yh5bo"]
-[ext_resource type="Texture2D" uid="uid://x3h13mjklmbs" path="res://resources/sprites/Item__57.png" id="14_0trnl"]
-[ext_resource type="Texture2D" uid="uid://dsbeu7abeq34b" path="res://resources/sprites/gear/bone_armor_1/RBoot.png" id="16_xt22v"]
-[ext_resource type="Texture2D" uid="uid://c3uuccokcxjpj" path="res://resources/sprites/gear/bone_armor_1/RGreave.png" id="20_omphe"]
-[ext_resource type="Theme" uid="uid://d24xi7m4k637h" path="res://theme/default_theme.tres" id="24_pcyon"]
+[ext_resource type="Texture2D" uid="uid://iypovslrk53r" path="res://assets/sprites/gear/bone_armor_1/Helmet.png" id="14_51xrk"]
+[ext_resource type="Texture2D" uid="uid://dsbeu7abeq34b" path="res://assets/sprites/gear/bone_armor_1/RBoot.png" id="16_354jg"]
+[ext_resource type="Texture2D" uid="uid://5oerlj3xal2m" path="res://assets/sprites/Item__01.png" id="19_fesjd"]
+[ext_resource type="Texture2D" uid="uid://c3uuccokcxjpj" path="res://assets/sprites/gear/bone_armor_1/RGreave.png" id="20_vy87w"]
+[ext_resource type="Texture2D" uid="uid://c4ryajdym0hj5" path="res://assets/sprites/gear/bone_armor_1/RShoulder.png" id="21_ccb1n"]
+[ext_resource type="Texture2D" uid="uid://bmq4jv8cyfh3x" path="res://assets/sprites/Item__44.png" id="22_c50aa"]
+[ext_resource type="Texture2D" uid="uid://x3h13mjklmbs" path="res://assets/sprites/Item__57.png" id="23_rdw5f"]
+[ext_resource type="Theme" uid="uid://d24xi7m4k637h" path="res://assets/theme/default_theme.tres" id="24_vp5gx"]
 
 [sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_225aa"]
 target_nodepath = NodePath("Targets/LeftArmTarget")
@@ -2309,7 +2309,7 @@ texture = ExtResource("3_jspbi")
 [node name="GreaveL" type="Sprite2D" parent="Skeleton2D/LarmL"]
 visible = false
 position = Vector2(-10.9865, -12.2117)
-texture = ExtResource("4_mydpv")
+texture = ExtResource("4_imcxt")
 
 [node name="HandL" type="Sprite2D" parent="Skeleton2D/LarmL"]
 position = Vector2(40.2484, 24.6214)
@@ -2329,7 +2329,7 @@ texture = ExtResource("5_xynj5")
 
 [node name="BootL" type="Sprite2D" parent="Skeleton2D/LlegL"]
 visible = false
-texture = ExtResource("8_2hpdn")
+texture = ExtResource("8_pac06")
 
 [node name="UlegR" type="Sprite2D" parent="Skeleton2D"]
 position = Vector2(-58.3762, 82.6968)
@@ -2352,7 +2352,7 @@ texture = ExtResource("6_7xjjb")
 [node name="Armor" type="Sprite2D" parent="Skeleton2D/torso/Torso"]
 visible = false
 position = Vector2(-56, 24)
-texture = ExtResource("8_7y0vn")
+texture = ExtResource("11_3eu3g")
 
 [node name="T_ShoulderR" type="RemoteTransform2D" parent="Skeleton2D/torso/Torso"]
 position = Vector2(-163.065, -135.68)
@@ -2361,7 +2361,7 @@ remote_path = NodePath("../../../RShoulder")
 [node name="ShoulderL" type="Sprite2D" parent="Skeleton2D/torso/Torso"]
 visible = false
 position = Vector2(164, -72)
-texture = ExtResource("12_67p8p")
+texture = ExtResource("12_5a82x")
 
 [node name="Head" type="Bone2D" parent="Skeleton2D/torso"]
 position = Vector2(32, -71)
@@ -2385,7 +2385,7 @@ texture = ExtResource("7_2jrlk")
 visible = false
 position = Vector2(7.18354, -22.9746)
 rotation = -0.106465
-texture = ExtResource("10_5afd7")
+texture = ExtResource("14_51xrk")
 
 [node name="LeftArm" type="Bone2D" parent="Skeleton2D/torso"]
 position = Vector2(74, -35)
@@ -2454,7 +2454,7 @@ texture = ExtResource("10_4lhkh")
 [node name="BootR" type="Sprite2D" parent="Skeleton2D/torso/Legs/Bone2D/Bone2D/LlegR"]
 visible = false
 position = Vector2(23.3044, 2.85491)
-texture = ExtResource("16_xt22v")
+texture = ExtResource("16_354jg")
 
 [node name="ULegL" type="Bone2D" parent="Skeleton2D/torso/Legs"]
 position = Vector2(22, -12)
@@ -2518,19 +2518,19 @@ show_behind_parent = true
 position = Vector2(161.693, -11.226)
 rotation = 1.67894
 scale = Vector2(16.1535, 16.1535)
-texture = ExtResource("12_71his")
+texture = ExtResource("19_fesjd")
 
 [node name="GreaveR" type="Sprite2D" parent="Skeleton2D/torso/RightArm/Bone2D/LarmR"]
 visible = false
 position = Vector2(-25.1633, -3.79206)
 rotation = -1.213
-texture = ExtResource("20_omphe")
+texture = ExtResource("20_vy87w")
 
 [node name="RShoulder" type="Sprite2D" parent="Skeleton2D"]
 visible = false
 position = Vector2(-193.243, -50.4254)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("9_xlnyn")
+texture = ExtResource("21_ccb1n")
 
 [node name="Targets" type="Node2D" parent="Skeleton2D"]
 
@@ -2563,7 +2563,7 @@ visible = false
 position = Vector2(474, 144)
 rotation = 0.252964
 scale = Vector2(5.99952, 5.99952)
-texture = ExtResource("13_yh5bo")
+texture = ExtResource("22_c50aa")
 
 [node name="chest" type="Sprite2D" parent="equipment"]
 visible = false
@@ -2571,38 +2571,38 @@ visibility_layer = 4
 texture_filter = 1
 position = Vector2(451, 249)
 scale = Vector2(13.75, 13.75)
-texture = ExtResource("14_0trnl")
+texture = ExtResource("23_rdw5f")
 
 [node name="legs" type="Sprite2D" parent="equipment"]
 visible = false
 position = Vector2(475, 144)
 scale = Vector2(6, 6)
-texture = ExtResource("13_yh5bo")
+texture = ExtResource("22_c50aa")
 
 [node name="feet" type="Sprite2D" parent="equipment"]
 visible = false
 position = Vector2(475, 144)
 scale = Vector2(6, 6)
-texture = ExtResource("13_yh5bo")
+texture = ExtResource("22_c50aa")
 
 [node name="weapon" type="Sprite2D" parent="equipment"]
 visible = false
 position = Vector2(475, 144)
 scale = Vector2(6, 6)
-texture = ExtResource("13_yh5bo")
+texture = ExtResource("22_c50aa")
 
 [node name="accessory" type="Sprite2D" parent="equipment"]
 visible = false
 position = Vector2(475, 144)
 scale = Vector2(6, 6)
-texture = ExtResource("13_yh5bo")
+texture = ExtResource("22_c50aa")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -443.0
 offset_top = -241.0
 offset_right = -187.0
 offset_bottom = -214.0
-theme = ExtResource("24_pcyon")
+theme = ExtResource("24_vp5gx")
 theme_override_styles/fill = SubResource("StyleBoxFlat_bh87v")
 max_value = 40.0
 step = 1.0

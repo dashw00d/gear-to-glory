@@ -1,17 +1,17 @@
 [gd_scene load_steps=13 format=3 uid="uid://d4cyoim416nt3"]
 
-[ext_resource type="Theme" uid="uid://d24xi7m4k637h" path="res://theme/default_theme.tres" id="1_6agiu"]
+[ext_resource type="Theme" uid="uid://d24xi7m4k637h" path="res://assets/theme/default_theme.tres" id="1_4nmfq"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="2_kk1n7"]
-[ext_resource type="Texture2D" uid="uid://bins5mvi4nspv" path="res://resources/sprites/landscape.jpg" id="3_0y0ht"]
-[ext_resource type="PackedScene" uid="uid://by3j8l8vci052" path="res://scenes/ui/components/char_stats.tscn" id="3_3krfl"]
-[ext_resource type="PackedScene" uid="uid://dgyp53n3k4kvp" path="res://scenes/ui/components/inventory.tscn" id="3_o21jy"]
-[ext_resource type="FontFile" uid="uid://3laylbry7cvb" path="res://theme/Fonts/Inter-VariableFont_slnt,wght.ttf" id="5_i4neu"]
+[ext_resource type="PackedScene" uid="uid://by3j8l8vci052" path="res://scenes/ui/char_stats.tscn" id="3_3krfl"]
+[ext_resource type="Texture2D" uid="uid://bins5mvi4nspv" path="res://assets/sprites/landscape.jpg" id="3_h5j54"]
+[ext_resource type="Shader" path="res://assets/shaders/god_ray.gdshader" id="4_p7l8d"]
+[ext_resource type="PackedScene" uid="uid://dgyp53n3k4kvp" path="res://scenes/inventory/inventory.tscn" id="5_032ry"]
 [ext_resource type="PackedScene" uid="uid://cchf1y12qq15v" path="res://scenes/player/player.tscn" id="6_h4ajn"]
-[ext_resource type="Shader" path="res://resources/shaders/god_ray.gdshader" id="8_gu201"]
-[ext_resource type="Shader" path="res://resources/shaders/glitch_grain.gdshader" id="8_oua15"]
+[ext_resource type="FontFile" uid="uid://3laylbry7cvb" path="res://assets/theme/Fonts/Inter-VariableFont_slnt,wght.ttf" id="7_yhhdi"]
+[ext_resource type="Shader" path="res://assets/shaders/glitch_grain.gdshader" id="9_6nnrl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gv08g"]
-shader = ExtResource("8_gu201")
+shader = ExtResource("4_p7l8d")
 shader_parameter/angle = -0.3
 shader_parameter/position = -0.2
 shader_parameter/spread = 0.665
@@ -27,10 +27,10 @@ shader_parameter/hdr = false
 shader_parameter/seed = 5.0
 
 [sub_resource type="Theme" id="Theme_488ol"]
-default_font = ExtResource("5_i4neu")
+default_font = ExtResource("7_yhhdi")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x8t8l"]
-shader = ExtResource("8_oua15")
+shader = ExtResource("9_6nnrl")
 shader_parameter/iResolution = null
 
 [node name="Root" type="Control"]
@@ -40,7 +40,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_6agiu")
+theme = ExtResource("1_4nmfq")
 script = ExtResource("2_kk1n7")
 
 [node name="BigTestButton" type="Button" parent="."]
@@ -66,7 +66,7 @@ offset_top = -139.0
 offset_right = 1144.0
 offset_bottom = 608.0
 grow_vertical = 0
-texture = ExtResource("3_0y0ht")
+texture = ExtResource("3_h5j54")
 
 [node name="GodRay" type="ColorRect" parent="MainScene"]
 material = SubResource("ShaderMaterial_gv08g")
@@ -74,7 +74,7 @@ layout_mode = 0
 offset_right = 1144.0
 offset_bottom = 360.0
 
-[node name="Inventory" parent="MainScene" instance=ExtResource("3_o21jy")]
+[node name="Inventory" parent="MainScene" instance=ExtResource("5_032ry")]
 offset_left = 528.0
 offset_top = 368.0
 offset_right = 568.0

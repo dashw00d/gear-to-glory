@@ -1,0 +1,62 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://d24xi7m4k637h"]
+
+[ext_resource type="FontFile" uid="uid://3laylbry7cvb" path="res://assets/theme/Fonts/Inter-VariableFont_slnt,wght.ttf" id="1_an5ff"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_47iny"]
+color = Color(0.158472, 0.158472, 0.158472, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_0bqg1"]
+base_font = ExtResource("1_an5ff")
+variation_embolden = 0.6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eivrk"]
+bg_color = Color(0.156863, 0.156863, 0.156863, 0.87451)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aa8p3"]
+
+[resource]
+default_font = ExtResource("1_an5ff")
+HSeparator/constants/separation = 12
+HSeparator/styles/separator = SubResource("StyleBoxLine_47iny")
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 2
+Label/fonts/font = SubResource("FontVariation_0bqg1")
+OptionButton/colors/font_color = Color(1, 1, 1, 1)
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_eivrk")
+PopupDialog/styles/panel = null
+PopupMenu/colors/font_accelerator_color = Color(1, 1, 1, 1)
+PopupMenu/colors/font_color = Color(1, 1, 1, 1)
+PopupMenu/colors/font_disabled_color = Color(1, 1, 1, 1)
+PopupMenu/colors/font_hover_color = Color(1, 1, 1, 1)
+PopupMenu/colors/font_outline_color = Color(1, 1, 1, 1)
+PopupMenu/colors/font_separator_color = Color(1, 1, 1, 1)
+PopupMenu/colors/font_separator_outline_color = Color(1, 1, 1, 1)
+PopupMenu/constants/h_separation = 0
+PopupMenu/constants/icon_max_width = 0
+PopupMenu/constants/indent = 0
+PopupMenu/constants/item_end_padding = 0
+PopupMenu/constants/item_start_padding = 0
+PopupMenu/constants/outline_size = 0
+PopupMenu/constants/separator_outline_size = 0
+PopupMenu/constants/v_separation = 0
+PopupMenu/font_sizes/font_separator_size = 16
+PopupMenu/font_sizes/font_size = 16
+PopupMenu/fonts/font = ExtResource("1_an5ff")
+PopupMenu/fonts/font_separator = ExtResource("1_an5ff")
+PopupMenu/icons/checked = null
+PopupMenu/icons/checked_disabled = null
+PopupMenu/icons/radio_checked = null
+PopupMenu/icons/radio_checked_disabled = null
+PopupMenu/icons/radio_unchecked = null
+PopupMenu/icons/radio_unchecked_disabled = null
+PopupMenu/icons/submenu = null
+PopupMenu/icons/submenu_mirrored = null
+PopupMenu/icons/unchecked = null
+PopupMenu/icons/unchecked_disabled = null
+PopupMenu/styles/hover = null
+PopupMenu/styles/labeled_separator_left = null
+PopupMenu/styles/labeled_separator_right = null
+PopupMenu/styles/panel = null
+PopupMenu/styles/panel_disabled = null
+PopupMenu/styles/separator = null
+PopupPanel/styles/panel = SubResource("StyleBoxEmpty_aa8p3")
