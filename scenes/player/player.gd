@@ -118,14 +118,14 @@ func _on_equipment_updated():
 							resource_node.texture = equipment.texture
 							resource_node.visible = true
 				
-				print(CharacterState.state['equipment'][key]['base_stats'])
+				print_debug(CharacterState.state['equipment'][key]['base_stats'])
 				# Add gear stats to player state
 				# CharacterState.add_gear(key, CharacterState.state['equipment'][key]['base_stats'])
 		else:
 			for path in equipment_paths:
 				var resource_node = get_node(path)
 				resource_node.visible = false
-				print('hi')
+				print_debug('hi')
 
 			# Remove gear stats from player state if item is unequipped
 			if key in CharacterState.state['gear_modifiers']:

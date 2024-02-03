@@ -1,24 +1,28 @@
 @tool
 extends EditorPlugin
 
-var docked_scene
+var item_editor
+var set_editor
 
 func _enter_tree():
-	docked_scene = preload("res://tools/item_editor.tscn").instantiate()
-	add_control_to_dock(DOCK_SLOT_LEFT_UR, docked_scene)
-	docked_scene.connect("save_item", Callable(self, "_on_save_item"), CONNECT_PERSIST)
+	item_editor = preload("res://tools/item_editor.tscn").instantiate()
+	add_control_to_dock(DOCK_SLOT_LEFT_BR, item_editor)
+	item_editor.connect("save_item", Callable(self, "_on_save_item"), CONNECT_PERSIST)
 
+	set_editor = preload("res://tools/set_editor.tscn").instantiate()
+	add_control_to_dock(DOCK_SLOT_LEFT_BR, set_editor)
+	set_editor.connect("save_item", Callable(self, "_on_save_item"), CONNECT_PERSIST)
+	
 func _exit_tree():
-	remove_control_from_docks(docked_scene)
-	docked_scene.free()
+	remove_control_from_docks(item_editor)
+	item_editor.free()
+	
+	remove_control_from_docks(set_editor)
+	set_editor.free()
 
 func _on_save_item(item_data: Dictionary, path: String):
 	if !path:
 		path = "res://resources/data/item_database_test.json"
-	
-	# Assuming 'item_data' contains an ID or unique name at the top level, like "test6" in your example.
-	# Extracting the ID or name from 'item_data'
-	var item_id = item_data.keys()[0]  # This assumes the first key in 'item_data' is the unique ID/name of the item.
 	
 	# Initialize a variable to hold the existing data
 	var data: Dictionary = {}
@@ -41,7 +45,8 @@ func _on_save_item(item_data: Dictionary, path: String):
 			print("JSON Parse Error: ", json.get_error_message(), " in ", content, " at line ", json.get_error_line())
 	
 	# Update the dictionary with the new item data
-	data[item_id] = item_data[item_id]  # Update or add the new item
+	for key in item_data.keys():
+		data[key] = item_data[key]  # Update or add the new item
 
 	# Open the file again, this time for writing
 	file = FileAccess.open(path, FileAccess.ModeFlags.WRITE)

@@ -8,7 +8,7 @@ var is_processing_action = false
 func Enter() -> void:
 	# Populate action_queue with actions from player and enemies
 	# Example: action_queue = [player_action, enemy1_action, enemy2_action, ...]
-	print('hi')
+	print_debug('hi')
 
 func Exit() -> void:
 	action_queue.clear()

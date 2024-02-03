@@ -4,11 +4,11 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if item_data.size() < 1:
-		item_data = get_item_data(example_data, "res://resources/data/item_database.json")
+		item_data = get_item_data(example_data, "res://resources/data/item_database_test.json")
 
 enum Type {HEAD, CHEST, HANDS, FEET, WEAPON, SHIELD, ACCESSORY, MAIN}
 
-var data_file_path = "res://resources/data/item_database.json"
+var data_file_path = "res://resources/data/item_database_test.json"
 
 @onready var example_data = {
 	"sword_of_truth": {
@@ -47,10 +47,9 @@ func get_item_data(data: Dictionary, path: String) -> Dictionary:
 	var error = json.parse(file.get_as_text())
 	file.close()
 	if error == OK:
-		print(json.get_data())
 		return json.get_data()
 	else:
-		print("Failed to parse JSON data from file.")
+		print_debug("Failed to parse JSON data from file.")
 		# make_item_data(data, path)
 	return data
 

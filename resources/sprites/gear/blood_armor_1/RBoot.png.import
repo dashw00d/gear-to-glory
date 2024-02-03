@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dknctmx58calu"
-path="res://.godot/imported/Greave_i.png-7060daee3d8aff360dd06856ec0b4d86.ctex"
+uid="uid://dkjdvxk4am6ai"
+path="res://.godot/imported/RBoot.png-85ab6c645b3adbcb711d0909dfe24724.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/sprites/gear/bone_armor_1/Greave_i.png"
-dest_files=["res://.godot/imported/Greave_i.png-7060daee3d8aff360dd06856ec0b4d86.ctex"]
+source_file="res://resources/sprites/gear/blood_armor_1/RBoot.png"
+dest_files=["res://.godot/imported/RBoot.png-85ab6c645b3adbcb711d0909dfe24724.ctex"]
 
 [params]
 

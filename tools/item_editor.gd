@@ -37,26 +37,19 @@ func get_all_values() -> Dictionary:
 			
 func get_all_stats() -> Array:
 	var possible_stats = []
-	var node = get_node("StatsContainer/StatsGrid")
-	var children = node.get_children()
-	var temp_stat = {}
-
-	for i in range(0, len(children), 2):  # Assuming pairs of OptionButton and HSlider
-		var stat_name_node = children[i]
-		var weight_node = children[i + 1]
-
-		if stat_name_node is OptionButton and weight_node is HSlider:
-			temp_stat = {}  # Initialize a new dictionary for this pair
-			temp_stat['name'] = stat_name_node.get_item_text(stat_name_node.selected)  # Assuming you meant the selected item's text
-			temp_stat['weight'] = weight_node.value
-			possible_stats.append(temp_stat)
-		# else: You might want to handle the case where the pattern does not match.
+	for child in get_node("StatsContainer").get_children():
+		var temp_stat = {}
+		temp_stat['name'] = child.get_child(0).get_item_text(child.selected)
+		temp_stat['weight'] = child.get_child(1).value
+		possible_stats.append(temp_stat)
 
 	return possible_stats
 	
 func _on_add_stats_button_up():
 	var container = get_node("StatsContainer")
 	var new_node = get_node("StatsContainer/StatsGrid").duplicate()
+	for child in container.get_children():
+		print(child.get_child(0).get_item_text(child.selected))
 	new_node.get_child(0).selected = -1
 	new_node.get_child(1).value = 0
 	new_node.get_child(2).text = "1"

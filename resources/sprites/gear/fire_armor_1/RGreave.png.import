@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsplxjw4ijf8q"
-path="res://.godot/imported/Boot_i.png-d4ef85bc9298d8682d63124edaf5f6ab.ctex"
+uid="uid://ca568xkk5sjee"
+path="res://.godot/imported/RGreave.png-01552b6eadfcda6680962dc014269d75.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/sprites/gear/bone_armor_1/Boot_i.png"
-dest_files=["res://.godot/imported/Boot_i.png-d4ef85bc9298d8682d63124edaf5f6ab.ctex"]
+source_file="res://resources/sprites/gear/fire_armor_1/RGreave.png"
+dest_files=["res://.godot/imported/RGreave.png-01552b6eadfcda6680962dc014269d75.ctex"]
 
 [params]
 

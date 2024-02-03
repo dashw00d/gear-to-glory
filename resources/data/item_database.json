@@ -1,72 +1,5 @@
 {
-	"Bone Armor": {
-		"cosmetic_paths": [
-			"res://resources/sprites/gear/bone_armor_1/Armor.png"
-		],
-		"possible_stats": [
-			{
-				"name": "attack_speed",
-				"weight": 2
-			},
-			{
-				"name": "crit_percent",
-				"weight": 3
-			}
-		],
-		"texture_path": "res://resources/sprites/gear/bone_armor_1/Armor_i.png",
-		"type": 1
-	},
-	"Bone Helmet": {
-		"cosmetic_paths": [
-			"res://resources/sprites/gear/bone_armor_1/Helmet.png"
-		],
-		"possible_stats": [
-			{
-				"name": "attack_speed",
-				"weight": 2
-			},
-			{
-				"name": "health_percent",
-				"weight": 3
-			}
-		],
-		"texture_path": "res://resources/sprites/gear/bone_armor_1/Helmet_i.png",
-		"type": 0
-	},
-	"amulet_of_luck2": {
-		"cosmetic_paths": [],
-		"possible_stats": [
-			{
-				"name": "crit_percent",
-				"weight": 2
-			},
-			{
-				"name": "health_percent",
-				"weight": 1
-			}
-		],
-		"texture_path": "res://resources/sprites/Item__32.png",
-		"type": 5
-	},
-	"boots_of_haste": {
-		"cosmetic_paths": [
-			"res://resources/sprites/gear/bone_armor_1/RBoot.png",
-			"res://resources/sprites/gear/bone_armor_1/LBoot.png"
-		],
-		"possible_stats": [
-			{
-				"name": "attack_speed",
-				"weight": 3
-			},
-			{
-				"name": "health_percent",
-				"weight": 1
-			}
-		],
-		"texture_path": "res://resources/sprites/gear/bone_armor_1/Boot_i.png",
-		"type": 3
-	},
-	"chest_of_fortitude": {
+	"Bone_Armor": {
 		"cosmetic_paths": [
 			"res://resources/sprites/gear/bone_armor_1/Armor.png",
 			"res://resources/sprites/gear/bone_armor_1/LShoulder.png",
@@ -74,136 +7,292 @@
 		],
 		"possible_stats": [
 			{
-				"name": "defense",
-				"weight": 3
+				"name": "attack_speed",
+				"weight": 1
 			},
 			{
-				"name": "health",
-				"weight": 1
+				"name": "attack",
+				"weight": 4
+			},
+			{
+				"name": "attack_percent",
+				"weight": 2
 			}
 		],
 		"texture_path": "res://resources/sprites/gear/bone_armor_1/Armor_i.png",
 		"type": 1
 	},
-	"greaves_of_swiftness": {
+	"Bone_Boots": {
 		"cosmetic_paths": [
-			"res://resources/sprites/gear/bone_armor_1/LGreave.png",
+			"res://resources/sprites/gear/bone_armor_1/RBoot.png",
+			"res://resources/sprites/gear/bone_armor_1/LBoot.png"
+		],
+		"possible_stats": [
+			{
+				"name": "attack_speed",
+				"weight": 1
+			},
+			{
+				"name": "attack",
+				"weight": 4
+			},
+			{
+				"name": "attack_percent",
+				"weight": 2
+			}
+		],
+		"texture_path": "res://resources/sprites/gear/bone_armor_1/Boots_i.png",
+		"type": 3
+	},
+	"Bone_Gloves": {
+		"cosmetic_paths": [
+			"res://resources/sprites/gear/bone_armor_1/LGeave.png",
 			"res://resources/sprites/gear/bone_armor_1/RGreave.png"
 		],
 		"possible_stats": [
 			{
 				"name": "attack_speed",
-				"weight": 2
+				"weight": 1
 			},
 			{
-				"name": "defense",
-				"weight": 1
+				"name": "attack",
+				"weight": 4
+			},
+			{
+				"name": "attack_percent",
+				"weight": 2
 			}
 		],
-		"texture_path": "res://resources/sprites/gear/bone_armor_1/Greave_i.png",
+		"texture_path": "res://resources/sprites/gear/bone_armor_1/Gloves_i.png",
 		"type": 2
 	},
-	"helmet_of_valor": {
+	"Bone_Helmet": {
 		"cosmetic_paths": [
 			"res://resources/sprites/gear/bone_armor_1/Helmet.png"
 		],
 		"possible_stats": [
 			{
-				"name": "defense",
-				"weight": 2
+				"name": "attack_speed",
+				"weight": 1
 			},
 			{
-				"name": "health",
-				"weight": 1
+				"name": "attack",
+				"weight": 4
+			},
+			{
+				"name": "attack_percent",
+				"weight": 2
 			}
 		],
 		"texture_path": "res://resources/sprites/gear/bone_armor_1/Helmet_i.png",
 		"type": 0
 	},
-	"rwar": {
+	"Fire_Armor": {
 		"cosmetic_paths": [
-			"res://resources/sprites/gear/bone_armor_1/Armor.png"
-		],
-		"possible_stats": [
-			{
-				"name": "attack_speed",
-				"weight": 2
-			}
-		],
-		"texture_path": "res://resources/sprites/gear/bone_armor_1/Greave_i.png",
-		"type": 2
-	},
-	"staff_of_wisdom": {
-		"cosmetic_paths": [],
-		"possible_stats": [
-			{
-				"name": "attack",
-				"weight": 1
-			},
-			{
-				"name": "health",
-				"weight": 2
-			}
-		],
-		"texture_path": "res://resources/sprites/Item__01.png",
-		"type": 4
-	},
-	"sword_of_truth": {
-		"cosmetic_paths": [],
-		"possible_stats": [
-			{
-				"name": "attack",
-				"weight": 2
-			},
-			{
-				"name": "defense",
-				"weight": 1
-			}
-		],
-		"texture_path": "res://resources/sprites/Item__01.png",
-		"type": 4
-	},
-	"test10": {
-		"cosmetic_paths": [
-			"res://resources/sprites/gear/bone_armor_1/Helmet.png"
+			"res://resources/sprites/gear/fire_armor_1/Armor.png",
+			"res://resources/sprites/gear/fire_armor_1/LShoulder.png",
+			"res://resources/sprites/gear/fire_armor_1/RShoulder.png"
 		],
 		"possible_stats": [
 			{
 				"name": "crit_percent",
-				"weight": 2
-			}
-		],
-		"texture_path": "res://resources/sprites/gear/bone_armor_1/Helmet_i.png",
-		"type": 0
-	},
-	"test9": {
-		"cosmetic_paths": [
-			"res://resources/sprites/gear/bone_armor_1/Armor.png"
-		],
-		"possible_stats": [
+				"weight": 4
+			},
 			{
-				"name": "attack_speed",
+				"name": "attack",
 				"weight": 2
 			},
 			{
-				"name": "health_percent",
-				"weight": 3
+				"name": "health",
+				"weight": 1
+			},
+			{
+				"name": "crit_percent",
+				"weight": 1
 			}
 		],
-		"texture_path": "res://resources/sprites/gear/bone_armor_1/Armor_i.png",
+		"texture_path": "res://resources/sprites/gear/fire_armor_1/Armor_i.png",
 		"type": 1
 	},
-	"testy": {
+	"Fire_Boots": {
 		"cosmetic_paths": [
-			"res://resources/sprites/gear/bone_armor_1/Helmet.png"
+			"res://resources/sprites/gear/fire_armor_1/RBoot.png",
+			"res://resources/sprites/gear/fire_armor_1/LBoot.png"
 		],
 		"possible_stats": [
 			{
-				"name": "health_percent",
+				"name": "crit_percent",
+				"weight": 4
+			},
+			{
+				"name": "attack",
 				"weight": 2
+			},
+			{
+				"name": "health",
+				"weight": 1
+			},
+			{
+				"name": "crit_percent",
+				"weight": 1
 			}
 		],
-		"texture_path": "res://resources/sprites/gear/bone_armor_1/Boot_i.png",
+		"texture_path": "res://resources/sprites/gear/fire_armor_1/Boots_i.png",
 		"type": 3
+	},
+	"Fire_Gloves": {
+		"cosmetic_paths": [
+			"res://resources/sprites/gear/fire_armor_1/LGeave.png",
+			"res://resources/sprites/gear/fire_armor_1/RGreave.png"
+		],
+		"possible_stats": [
+			{
+				"name": "crit_percent",
+				"weight": 4
+			},
+			{
+				"name": "attack",
+				"weight": 2
+			},
+			{
+				"name": "health",
+				"weight": 1
+			},
+			{
+				"name": "crit_percent",
+				"weight": 1
+			}
+		],
+		"texture_path": "res://resources/sprites/gear/fire_armor_1/Gloves_i.png",
+		"type": 2
+	},
+	"Fire_Helmet": {
+		"cosmetic_paths": [
+			"res://resources/sprites/gear/fire_armor_1/Helmet.png"
+		],
+		"possible_stats": [
+			{
+				"name": "crit_percent",
+				"weight": 4
+			},
+			{
+				"name": "attack",
+				"weight": 2
+			},
+			{
+				"name": "health",
+				"weight": 1
+			},
+			{
+				"name": "crit_percent",
+				"weight": 1
+			}
+		],
+		"texture_path": "res://resources/sprites/gear/fire_armor_1/Helmet_i.png",
+		"type": 0
+	},
+	"Shiny_Armor": {
+		"cosmetic_paths": [
+			"res://resources/sprites/gear/shiny_armor_1/Armor.png",
+			"res://resources/sprites/gear/shiny_armor_1/LShoulder.png",
+			"res://resources/sprites/gear/shiny_armor_1/RShoulder.png"
+		],
+		"possible_stats": [
+			{
+				"name": "defense",
+				"weight": 4
+			},
+			{
+				"name": "defense_percent",
+				"weight": 2
+			},
+			{
+				"name": "health",
+				"weight": 1
+			},
+			{
+				"name": "health_percent",
+				"weight": 1
+			}
+		],
+		"texture_path": "res://resources/sprites/gear/shiny_armor_1/Armor_i.png",
+		"type": 1
+	},
+	"Shiny_Boots": {
+		"cosmetic_paths": [
+			"res://resources/sprites/gear/shiny_armor_1/RBoot.png",
+			"res://resources/sprites/gear/shiny_armor_1/LBoot.png"
+		],
+		"possible_stats": [
+			{
+				"name": "defense",
+				"weight": 4
+			},
+			{
+				"name": "defense_percent",
+				"weight": 2
+			},
+			{
+				"name": "health",
+				"weight": 1
+			},
+			{
+				"name": "health_percent",
+				"weight": 1
+			}
+		],
+		"texture_path": "res://resources/sprites/gear/shiny_armor_1/Boots_i.png",
+		"type": 3
+	},
+	"Shiny_Gloves": {
+		"cosmetic_paths": [
+			"res://resources/sprites/gear/shiny_armor_1/LGeave.png",
+			"res://resources/sprites/gear/shiny_armor_1/RGreave.png"
+		],
+		"possible_stats": [
+			{
+				"name": "defense",
+				"weight": 4
+			},
+			{
+				"name": "defense_percent",
+				"weight": 2
+			},
+			{
+				"name": "health",
+				"weight": 1
+			},
+			{
+				"name": "health_percent",
+				"weight": 1
+			}
+		],
+		"texture_path": "res://resources/sprites/gear/shiny_armor_1/Gloves_i.png",
+		"type": 2
+	},
+	"Shiny_Helmet": {
+		"cosmetic_paths": [
+			"res://resources/sprites/gear/shiny_armor_1/Helmet.png"
+		],
+		"possible_stats": [
+			{
+				"name": "defense",
+				"weight": 4
+			},
+			{
+				"name": "defense_percent",
+				"weight": 2
+			},
+			{
+				"name": "health",
+				"weight": 1
+			},
+			{
+				"name": "health_percent",
+				"weight": 1
+			}
+		],
+		"texture_path": "res://resources/sprites/gear/shiny_armor_1/Helmet_i.png",
+		"type": 0
 	}
 }

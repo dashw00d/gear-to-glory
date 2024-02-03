@@ -40,6 +40,21 @@ version_control/autoload_on_startup=true
 
 enabled=PackedStringArray("res://addons/AS2P/plugin.cfg", "res://addons/finite_state_machine/plugin.cfg", "res://addons/fontawesome/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://_assets/": "gray",
+"res://addons/": "gray",
+"res://core/": "orange",
+"res://resources/": "purple",
+"res://scenes/": "green",
+"res://scenes/player/": "yellow",
+"res://scenes/ui/": "teal",
+"res://scenes/ui/components/": "purple",
+"res://theme/": "gray",
+"res://tools/": "red"
+}
+
 [gui]
 
 timers/tooltip_delay_sec=0.0

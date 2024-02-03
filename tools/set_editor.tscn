@@ -1,0 +1,207 @@
+[gd_scene load_steps=12 format=3 uid="uid://cv83yu6gnimn7"]
+
+[ext_resource type="Theme" uid="uid://d24xi7m4k637h" path="res://theme/default_theme.tres" id="1_gf5yl"]
+[ext_resource type="Script" path="res://tools/set_editor.gd" id="2_4d1dh"]
+[ext_resource type="FontFile" uid="uid://3laylbry7cvb" path="res://theme/Fonts/Inter-VariableFont_slnt,wght.ttf" id="3_2caiv"]
+[ext_resource type="Texture2D" uid="uid://bhmfthm5n1tnx" path="res://resources/sprites/ui/attack_speed_16.png" id="4_6dowi"]
+[ext_resource type="Texture2D" uid="uid://cdn55u2018xnj" path="res://resources/sprites/ui/crit_percent_16.png" id="5_4e5yg"]
+[ext_resource type="Texture2D" uid="uid://c0kv0lhgf5evv" path="res://resources/sprites/ui/health_percent_16.png" id="6_p0y7r"]
+[ext_resource type="Texture2D" uid="uid://caseheyohimjq" path="res://resources/sprites/ui/health_16.png" id="7_o68m7"]
+[ext_resource type="Texture2D" uid="uid://dye7tmxfjm2dt" path="res://resources/sprites/ui/attack_16.png" id="8_lk7ua"]
+[ext_resource type="Texture2D" uid="uid://bjywqkeqfk0rf" path="res://resources/sprites/ui/attack_percent_16.png" id="9_mnyen"]
+[ext_resource type="Texture2D" uid="uid://b4fwejs2oryv8" path="res://resources/sprites/ui/defense_16.png" id="10_xmlrv"]
+[ext_resource type="Texture2D" uid="uid://brhdh7yn8hprw" path="res://resources/sprites/ui/defense_percent_16.png" id="11_qxchu"]
+
+[node name="SetEditor" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gf5yl")
+script = ExtResource("2_4d1dh")
+
+[node name="GridContainer5" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 3
+
+[node name="Label" type="Label" parent="GridContainer5"]
+layout_mode = 2
+text = "Data Path"
+
+[node name="DataPath" type="LineEdit" parent="GridContainer5"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "item_database_test.json"
+expand_to_text_length = true
+
+[node name="SelectDataButton" type="Button" parent="GridContainer5"]
+layout_mode = 2
+text = "Select Data"
+
+[node name="DataFile" type="FileDialog" parent="GridContainer5"]
+unique_name_in_owner = true
+title = "Open a File"
+ok_button_text = "Open"
+file_mode = 0
+root_subfolder = "res://resources/data/"
+
+[node name="HSeparator6" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="GridContainer4" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 3
+
+[node name="SetFolder" type="Label" parent="GridContainer4"]
+layout_mode = 2
+text = "Set Folder"
+
+[node name="FolderPath" type="LineEdit" parent="GridContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SelectFolderButton" type="Button" parent="GridContainer4"]
+layout_mode = 2
+text = "Select Folder"
+
+[node name="SetFile" type="FileDialog" parent="GridContainer4"]
+unique_name_in_owner = true
+title = "Open a Directory"
+ok_button_text = "Select Current Folder"
+file_mode = 2
+root_subfolder = "res://resources/sprites/gear/"
+
+[node name="HSeparator2" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+
+[node name="ItemNameLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Set ID"
+
+[node name="ItemName" type="LineEdit" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Emperor"
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PossibleStatsLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Possible Stats
+"
+
+[node name="WeightLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Stat Weight"
+horizontal_alignment = 1
+
+[node name="StatsContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="StatsGrid" type="GridContainer" parent="StatsContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="StatsDropdown" type="OptionButton" parent="StatsContainer/StatsGrid"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme = ExtResource("1_gf5yl")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_2caiv")
+expand_icon = true
+item_count = 8
+popup/item_0/text = "attack_speed"
+popup/item_0/icon = ExtResource("4_6dowi")
+popup/item_0/id = 0
+popup/item_1/text = "crit_percent"
+popup/item_1/icon = ExtResource("5_4e5yg")
+popup/item_1/id = 1
+popup/item_2/text = "health_percent"
+popup/item_2/icon = ExtResource("6_p0y7r")
+popup/item_2/id = 2
+popup/item_3/text = "health"
+popup/item_3/icon = ExtResource("7_o68m7")
+popup/item_3/id = 3
+popup/item_4/text = "attack"
+popup/item_4/icon = ExtResource("8_lk7ua")
+popup/item_4/id = 4
+popup/item_5/text = "attack_percent"
+popup/item_5/icon = ExtResource("9_mnyen")
+popup/item_5/id = 5
+popup/item_6/text = "defense"
+popup/item_6/icon = ExtResource("10_xmlrv")
+popup/item_6/id = 6
+popup/item_7/text = "defense_percent"
+popup/item_7/icon = ExtResource("11_qxchu")
+popup/item_7/id = 7
+
+[node name="WeightSlider" type="HSlider" parent="StatsContainer/StatsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 1.0
+max_value = 5.0
+value = 1.0
+rounded = true
+
+[node name="WeightLabel" type="Label" parent="StatsContainer/StatsGrid"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1"
+horizontal_alignment = 1
+
+[node name="GridContainer2" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+
+[node name="AddStats" type="Button" parent="GridContainer2"]
+layout_mode = 2
+text = "Add Stats"
+
+[node name="RemoveStats" type="Button" parent="GridContainer2"]
+layout_mode = 2
+text = "Remove Stats"
+
+[node name="HSeparator4" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="GridContainer3" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+
+[node name="SaveButton" type="Button" parent="GridContainer3"]
+layout_mode = 2
+text = "Save"
+
+[node name="ClearAllButton" type="Button" parent="GridContainer3"]
+layout_mode = 2
+text = "Reset"
+
+[connection signal="button_up" from="GridContainer5/SelectDataButton" to="." method="_on_select_data_button_button_up"]
+[connection signal="file_selected" from="GridContainer5/DataFile" to="." method="_on_data_file_file_selected"]
+[connection signal="button_up" from="GridContainer4/SelectFolderButton" to="." method="_on_select_folder_button_button_up"]
+[connection signal="dir_selected" from="GridContainer4/SetFile" to="." method="_on_set_file_dir_selected"]
+[connection signal="value_changed" from="StatsContainer/StatsGrid/WeightSlider" to="." method="_on_weight_slider_value_changed"]
+[connection signal="button_up" from="GridContainer2/AddStats" to="." method="_on_add_stats_button_up"]
+[connection signal="button_up" from="GridContainer2/RemoveStats" to="." method="_on_remove_stats_button_up"]
+[connection signal="pressed" from="GridContainer3/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="button_up" from="GridContainer3/ClearAllButton" to="." method="_on_clear_all_button_button_up"]

@@ -12,7 +12,7 @@ func _ready():
 		if child is State:
 			states[child.name.to_lower()] = child
 			child.Transitioned.connect(on_child_transition)
-	print(states)
+	print_debug(states)
 	
 	if initial_state:
 		initial_state.Enter()

@@ -12,6 +12,8 @@ class_name InventoryItem
 var bg_color_rect: ColorRect
 
 func make_background():
+	self.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	self.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	# Initialize the ColorRect
 	bg_color_rect = ColorRect.new()
 	bg_color_rect.custom_minimum_size = self.size  # Set the size to match the TextureRect
@@ -123,6 +125,7 @@ func populate_item_details(container: Control, stats: Dictionary, name: String, 
 	container.get_node("RarityColorRect/PanelContainer/RarityLabel").text = get_rarity_string(rarity)
 	container.get_node("RarityColorRect").color = get_rarity_color(rarity)
 	container.get_node("RarityColorRect/TextureRect").texture = texture
+	container.get_node("RarityColorRect/TextureRect").stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 
 func process_equipped_item(tooltip_instance: Object, container: Control):
 	for key in CharacterState.state['equipment'].keys():
@@ -160,5 +163,7 @@ func make_drag_preview() -> TextureRect:
 	t.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	t.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	t.custom_minimum_size = size
+	t.z_index = self.z_index + 10
+	
 
 	return t
