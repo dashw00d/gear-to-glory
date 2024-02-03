@@ -2,6 +2,8 @@
 
 Welcome to "Gear to Glory", an immersive RPG Auto Battler where strategy, customization, and epic battles define your path to victory. Embark on a journey through mystical lands, equip your heroes with the mightiest armor, and clash against formidable foes in automated strategic combat.
 
+![Preview Image](preview.png)
+
 ## Features
 
 - **Dynamic Auto-Battler Combat**: Set your strategies and watch your heroes take on monsters and bosses in thrilling automatic battles.
