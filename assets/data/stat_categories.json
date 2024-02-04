@@ -1,0 +1,80 @@
+{
+    "offensive_stats": [
+      "attack",
+      "attack_percent",
+      "crit_percent",
+      "critical_damage",
+      "attack_speed",
+      "accuracy",
+      "poison_damage",
+      "bleed_chance",
+      "bleed_damage",
+      "spell_penetration",
+      "physical_penetration",
+      "chain_hit_chance",
+      "projectile_count"
+    ],
+    "defensive_stats": [
+      "defense",
+      "defense_percent",
+      "fire_resistance",
+      "ice_resistance",
+      "lightning_resistance",
+      "wind_resistance",
+      "earth_resistance",
+      "magic_resistance",
+      "dodge_chance",
+      "block_chance",
+      "damage_reflection",
+      "critical_hit_resistance",
+      "status_effect_resistance",
+      "knockback_resistance",
+      "bonus_armor",
+      "bonus_magic_resist"
+    ],
+    "utility_stats": [
+      "skill_damage_increase",
+      "cooldown_reduction",
+      "mana_cost_reduction",
+      "crowd_control_reduction",
+      "status_effect_duration",
+      "aura_range",
+      "aura_effectiveness",
+      "spell_cast_speed",
+      "area_of_effect_expansion",
+      "invulnerability_chance",
+      "reflect_chance"
+    ],
+    "elemental_stats": [
+      "fire_damage",
+      "ice_damage",
+      "lightning_damage",
+      "wind_damage",
+      "earth_damage",
+      "magic_damage"
+    ],
+    "recovery_and_sustain": [
+      "life_steal",
+      "mana_steal",
+      "mana_regen",
+      "spell_vamp",
+      "life_on_hit",
+      "mana_on_hit",
+      "healing_effectiveness",
+      "resource_regeneration",
+      "damage_over_time_reduction"
+    ],
+    "economy": [
+      "loot_quality_increase",
+      "loot_quantity_increase",
+      "potion_effectiveness",
+      "exp_bonus",
+      "bonus_exp_per_kill",
+      "crafting_quality",
+      "enchantment_success_rate",
+      "resurrection_chance",
+      "thorns_damage",
+      "knockback_power",
+      "projectile_speed"
+    ]
+  }

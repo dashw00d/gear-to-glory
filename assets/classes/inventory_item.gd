@@ -137,7 +137,7 @@ func populate_tooltip(tooltip_instance: Object) -> Object:
 		
 	populate_stat_labels(tooltip_instance, self, compare_item)
 	# Adjust tooltip size based on content
-	adjust_tooltip_size(tooltip_instance, stored_item_container, equipped_item_container)
+	adjust_tooltip_size(tooltip_instance, stored_item_container, equipped_item_container, compare_item)
 
 	return tooltip_instance
 
@@ -181,11 +181,11 @@ func populate_container_with_stats(container: VBoxContainer, primary_stats: Dict
 	for stat_name in primary_stats.keys():
 		var primary_stat_value = primary_stats[stat_name]
 		var comparison_stat_value = comparison_stats.get(stat_name, null)
-		print(primary_stat_value)
 		var new_label := Label.new()
 		new_label.text = "%s: %s" % [stat_name.replace("_", " ").capitalize(), str(primary_stat_value)]
 		new_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		new_label.add_theme_font_size_override("font_size", 12)
+		adjust_font_size_to_fit(new_label, 240, 8)
 		new_label.uppercase = true
 
 		# Check for comparison and adjust font color accordingly
@@ -214,7 +214,7 @@ func populate_item_details(container: Control, inventory_item: InventoryItem) ->
 	print_debug(str(inventory_item['rarity']) + ' --- ' + inventory_item['item_name'])
 	var label_node = container.get_node("ItemNameLabel")
 	label_node.text = inventory_item['item_name'].replace("_", " ")
-	adjust_font_size_to_fit(label_node, 160, 12)
+	adjust_font_size_to_fit(label_node, 240, 12)
 	container.get_node("RarityColorRect/PanelContainer/RarityLabel").text = get_rarity_string(inventory_item['rarity'])
 	set_rarity_background(container.get_node("RarityColorRect"), inventory_item['rarity'])
 	container.get_node("RarityColorRect/TextureRect").texture = inventory_item['texture']
@@ -232,16 +232,13 @@ func process_equipped_item(tooltip_instance: Object, container: Control) -> Inve
 			return item
 	return
 
-func adjust_tooltip_size(tooltip_instance: Object, stored_container: Control, equipped_container: Control):
+func adjust_tooltip_size(tooltip_instance: Object, stored_container: Control, equipped_container: Control, compare_item):
 	var stored_item_label_count = count_labels_in_container(stored_container)
 	var equipped_item_label_count = count_labels_in_container(equipped_container)
-	tooltip_instance.get_node("StoredItemContainer").custom_minimum_size = Vector2(160, 186 + (stored_item_label_count * 23))
-	tooltip_instance.get_node("EquippedItemContainer").custom_minimum_size = Vector2(160, 186 + (equipped_item_label_count * 23))
 	var max_label_count = max(stored_item_label_count, equipped_item_label_count)
-	if tooltip_instance.get_node("EquippedItemContainer").visible:
-		tooltip_instance.custom_minimum_size = Vector2(360, 186 + (max_label_count * 23))
-	else:
-		tooltip_instance.custom_minimum_size = Vector2(160, 186 + (max_label_count * 23))
+	tooltip_instance.custom_minimum_size = Vector2(420 if compare_item else 200, 220 + (max_label_count * 30))
+	#tooltip_instance.get_node("StoredItemContainer/Item").custom_minimum_size = Vector2(200, 200 + (stored_item_label_count * 30))
+	#tooltip_instance.get_node("EquippedItemContainer/Item").custom_minimum_size = Vector2(200, 200 + (equipped_item_label_count * 30))
 
 # Custom init function so that it doesn't error
 func init(t: EquipmentManager.Type, i: Texture2D) -> void:

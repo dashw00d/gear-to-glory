@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://d24xi7m4k637h"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://d24xi7m4k637h"]
 
 [ext_resource type="FontFile" uid="uid://3laylbry7cvb" path="res://assets/theme/Fonts/Inter-VariableFont_slnt,wght.ttf" id="1_an5ff"]
 
@@ -12,6 +12,12 @@ variation_embolden = 0.6
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eivrk"]
 bg_color = Color(0.156863, 0.156863, 0.156863, 0.87451)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ydfm"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aa8p3"]
 
 [resource]
@@ -23,7 +29,7 @@ Label/constants/outline_size = 2
 Label/fonts/font = SubResource("FontVariation_0bqg1")
 OptionButton/colors/font_color = Color(1, 1, 1, 1)
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_eivrk")
-PopupDialog/styles/panel = null
+PopupDialog/styles/panel = SubResource("StyleBoxFlat_0ydfm")
 PopupMenu/colors/font_accelerator_color = Color(1, 1, 1, 1)
 PopupMenu/colors/font_color = Color(1, 1, 1, 1)
 PopupMenu/colors/font_disabled_color = Color(1, 1, 1, 1)

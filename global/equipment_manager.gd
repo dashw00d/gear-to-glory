@@ -62,20 +62,16 @@ func generate_stat(stat_name: String, difficulty: int) -> Variant:
 		# Calculate an integer value within the specified range
 		value = randi() % (int(config["range"]) + 1) + int(config["base"])
 		value *= max(difficulty, 1)  # Ensure difficulty is at least 1
+		value = round(max(value, 1))
 	elif config["type"] == "float":
 		# Calculate a float value within the specified range
 		value = randf() * config["range"] + config["base"]
 		value *= max(difficulty, 1)  # Ensure difficulty is at least 1
 		if "offset" in config:
 			value += config["offset"]
-		value = Utils.round_to_05(value)  # Optionally round the float to 2 decimal places
+		value = max(value, .05)
 
-	# avoid generating zero
-	if config["type"] == "int":
-		value = max(value, 1)
-	else:
-		value = max(value, .1)
-	return Utils.round_to_05(value)
+	return value
 
 func generate_random_item(difficulty: int, rarity: int):
 	
@@ -124,7 +120,7 @@ func generate_random_item(difficulty: int, rarity: int):
 		# Apply rarity multiplier
 		new_item.rarity_multiplier = rarity_multipliers[rarity]
 		for stat in selected_stats.keys():
-			selected_stats[stat] = float(selected_stats[stat] * new_item.rarity_multiplier)
+			selected_stats[stat] = snapped(selected_stats[stat] * new_item.rarity_multiplier, 0.05)
 
 	# Load a texture and assign it to new_item
 	new_item.texture = load(texture_path)

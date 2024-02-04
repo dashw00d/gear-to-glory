@@ -47,11 +47,12 @@ metadata/_edit_horizontal_guides_ = [296.0]
 [node name="StoredItemContainer" type="PanelContainer" parent="."]
 y_sort_enabled = true
 layout_mode = 0
-offset_right = 160.0
+offset_right = 200.0
 offset_bottom = 188.0
 
 [node name="BGFill" type="ColorRect" parent="StoredItemContainer"]
 layout_mode = 2
+theme = ExtResource("1_iojlu")
 color = Color(0.247059, 0.247059, 0.247059, 1)
 
 [node name="Item" type="VBoxContainer" parent="StoredItemContainer"]
@@ -72,12 +73,12 @@ uppercase = true
 [node name="RarityColorRect" type="ColorRect" parent="StoredItemContainer/Item"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ax1qg")
-custom_minimum_size = Vector2(160, 160)
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 color = Color(1, 0.47451, 1, 1)
 
 [node name="BlurBorder" type="TextureRect" parent="StoredItemContainer/Item/RarityColorRect"]
-custom_minimum_size = Vector2(160, 160)
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 0
 offset_right = 160.0
 offset_bottom = 160.0
@@ -86,7 +87,7 @@ expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="StoredItemContainer/Item/RarityColorRect"]
 texture_filter = 1
-custom_minimum_size = Vector2(144, 144)
+custom_minimum_size = Vector2(184, 184)
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
@@ -147,8 +148,8 @@ uppercase = true
 visible = false
 y_sort_enabled = true
 layout_mode = 0
-offset_left = 180.0
-offset_right = 340.0
+offset_left = 220.0
+offset_right = 420.0
 offset_bottom = 188.0
 
 [node name="BGFill" type="ColorRect" parent="EquippedItemContainer"]
@@ -173,12 +174,12 @@ uppercase = true
 
 [node name="RarityColorRect" type="ColorRect" parent="EquippedItemContainer/Item"]
 texture_filter = 1
-custom_minimum_size = Vector2(160, 160)
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 color = Color(1, 0.47451, 1, 1)
 
 [node name="BlurBorder" type="TextureRect" parent="EquippedItemContainer/Item/RarityColorRect"]
-custom_minimum_size = Vector2(160, 160)
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 0
 offset_right = 160.0
 offset_bottom = 160.0
@@ -190,8 +191,8 @@ texture_filter = 1
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 152.0
-offset_bottom = 152.0
+offset_right = 192.0
+offset_bottom = 192.0
 texture = ExtResource("3_iecyv")
 
 [node name="PanelContainer" type="PanelContainer" parent="EquippedItemContainer/Item/RarityColorRect"]

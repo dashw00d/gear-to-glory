@@ -27,8 +27,8 @@ var image_names = {
 		}
 }
 
-func make_icon(item: String):
-	var image_path = "%s/%s.png" % [set_folder_path, image_names[item]["Icon"]]
+func make_icon(item: String, size: int, ext: String):
+	var image_path = "%s/%s.png" % [set_folder_path, image_names[item]["Icon"], ext]
 	var image = Image.new()
 	var error = image.load(image_path)
 	if error != OK:
@@ -36,7 +36,7 @@ func make_icon(item: String):
 		return
 
 	# Calculate the scale factor to ensure the longest side does not exceed 96 pixels
-	var scale_factor = 96.0 / max(image.get_width(), image.get_height())
+	var scale_factor = size / max(image.get_width(), image.get_height())
 	var new_width = int(image.get_width() * scale_factor)
 	var new_height = int(image.get_height() * scale_factor)
 
@@ -44,7 +44,7 @@ func make_icon(item: String):
 	image.resize(new_width, new_height)
 
 	# Attempt to save the final image
-	var save_path = "%s/%s_i.png" % [set_folder_path, item]
+	var save_path = "%s/%s_%s.png" % [set_folder_path, item, ext]
 	error = image.save_png(save_path)
 	if error != OK:
 		print("Failed to save the final image:", save_path, ", Error:", error)
@@ -78,7 +78,8 @@ func get_all_values() -> Dictionary:
 	var set_dict = {}
 	var possible_stats = get_all_stats()
 	for key in image_names:
-		make_icon(key)
+		make_icon(key, 96, 'i')
+		make_icon(key, 184, 't')
 		set_dict[get_node("GridContainer/ItemName").text + '_' + key] = {
 			"cosmetic_paths": get_cosmetic_paths(key),
 			"possible_stats": possible_stats,
