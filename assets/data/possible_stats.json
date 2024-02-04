@@ -1,0 +1,355 @@
+{
+  "health": {
+    "type": "int",
+    "base": 2,
+    "range": 2
+  },
+  "health_percent": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "crit_percent": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "attack": {
+    "type": "int",
+    "base": 2,
+    "range": 2
+  },
+  "attack_percent": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "accuracy": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "defense": {
+    "type": "int",
+    "base": 2,
+    "range": 2
+  },
+  "defense_percent": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "attack_speed": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "poison_damage": {
+    "type": "int",
+    "base": 1,
+    "range": 3
+  },
+  "stun_chance": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.5,
+    "offset": 2
+  },
+  "fire_damage": {
+    "type": "int",
+    "base": 1,
+    "range": 4
+  },
+  "fire_resistance": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1,
+    "offset": 2
+  },
+  "skill_damage_increase": {
+    "type": "float",
+    "base": 0.1,
+    "range": 0.1,
+    "offset": 2
+  },
+  "ice_damage": {
+    "type": "int",
+    "base": 1,
+    "range": 3
+  },
+  "ice_resistance": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "lightning_damage": {
+    "type": "int",
+    "base": 1,
+    "range": 3
+  },
+  "lightning_resistance": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "wind_damage": {
+    "type": "int",
+    "base": 1,
+    "range": 3
+  },
+  "wind_resistance": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "earth_damage": {
+    "type": "int",
+    "base": 1,
+    "range": 3
+  },
+  "earth_resistance": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "magic_damage": {
+    "type": "int",
+    "base": 1,
+    "range": 3
+  },
+  "magic_resistance": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "life_steal": {
+    "type": "float",
+    "base": 0.01,
+    "range": 0.05
+  },
+  "mana_steal": {
+    "type": "float",
+    "base": 0.01,
+    "range": 0.05
+  },
+  "mana": {
+    "type": "int",
+    "base": 2,
+    "range": 2
+  },
+  "mana_regen": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "cooldown_reduction": {
+    "type": "float",
+    "base": 0.01,
+    "range": 0.05
+  },
+  "dodge_chance": {
+    "type": "float",
+    "base": 0.01,
+    "range": 0.05
+  },
+  "block_chance": {
+    "type": "float",
+    "base": 0.01,
+    "range": 0.05
+  },
+  "damage_reflection": {
+    "type": "float",
+    "base": 0.01,
+    "range": 0.05
+  },
+  "exp_bonus": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "critical_damage": {
+    "type": "float",
+    "base": 0.1,
+    "range": 0.2
+  },
+  "bleed_chance": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "bleed_damage": {
+    "type": "int",
+    "base": 1,
+    "range": 3
+  },
+  "healing_effectiveness": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "mana_cost_reduction": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "spell_penetration": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "physical_penetration": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "spell_vamp": {
+    "type": "float",
+    "base": 0.01,
+    "range": 0.05
+  },
+  "bonus_armor": {
+    "type": "int",
+    "base": 1,
+    "range": 3
+  },
+  "bonus_magic_resist": {
+    "type": "int",
+    "base": 1,
+    "range": 3
+  },
+  "crowd_control_reduction": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "bonus_exp_per_kill": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "resurrection_chance": {
+    "type": "float",
+    "base": 0.01,
+    "range": 0.05
+  },
+  "aura_range": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "aura_effectiveness": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "damage_over_time_reduction": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "knockback_resistance": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "knockback_power": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "thorns_damage": {
+    "type": "int",
+    "base": 1,
+    "range": 3
+  },
+  "resource_regeneration": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "projectile_speed": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "critical_hit_resistance": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "spell_cast_speed": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "area_of_effect_expansion": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "projectile_count": {
+    "type": "int",
+    "base": 1,
+    "range": 1
+  },
+  "chain_hit_chance": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "status_effect_duration": {
+    "type": "float",
+    "base": 0.1,
+    "range": 0.2
+  },
+  "status_effect_resistance": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "invulnerability_chance": {
+    "type": "float",
+    "base": 0.01,
+    "range": 0.02
+  },
+  "life_on_hit": {
+    "type": "int",
+    "base": 1,
+    "range": 3
+  },
+  "mana_on_hit": {
+    "type": "int",
+    "base": 1,
+    "range": 3
+  },
+  "reflect_chance": {
+    "type": "float",
+    "base": 0.01,
+    "range": 0.05
+  },
+  "loot_quality_increase": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "loot_quantity_increase": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "potion_effectiveness": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "crafting_quality": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  },
+  "enchantment_success_rate": {
+    "type": "float",
+    "base": 0.05,
+    "range": 0.1
+  }
+}

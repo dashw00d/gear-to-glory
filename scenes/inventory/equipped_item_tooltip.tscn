@@ -28,7 +28,7 @@ func hide_tooltip() -> void:
 	pass
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mfh5r"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ax1qg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wv456"]
 bg_color = Color(0, 0, 0, 0.537255)
@@ -52,7 +52,7 @@ offset_bottom = 188.0
 
 [node name="BGFill" type="ColorRect" parent="StoredItemContainer"]
 layout_mode = 2
-color = Color(0.14902, 0.14902, 0.14902, 1)
+color = Color(0.247059, 0.247059, 0.247059, 1)
 
 [node name="Item" type="VBoxContainer" parent="StoredItemContainer"]
 layout_mode = 2
@@ -71,6 +71,7 @@ uppercase = true
 
 [node name="RarityColorRect" type="ColorRect" parent="StoredItemContainer/Item"]
 texture_filter = 1
+material = SubResource("ShaderMaterial_ax1qg")
 custom_minimum_size = Vector2(160, 160)
 layout_mode = 2
 color = Color(1, 0.47451, 1, 1)
@@ -85,7 +86,6 @@ expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="StoredItemContainer/Item/RarityColorRect"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_mfh5r")
 custom_minimum_size = Vector2(144, 144)
 layout_mode = 0
 offset_left = 8.0
@@ -116,6 +116,33 @@ text = "LEGENDARY"
 horizontal_alignment = 1
 uppercase = true
 
+[node name="ItemPower" type="Label" parent="StoredItemContainer/Item/RarityColorRect"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 45.0
+offset_bottom = 25.0
+text = "9"
+
+[node name="EquippedLabel" type="PanelContainer" parent="StoredItemContainer/Item/RarityColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -18.0
+offset_right = 70.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wv456")
+
+[node name="EquippedLabel" type="Label" parent="StoredItemContainer/Item/RarityColorRect/EquippedLabel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxEmpty_u1lif")
+text = "equipped"
+horizontal_alignment = 1
+uppercase = true
+
 [node name="EquippedItemContainer" type="PanelContainer" parent="."]
 visible = false
 y_sort_enabled = true
@@ -126,7 +153,7 @@ offset_bottom = 188.0
 
 [node name="BGFill" type="ColorRect" parent="EquippedItemContainer"]
 layout_mode = 2
-color = Color(0.14902, 0.14902, 0.14902, 1)
+color = Color(0.247059, 0.247059, 0.247059, 1)
 
 [node name="Item" type="VBoxContainer" parent="EquippedItemContainer"]
 layout_mode = 2
@@ -152,6 +179,7 @@ color = Color(1, 0.47451, 1, 1)
 
 [node name="BlurBorder" type="TextureRect" parent="EquippedItemContainer/Item/RarityColorRect"]
 custom_minimum_size = Vector2(160, 160)
+layout_mode = 0
 offset_right = 160.0
 offset_bottom = 160.0
 texture = ExtResource("3_lecqs")
@@ -188,6 +216,7 @@ horizontal_alignment = 1
 uppercase = true
 
 [node name="EquippedLabel" type="PanelContainer" parent="EquippedItemContainer/Item/RarityColorRect"]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -204,3 +233,11 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_u1lif")
 text = "equipped"
 horizontal_alignment = 1
 uppercase = true
+
+[node name="ItemPower" type="Label" parent="EquippedItemContainer/Item/RarityColorRect"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 45.0
+offset_bottom = 25.0
+text = "9"

@@ -22,6 +22,7 @@ CharacterState="*res://global/character_state.gd"
 GameState="*res://global/game_state.gd"
 UserSettings="*res://global/UserSettings.gd"
 SaveItemTool="*res://global/tools/save_item_tool.gd"
+Utils="*res://global/utils.gd"
 
 [debug]
 

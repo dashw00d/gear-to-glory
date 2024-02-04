@@ -8,6 +8,7 @@ class_name InventoryItem
 @export var rarity_multiplier: float
 @export var cosmetics: Array
 @export var slot_type: EquipmentManager.Type
+@export var item_power: int
 
 var bg_color_rect: ColorRect
 
@@ -38,8 +39,8 @@ func configure_border(border: TextureRect) -> void:
 	border.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	border.custom_minimum_size = self.size
 	border.texture = preload("res://assets/sprites/faded_border.png")
-	# Optional: Uncomment if using a NinePatchRect and you need to skip drawing the center
-	# border.draw_center = false
+	# You can add a shader here if u want 2
+	border.self_modulate.a = .5 # lighten it up if u want 2
 	border.z_index = 10  # Position it above the item (relative to the parent's z_index)
 	self.add_child(border)
 
@@ -78,6 +79,22 @@ func get_rarity_string(rarity_int) -> String:
 				rarity_string = "Unknown"
 	return rarity_string
 
+func set_rarity_background(container: ColorRect, rarity:int) -> void:
+	var rarity_color: Color = get_rarity_color(rarity)
+	container.color = rarity_color
+	if rarity > 1:
+		var shader_material := ShaderMaterial.new()
+		shader_material.shader = preload("res://assets/shaders/nubula.gdshader")
+	
+		# Correctly adjust alpha and set shader parameters
+		shader_material.set_shader_parameter("CLOUD1_COL", Vector4(rarity_color.r, rarity_color.g, rarity_color.b, 0.4))
+		shader_material.set_shader_parameter("CLOUD2_COL", Vector4(rarity_color.r, rarity_color.g, rarity_color.b, 0.2))
+		shader_material.set_shader_parameter("CLOUD3_COL", Vector4(rarity_color.r, rarity_color.g, rarity_color.b, 0.8))
+		shader_material.set_shader_parameter("CLOUD4_COL", Vector4(rarity_color.r, rarity_color.g, rarity_color.b, 1.0))
+		shader_material.set_shader_parameter("SPACE", Vector4(rarity_color.r, rarity_color.g, rarity_color.b, 0.2))
+		
+		container.material = shader_material
+
 func count_labels_in_container(container: Control) -> int:
 	var label_count = -1
 	for child in container.get_children():
@@ -101,53 +118,119 @@ func _make_custom_tooltip(_tooltip: String) -> Object:
 func create_tooltip_instance() -> Object:
 	return preload("res://scenes/inventory/equipped_item_tooltip.tscn").instantiate()
 
-func make_stat_labels(container: VBoxContainer, item_stats: Dictionary) -> void:
-	for stat_name in item_stats.keys():
-		var new_label = Label.new()
-		new_label.text = str(stat_name) + ': ' + str(item_stats[stat_name])
-		new_label.text = new_label.text.replace("_", " ")
-		new_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		new_label.uppercase = true
-		new_label.add_theme_font_size_override("font_size", 12)
-		# adjust_font_size_to_fit(new_label, 160, 12)
-		container.add_child(new_label)
-	
 func populate_tooltip(tooltip_instance: Object) -> Object:
 	# Set up containers
 	var stored_item_container = tooltip_instance.get_node("StoredItemContainer/Item")
 	var equipped_item_container = tooltip_instance.get_node("EquippedItemContainer/Item")
-
-	# Populate stored item details
-	populate_item_details(stored_item_container, base_stats, item_name, rarity, texture)
+	var compare_item = null
 
 	# Check and populate equipped item details if applicable
 	if slot_type == EquipmentManager.Type.MAIN:
-		process_equipped_item(tooltip_instance, equipped_item_container)
-
+		compare_item = process_equipped_item(tooltip_instance, stored_item_container)
+	else:
+		stored_item_container.get_node("RarityColorRect/EquippedLabel").visible = true
+		
+	if compare_item:
+		populate_item_details(equipped_item_container, self)
+	else:
+		populate_item_details(stored_item_container, self)
+		
+	populate_stat_labels(tooltip_instance, self, compare_item)
 	# Adjust tooltip size based on content
 	adjust_tooltip_size(tooltip_instance, stored_item_container, equipped_item_container)
 
 	return tooltip_instance
 
-func populate_item_details(container: Control, stats: Dictionary, name: String, rarity: int, texture: Texture) -> void:
-	make_stat_labels(container, stats)
-	print_debug(str(rarity) + ' --- ' + name)
-	var label_node = container.get_node("ItemNameLabel")
-	label_node.text = name.replace("_", " ")
-	adjust_font_size_to_fit(label_node, 160, 12)
-	container.get_node("RarityColorRect/PanelContainer/RarityLabel").text = get_rarity_string(rarity)
-	container.get_node("RarityColorRect").color = get_rarity_color(rarity)
-	container.get_node("RarityColorRect/TextureRect").texture = texture
-	container.get_node("RarityColorRect/TextureRect").stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+# Assuming Utils.safe_get_property safely retrieves a property or returns a default value if not found.
 
-func process_equipped_item(tooltip_instance: Object, container: Control) -> void:
+func populate_stat_labels(tooltip_instance: Object, stash_item: InventoryItem, equipped_item: InventoryItem = null) -> void:
+	# Containers setup
+	var equipped_item_container := tooltip_instance.get_node("StoredItemContainer/Item") as VBoxContainer
+	var stash_item_container := tooltip_instance.get_node("EquippedItemContainer/Item") as VBoxContainer
+	# Always populate stats for stash_item
+	var stash_stats = stash_item.base_stats
+	var comparison_stats := equipped_item.base_stats if equipped_item else {}
+	var equipped_power = equipped_item_container.get_node("RarityColorRect/ItemPower")
+	var stored_power = stash_item_container.get_node("RarityColorRect/ItemPower")
+
+	# Check and populate stats for equipped_item if present
+	if equipped_item:
+		var equipped_stats := equipped_item.base_stats if equipped_item else {}
+		populate_container_with_stats(equipped_item_container, equipped_stats, stash_stats)
+		populate_container_with_stats(stash_item_container, stash_stats, comparison_stats)
+		
+		equipped_power.text = str(equipped_item['item_power'])
+		stored_power.text = str(stash_item['item_power'])
+		
+		if stash_item['item_power'] > equipped_item['item_power']:
+			stored_power.add_theme_color_override("font_color", Color.LIGHT_GREEN)
+			equipped_power.add_theme_color_override("font_color", Color.INDIAN_RED)
+		elif stash_item['item_power'] < equipped_item['item_power']:
+			stored_power.add_theme_color_override("font_color", Color.INDIAN_RED)
+			equipped_power.add_theme_color_override("font_color", Color.LIGHT_GREEN)
+		elif stash_item['item_power'] == equipped_item['item_power']:
+			stored_power.add_theme_color_override("font_color", Color.LIGHT_CYAN)
+			equipped_power.add_theme_color_override("font_color", Color.CYAN)
+	else:
+		populate_container_with_stats(equipped_item_container, stash_stats, comparison_stats)
+		equipped_power.text = str(stash_item['item_power'])
+
+func populate_container_with_stats(container: VBoxContainer, primary_stats: Dictionary, comparison_stats: Dictionary = {}) -> void:
+	var labels_with_comparison = []
+	var labels_without_comparison = []
+	for stat_name in primary_stats.keys():
+		var primary_stat_value = primary_stats[stat_name]
+		var comparison_stat_value = comparison_stats.get(stat_name, null)
+		print(primary_stat_value)
+		var new_label := Label.new()
+		new_label.text = "%s: %s" % [stat_name.replace("_", " ").capitalize(), str(primary_stat_value)]
+		new_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		new_label.add_theme_font_size_override("font_size", 12)
+		new_label.uppercase = true
+
+		# Check for comparison and adjust font color accordingly
+		if comparison_stat_value != null:
+			if primary_stat_value > comparison_stat_value:
+				new_label.add_theme_color_override("font_color", Color.LIGHT_GREEN)  # Better
+			elif primary_stat_value < comparison_stat_value:
+				new_label.add_theme_color_override("font_color", Color.INDIAN_RED)  # Worse
+			elif primary_stat_value == comparison_stat_value:
+				new_label.add_theme_color_override("font_color", Color.CYAN)
+			labels_with_comparison.append(new_label)
+		else:
+			labels_without_comparison.append(new_label)
+
+	labels_with_comparison.sort()
+	labels_without_comparison.sort()
+	# First, add labels with comparison
+	for label in labels_with_comparison:
+		container.add_child(label)
+
+	# Then, add labels without comparison
+	for label in labels_without_comparison:
+		container.add_child(label)
+
+func populate_item_details(container: Control, inventory_item: InventoryItem) -> void:
+	print_debug(str(inventory_item['rarity']) + ' --- ' + inventory_item['item_name'])
+	var label_node = container.get_node("ItemNameLabel")
+	label_node.text = inventory_item['item_name'].replace("_", " ")
+	adjust_font_size_to_fit(label_node, 160, 12)
+	container.get_node("RarityColorRect/PanelContainer/RarityLabel").text = get_rarity_string(inventory_item['rarity'])
+	set_rarity_background(container.get_node("RarityColorRect"), inventory_item['rarity'])
+	container.get_node("RarityColorRect/TextureRect").texture = inventory_item['texture']
+	container.get_node("RarityColorRect/TextureRect").stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+				
+func process_equipped_item(tooltip_instance: Object, container: Control) -> InventoryItem:
 	for key in CharacterState.state['equipment'].keys():
 		var item = CharacterState.state['equipment'][key]
 		if item == null:
 			continue
 		if int(item['type']) == int(type):
 			tooltip_instance.get_node("EquippedItemContainer").visible = true
-			populate_item_details(container, item['base_stats'], item['item_name'], item['rarity'], item['texture'])
+			container.get_node("RarityColorRect/EquippedLabel").visible = true
+			populate_item_details(container, item)
+			return item
+	return
 
 func adjust_tooltip_size(tooltip_instance: Object, stored_container: Control, equipped_container: Control):
 	var stored_item_label_count = count_labels_in_container(stored_container)

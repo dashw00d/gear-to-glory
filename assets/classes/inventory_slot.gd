@@ -9,7 +9,6 @@ func init(t: EquipmentManager.Type, cms: Vector2) -> void:
 	type = t
 	custom_minimum_size = cms
 
-
 # _at_position is not used because it doesn't matter where on the panel
 # the item is dropped
 func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
@@ -27,7 +26,6 @@ func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 			return data.type == type
 
 	return false
-
 
 # Helper function for updating equipment state
 func update_equipment_state(type, data, action):

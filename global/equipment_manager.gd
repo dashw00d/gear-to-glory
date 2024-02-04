@@ -1,64 +1,13 @@
 extends Node
 
 @onready var item_data = {}
+@onready var stat_generators = Utils.load_json("res://assets/data/possible_stats.json")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if item_data.size() < 1:
-		item_data = get_item_data(example_data, "res://assets/data/item_database_test.json")
+		item_data = Utils.load_json("res://assets/data/item_database_test.json")
 
 enum Type {HEAD, CHEST, HANDS, FEET, WEAPON, SHIELD, ACCESSORY, MAIN}
-
-var data_file_path = "res://assets/data/item_database_test.json"
-
-@onready var example_data = {
-	"sword_of_truth": {
-		"texture_path": "res://assets/sprites/Item__01.png",
-		'cosmetic_paths': [],
-		"possible_stats": [
-			{"name": "attack", "weight": 2},
-			{"name": "defense", "weight": 1}
-		],
-		"type": Type.WEAPON
-	},
-	"helmet_of_valor": {
-		"texture_path": "res://assets/sprites/gear/bone_armor_1/Helmet_i.png",
-		'cosmetic_paths': ["res://assets/sprites/gear/bone_armor_1/Helmet.png"],
-		"possible_stats": [
-			{"name": "defense", "weight": 2},
-			{"name": "health", "weight": 1}
-		],
-		"type": Type.HEAD
-	},
-	"amulet_of_luck": {
-		"texture_path": "res://assets/sprites/Item__32.png",
-		'cosmetic_paths': [],
-		"possible_stats": [
-			{"name": "crit_percent", "weight": 2},
-			{"name": "health_percent", "weight": 1}
-		],
-		"type": Type.ACCESSORY
-	}
-}
-
-func get_item_data(data: Dictionary, path: String) -> Dictionary:
-	# Attempt to open the file for reading to check if it exists and is not empty
-	var file = FileAccess.open(path, FileAccess.ModeFlags.READ)
-	var json = JSON.new()
-	var error = json.parse(file.get_as_text())
-	file.close()
-	if error == OK:
-		return json.get_data()
-	else:
-		print_debug("Failed to parse JSON data from file.")
-		# make_item_data(data, path)
-	return data
-
-func make_item_data(data, path: String) -> void:
-	var file = FileAccess.open(path, FileAccess.ModeFlags.WRITE)
-	if file: 
-		var json_string = JSON.new().stringify(data, "\t")
-		file.store_string(json_string)
-		file.close()
 
 enum Rarity {
 	COMMON,
@@ -76,62 +25,58 @@ var rarity_multipliers = {
 	Rarity.LEGENDARY: 1.1
 }
 
-func pick_weighted_random_stat(stats):
+func pick_weighted_random_stat(specific_stats, all_stats):
+	var combined_stats = specific_stats.duplicate()  # Ensure we don't modify the original list
+
+	# Iterate through all possible stats and add them with a default weight if they're not already in specific_stats
+	for stat_name in all_stats.keys():
+		var found = false
+		for specific_stat in specific_stats:
+			if specific_stat["name"] == stat_name:
+				found = true
+				break
+		if not found:
+			combined_stats.append({"name": stat_name, "weight": 1})  # Add with default weight
+
 	var total_weight = 0
-	for stat in stats:
+	for stat in combined_stats:
 		total_weight += stat["weight"]
 
 	var rand_num = randf() * total_weight
 	var weight_sum = 0
 
-	for stat in stats:
+	# Select a stat based on weighted randomness
+	for stat in combined_stats:
 		weight_sum += stat["weight"]
 		if rand_num < weight_sum:
 			return stat["name"]
 
 	return null
 
-var stat_generators = {
-	"health": "generate_health",
-	"health_percent": "generate_health_percent",
-	"crit_percent": "generate_crit_percent",
-	"attack": "generate_attack",
-	"attack_percent": "generate_attack_percent",
-	"defense": "generate_defense",
-	"defense_percent": "generate_defense_percent",
-	"attack_speed": "generate_attack_speed"
-}
+func generate_stat(stat_name: String, difficulty: int) -> Variant:
+	var config = stat_generators[stat_name]
+	var value = 0
 
-func generate_health(difficulty: int) -> int:
-	return (randi() % 2 + 2) * difficulty
+	# Adjust the calculation based on the stat type
+	if config["type"] == "int":
+		# Calculate an integer value within the specified range
+		value = randi() % (int(config["range"]) + 1) + int(config["base"])
+		value *= max(difficulty, 1)  # Ensure difficulty is at least 1
+	elif config["type"] == "float":
+		# Calculate a float value within the specified range
+		value = randf() * config["range"] + config["base"]
+		value *= max(difficulty, 1)  # Ensure difficulty is at least 1
+		if "offset" in config:
+			value += config["offset"]
+		value = Utils.round_to_05(value)  # Optionally round the float to 2 decimal places
 
-func generate_health_percent(difficulty: int) -> float:
-	return int(round(((randf() * 0.1 + 0.05)) * difficulty) + 1)
+	# avoid generating zero
+	if config["type"] == "int":
+		value = max(value, 1)
+	else:
+		value = max(value, .1)
+	return Utils.round_to_05(value)
 
-func generate_crit_percent(difficulty: int) -> float:
-	return int(round(((randf() * 0.1 + 0.05)) * difficulty) + 1)
-
-func generate_attack(difficulty: int) -> int:
-	return (randi() % 2 + 2) * difficulty
-
-func generate_attack_percent(difficulty: int) -> float:
-	return int(round(((randf() * 0.1 + 0.05)) * difficulty) + 1)
-
-func generate_defense(difficulty: int) -> int:
-	return (randi() % 2 + 2) * difficulty
-
-func generate_defense_percent(difficulty: int) -> float:
-	return int(round(((randf() * 0.1 + 0.05)) * difficulty) + 1)
-
-func generate_attack_speed(difficulty: int) -> float:
-	return int(round(((randf() * 0.1 + 0.05)) * difficulty) + 1)
-
-func generate_stat_values(difficulty: int):
-	var generated_stats = {}
-	for stat_name in stat_generators.keys():
-		generated_stats[stat_name] = call(stat_generators[stat_name], difficulty)
-	return generated_stats
-	
 func generate_random_item(difficulty: int, rarity: int):
 	
 	var new_item = InventoryItem.new()
@@ -164,11 +109,11 @@ func generate_random_item(difficulty: int, rarity: int):
 
 	# Choose stats
 	for i in range(max_stat_types):
-		var stat_name = pick_weighted_random_stat(possible_stats)
+		var stat_name = pick_weighted_random_stat(possible_stats, stat_generators)
 		
 		if stat_name in stat_generators:
 			# Dynamically call the stat-generating function
-			var initial_value = call(stat_generators[stat_name], difficulty)
+			var initial_value = generate_stat(stat_name, difficulty)
 			
 			# Initialize or update the stat in selected_stats
 			if stat_name in selected_stats:
@@ -179,9 +124,8 @@ func generate_random_item(difficulty: int, rarity: int):
 		# Apply rarity multiplier
 		new_item.rarity_multiplier = rarity_multipliers[rarity]
 		for stat in selected_stats.keys():
-			selected_stats[stat] = int(selected_stats[stat] * new_item.rarity_multiplier)  # Apply rarity multiplier to each stat
+			selected_stats[stat] = float(selected_stats[stat] * new_item.rarity_multiplier)
 
-			
 	# Load a texture and assign it to new_item
 	new_item.texture = load(texture_path)
 	
@@ -190,6 +134,8 @@ func generate_random_item(difficulty: int, rarity: int):
 	new_item.base_stats = selected_stats
 
 	new_item.rarity = rarity
+	
+	new_item.item_power = calculate_item_power(new_item)
 
 	return new_item
 	
@@ -230,15 +176,77 @@ func calculate_item_power(item):
 	
 	# Assign weight for each stat type based on the average values generated by their functions
 	var stat_weights = {
-		"health": 1.0,  # average = 25
-		"health_percent": 16.7,  # average = 1.5
-		"crit_percent": 16.7,  # average = 1.5
-		"attack": 1.0,  # average = 25
-		"attack_percent": 16.7,  # average = 1.5
-		"defense": 1.0,  # average = 25
-		"defense_percent": 16.7,  # average = 1.5
-		"attack_speed": 16.7  # average = 1.5
-	}
+		"health": 1.0,
+		"health_percent": 3.0,
+		"crit_percent": 4.0,
+		"attack": 1.0,
+		"attack_percent": 3.0,
+		"accuracy": 2.5,
+		"defense": 1.0,
+		"defense_percent": 3.0,
+		"attack_speed": 3.5,
+		"poison_damage": 4.0,
+		"stun_chance": 4.5,
+		"fire_damage": 4.0,
+		"fire_resistance": 3.5,
+		"skill_damage_increase": 4.5,
+		"ice_damage": 4.0,
+		"ice_resistance": 3.5,
+		"lightning_damage": 4.0,
+		"lightning_resistance": 3.5,
+		"wind_damage": 4.0,
+		"wind_resistance": 3.5,
+		"earth_damage": 4.0,
+		"earth_resistance": 3.5,
+		"magic_damage": 4.5,
+		"magic_resistance": 4.0,
+		"life_steal": 4.0,
+		"mana_steal": 4.0,
+		"mana": 2.0,
+		"mana_regen": 3.0,
+		"cooldown_reduction": 4.5,
+		"dodge_chance": 4.0,
+		"block_chance": 4.0,
+		"damage_reflection": 4.5,
+		"exp_bonus": 2.5,
+		"critical_damage": 4.5,
+		"bleed_chance": 4.0,
+		"bleed_damage": 4.0,
+		"healing_effectiveness": 3.5,
+		"mana_cost_reduction": 3.5,
+		"spell_penetration": 4.5,
+		"physical_penetration": 4.5,
+		"spell_vamp": 4.0,
+		"bonus_armor": 2.5,
+		"bonus_magic_resist": 2.5,
+		"crowd_control_reduction": 4.5,
+		"bonus_exp_per_kill": 2.5,
+		"resurrection_chance": 5.0,  # Particularly impactful
+		"aura_range": 3.0,
+		"aura_effectiveness": 3.5,
+		"damage_over_time_reduction": 4.0,
+		"knockback_resistance": 3.0,
+		"knockback_power": 3.5,
+		"thorns_damage": 4.0,
+		"resource_regeneration": 3.0,
+		"projectile_speed": 3.0,
+		"critical_hit_resistance": 4.0,
+		"spell_cast_speed": 4.0,
+		"area_of_effect_expansion": 3.5,
+		"projectile_count": 4.5,
+		"chain_hit_chance": 4.5,
+		"status_effect_duration": 4.0,
+		"status_effect_resistance": 4.0,
+		"invulnerability_chance": 5.0,
+		"life_on_hit": 4.0,
+		"mana_on_hit": 4.0,
+		"reflect_chance": 4.5,
+		"loot_quality_increase": 3.0,
+		"loot_quantity_increase": 3.0,
+		"potion_effectiveness": 3.0,
+		"crafting_quality": 2.0,
+		"enchantment_success_rate": 3.5
+		}
 	
 	# Calculate power
 	for stat in item.base_stats.keys():

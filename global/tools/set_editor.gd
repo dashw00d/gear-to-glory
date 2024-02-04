@@ -70,10 +70,6 @@ func make_icon(item: String):
 func _ready():
 	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func _on_save_button_pressed():
 	save_item.emit(get_all_values(), data_file_path)
 	_on_clear_all_button_button_up()
@@ -144,10 +140,26 @@ func _on_weight_slider_value_changed(value):
 	for child in get_node("StatsContainer").get_children():
 		child.get_child(2).text = str(int(child.get_child(1).value))
 
-
 func _on_set_file_dir_selected(dir):
 	set_folder_path = dir
 
-
 func _on_select_folder_button_button_up():
 	%SetFile.popup_centered_ratio()
+
+func load_json(path: String) -> Dictionary:
+	# Attempt to open the file for reading to check if it exists and is not empty
+	var file = FileAccess.open(path, FileAccess.ModeFlags.READ)
+	var json = JSON.new()
+	var error = json.parse(file.get_as_text())
+	file.close()
+	if error == OK:
+		return json.get_data()
+	else:
+		print_debug("Failed to parse JSON data from file.")
+		# make_item_data(data, path)
+	return {}
+	
+func _on_stats_dropdown_focus_entered() -> void:
+	var possible_stats = load_json("res://assets/data/possible_stats.json")
+	for item in possible_stats:
+		$StatsContainer/StatsGrid/StatsDropdown.add_item(item)
