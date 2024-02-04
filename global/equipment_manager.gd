@@ -9,6 +9,16 @@ func _ready():
 
 enum Type {HEAD, CHEST, HANDS, FEET, WEAPON, SHIELD, ACCESSORY, MAIN}
 
+var equipment_map = {
+	Type.HEAD: "head",
+	Type.CHEST: "chest",
+	Type.HANDS: "hands",
+	Type.FEET: "feet",
+	Type.WEAPON: "weapon",
+	Type.SHIELD: "shield",
+	Type.ACCESSORY: "accessory"
+}
+
 enum Rarity {
 	COMMON,
 	UNCOMMON,

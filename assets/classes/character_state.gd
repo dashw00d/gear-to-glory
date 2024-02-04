@@ -1,8 +1,8 @@
 extends Node
+class_name CharacterState
 
 signal equipment_updated
 
-# equipment type keys for looping from player equipment
 var wearable_types = [
 	'head',
 	'chest',
@@ -13,23 +13,30 @@ var wearable_types = [
 	'accessory',
 ]
 
-@onready var state = {
-	"base_stats": {
-		"attack": 5,
-		"attack_speed": 5,
-		"crit": 5,
-		"health": 5,
-		"defense": 5,
-	},
-	"total_stats": {},
-	"level": 1,
-	"skill_points": 99,
-	"experience": 0,
-	"equipment": {},
-	"inventory": {},
-	"active_abilities": [],
-	"gear_modifiers": {},
-}
+var state = {}  # Declare the state dictionary
+
+func _init():
+	# Initialize the state dictionary with default values
+	state = {
+		"base_stats": {
+			"attack": 5,
+			"attack_speed": 5,
+			"crit": 5,
+			"health": 5,
+			"defense": 5,
+		},
+		"total_stats": {},
+		"level": 1,
+		"skill_points": 99,
+		"experience": 0,
+		"equipment": {},
+		"inventory": {},
+		"active_abilities": [],
+		"gear_modifiers": {},
+	}
+	# Additional initialization as needed
+	randomize()  # If you want to randomize any values or selections
+
 
 func update_equipment_state():
 	calculate_final_stats()

@@ -11,6 +11,8 @@ class_name InventoryItem
 @export var item_power: int
 
 var bg_color_rect: ColorRect
+@export var character_key = "player"
+var current_character = GameState.get_character_state(character_key)
 
 func make_background() -> void:
 	# Configure the TextureRect properties
@@ -224,8 +226,8 @@ func populate_item_details(container: Control, inventory_item: InventoryItem) ->
 
 
 func process_equipped_item(tooltip_instance: Object, container: Control) -> InventoryItem:
-	for key in CharacterState.state['equipment'].keys():
-		var item = CharacterState.state['equipment'][key]
+	for key in current_character.state['equipment'].keys():
+		var item = current_character.state['equipment'][key]
 		if item == null:
 			continue
 		if int(item['type']) == int(type):

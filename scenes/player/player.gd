@@ -1,12 +1,14 @@
 extends Node2D
+var character_key = "player"
+var current_character = GameState.get_character_state(character_key)
 
-@onready var total_health: float = CharacterState.state['total_stats']['health']:
+@onready var total_health: float = current_character.state['total_stats']['health']:
 	set(new_total_health):
 		# can apply temp health buffs here
 		total_health = new_total_health
 		get_node("ProgressBar").max_value = new_total_health
 		
-@onready var health: float = CharacterState.state['total_stats']['health']:
+@onready var health: float = current_character.state['total_stats']['health']:
 	set(new_health):
 		health = new_health
 		get_node("ProgressBar").value = new_health
@@ -42,23 +44,23 @@ signal damage_taken(damage:int, location:Vector2)
 }
 
 func _ready():
-	CharacterState.equipment_updated.connect(_on_equipment_updated.bind())
-	total_health = CharacterState.state['total_stats']['health']
+	current_character.equipment_updated.connect(_on_equipment_updated.bind())
+	total_health = current_character.state['total_stats']['health']
 	
 func _process(delta):
 	$ProgressBar.value = health
 
 func play_attack_animation(attack: BaseAttack):
 	animator.clear_queue()
-	animator.speed_scale = 1.0 + (CharacterState.state['total_stats']['attack_speed'] * 0.01)
+	animator.speed_scale = 1.0 + (current_character.state['total_stats']['attack_speed'] * 0.01)
 	animator.play(attack.animation_name)
 
 func _attack_hit() -> void:
 	emit_signal('attack_hit')
 
 func get_damage() -> float:
-	var base_damage = CharacterState.state["total_stats"]["attack"]
-	var crit_chance = CharacterState.state["total_stats"]["crit"]  # Assuming this is a percentage (e.g., 25 for 25%)
+	var base_damage = current_character.state["total_stats"]["attack"]
+	var crit_chance = current_character.state["total_stats"]["crit"]  # Assuming this is a percentage (e.g., 25 for 25%)
 	
 	# Generate a random number between 0 and 100
 	var random_roll = randf() * 100.0
@@ -76,9 +78,9 @@ func get_actions():
 	return actions
 
 func apply_damage(damage: int):
-	# CharacterState.calculate_final_stats()
+	# current_character.calculate_final_stats()
 	# Example formula with diminishing returns
-	var defense = CharacterState.state['total_stats']['defense']
+	var defense = current_character.state['total_stats']['defense']
 	var reducible_damage = min(defense, damage)  # Damage that can be reduced
 	var reduced_damage = reducible_damage * .8  # Apply reduction
 
@@ -98,10 +100,10 @@ func _on_animation_player_animation_finished(anim_name):
 		animator.play("idle")
 		
 func _on_equipment_updated():
-	for key in CharacterState.wearable_types:
+	for key in current_character.wearable_types:
 		var equipment_paths = paths[key]
-		if CharacterState.state['equipment'].has(key) and is_instance_valid(CharacterState.state['equipment'][key]):
-			var equipment = CharacterState.state['equipment'][key].duplicate()
+		if current_character.state['equipment'].has(key) and is_instance_valid(current_character.state['equipment'][key]):
+			var equipment = current_character.state['equipment'][key].duplicate()
 			if equipment:
 				if 'cosmetics' in equipment and equipment.cosmetics.size() == equipment_paths.size():
 					for i in range(equipment_paths.size()):
@@ -118,9 +120,9 @@ func _on_equipment_updated():
 							resource_node.texture = equipment.texture
 							resource_node.visible = true
 				
-				print_debug(CharacterState.state['equipment'][key]['base_stats'])
+				print_debug(current_character.state['equipment'][key]['base_stats'])
 				# Add gear stats to player state
-				# CharacterState.add_gear(key, CharacterState.state['equipment'][key]['base_stats'])
+				# current_character.add_gear(key, current_character.state['equipment'][key]['base_stats'])
 		else:
 			for path in equipment_paths:
 				var resource_node = get_node(path)
@@ -128,7 +130,7 @@ func _on_equipment_updated():
 				print_debug('hi')
 
 			# Remove gear stats from player state if item is unequipped
-			if key in CharacterState.state['gear_modifiers']:
+			if key in current_character.state['gear_modifiers']:
 				pass
-				# CharacterState.remove_gear(key)
+				# current_character.remove_gear(key)
 

@@ -1,11 +1,13 @@
 extends Control
 signal stats_updated
+var character_key = "player"
+var current_character = GameState.get_character_state(character_key)
 
 var stat_elements = {}
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	CharacterState.equipment_updated.connect(_on_equipment_updated.bind())
-	CharacterState.calculate_final_stats()
+	current_character.equipment_updated.connect(_on_equipment_updated.bind())
+	current_character.calculate_final_stats()
 	refresh_skill_points()
 	
 	# Storing references to UI elements
@@ -26,43 +28,43 @@ func _process(delta):
 
 ## Updates total skill points
 func refresh_skill_points() -> void:
-	%SkillPoints.text = str(CharacterState.state['skill_points'])
+	%SkillPoints.text = str(current_character.state['skill_points'])
 
 ## If skillpoint available, remove one
 func remove_skill_point() -> bool:
-	if CharacterState.state['skill_points'] < 1:
+	if current_character.state['skill_points'] < 1:
 		return false
 		
-	CharacterState.state['skill_points'] -= 1
+	current_character.state['skill_points'] -= 1
 	refresh_skill_points()
 	return true
 	
 func _on_equipment_updated() -> void:
 	for stat_name in stat_elements.keys():
-		stat_elements[stat_name].text = str(CharacterState.state['total_stats'][stat_name])
+		stat_elements[stat_name].text = str(current_character.state['total_stats'][stat_name])
 
 func _on_add_attack_pressed() -> void:
 	if remove_skill_point():
-		CharacterState.state['base_stats']['attack'] += 5
-		CharacterState.update_equipment_state()
+		current_character.state['base_stats']['attack'] += 5
+		current_character.update_equipment_state()
 
 func _on_add_attack_speed_pressed() -> void:
 	if remove_skill_point():
-		CharacterState.state['base_stats']['attack_speed'] += 5
-		CharacterState.update_equipment_state()
+		current_character.state['base_stats']['attack_speed'] += 5
+		current_character.update_equipment_state()
 
 func _on_add_crit_pressed() -> void:
 	if remove_skill_point():
-		CharacterState.state['base_stats']['crit'] += 5
-		CharacterState.update_equipment_state()
+		current_character.state['base_stats']['crit'] += 5
+		current_character.update_equipment_state()
 
 func _on_add_health_pressed() -> void:
 	if remove_skill_point():
-		CharacterState.state['base_stats']['health'] += 5
-		CharacterState.update_equipment_state()
+		current_character.state['base_stats']['health'] += 5
+		current_character.update_equipment_state()
 
 func _on_add_defense_pressed() -> void:
 	if remove_skill_point():
-		CharacterState.state['base_stats']['defense'] += 5
-		CharacterState.update_equipment_state()
+		current_character.state['base_stats']['defense'] += 5
+		current_character.update_equipment_state()
 

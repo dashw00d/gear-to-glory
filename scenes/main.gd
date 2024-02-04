@@ -1,13 +1,16 @@
 extends Control
 var current_scene_difficulty
 
+var character_key = "player"
+var current_character = GameState.get_character_state(character_key)
+
 var battle_scene = preload("res://scenes/battle.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$MainScene/Player.animator.speed_scale = 0.5
 	$MainScene/Player.animator.play("idle")
-	CharacterState.update_equipment_state()
+	current_character.update_equipment_state()
 	$MainScene/Inventory.repopulate_inventory()
 
 func _on_fight_button_pressed():
@@ -22,7 +25,7 @@ func _on_fight_button_pressed():
 
 	# Hide or disable elements of the current scene
 	hide_current_scene_elements()
-	CharacterState.update_equipment_state()
+	current_character.update_equipment_state()
 
 
 func hide_current_scene_elements():

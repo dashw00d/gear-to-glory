@@ -3,6 +3,8 @@ class_name InventorySlot
 
 
 @export var type: EquipmentManager.Type
+@export var character_key = "player"
+var current_character = GameState.get_character_state(character_key)
 
 # Custom init function so that it doesn't error
 func init(t: EquipmentManager.Type, cms: Vector2) -> void:
@@ -29,23 +31,14 @@ func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 
 # Helper function for updating equipment state
 func update_equipment_state(type, data, action):
-	var equipment_map = {
-		EquipmentManager.Type.HEAD: "head",
-		EquipmentManager.Type.CHEST: "chest",
-		EquipmentManager.Type.HANDS: "hands",
-		EquipmentManager.Type.FEET: "feet",
-		EquipmentManager.Type.WEAPON: "weapon",
-		EquipmentManager.Type.SHIELD: "shield",
-		EquipmentManager.Type.ACCESSORY: "accessory"
-	}
 
-	var equipment_key = equipment_map[type]
+	var equipment_key = EquipmentManager.equipment_map[type]
 	if equipment_key:
 		if action == "add":
-			CharacterState.add_gear(equipment_key, data)
+			current_character.add_gear(equipment_key, data)
 		elif action == "remove":
-			CharacterState.remove_gear(equipment_key)
-		CharacterState.update_equipment_state()
+			current_character.remove_gear(equipment_key)
+		current_character.update_equipment_state()
 
 # _drop_data function
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
