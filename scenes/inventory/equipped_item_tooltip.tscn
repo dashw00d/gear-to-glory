@@ -144,7 +144,10 @@ text = "equipped"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="EquippedItemContainer" type="PanelContainer" parent="."]
+[node name="HSeparator" type="HSeparator" parent="StoredItemContainer/Item"]
+layout_mode = 2
+
+[node name="ComparedItemContainer" type="PanelContainer" parent="."]
 visible = false
 y_sort_enabled = true
 layout_mode = 0
@@ -152,15 +155,15 @@ offset_left = 220.0
 offset_right = 420.0
 offset_bottom = 188.0
 
-[node name="BGFill" type="ColorRect" parent="EquippedItemContainer"]
+[node name="BGFill" type="ColorRect" parent="ComparedItemContainer"]
 layout_mode = 2
 color = Color(0.247059, 0.247059, 0.247059, 1)
 
-[node name="Item" type="VBoxContainer" parent="EquippedItemContainer"]
+[node name="Item" type="VBoxContainer" parent="ComparedItemContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="ItemNameLabel" type="Label" parent="EquippedItemContainer/Item"]
+[node name="ItemNameLabel" type="Label" parent="ComparedItemContainer/Item"]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
@@ -172,13 +175,13 @@ vertical_alignment = 1
 text_overrun_behavior = 3
 uppercase = true
 
-[node name="RarityColorRect" type="ColorRect" parent="EquippedItemContainer/Item"]
+[node name="RarityColorRect" type="ColorRect" parent="ComparedItemContainer/Item"]
 texture_filter = 1
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 color = Color(1, 0.47451, 1, 1)
 
-[node name="BlurBorder" type="TextureRect" parent="EquippedItemContainer/Item/RarityColorRect"]
+[node name="BlurBorder" type="TextureRect" parent="ComparedItemContainer/Item/RarityColorRect"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 0
 offset_right = 160.0
@@ -186,7 +189,7 @@ offset_bottom = 160.0
 texture = ExtResource("3_lecqs")
 expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="EquippedItemContainer/Item/RarityColorRect"]
+[node name="TextureRect" type="TextureRect" parent="ComparedItemContainer/Item/RarityColorRect"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 8.0
@@ -195,7 +198,7 @@ offset_right = 192.0
 offset_bottom = 192.0
 texture = ExtResource("3_iecyv")
 
-[node name="PanelContainer" type="PanelContainer" parent="EquippedItemContainer/Item/RarityColorRect"]
+[node name="PanelContainer" type="PanelContainer" parent="ComparedItemContainer/Item/RarityColorRect"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -208,7 +211,7 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_wv456")
 
-[node name="RarityLabel" type="Label" parent="EquippedItemContainer/Item/RarityColorRect/PanelContainer"]
+[node name="RarityLabel" type="Label" parent="ComparedItemContainer/Item/RarityColorRect/PanelContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 theme_override_styles/normal = SubResource("StyleBoxEmpty_u1lif")
@@ -216,7 +219,7 @@ text = "LEGENDARY"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="EquippedLabel" type="PanelContainer" parent="EquippedItemContainer/Item/RarityColorRect"]
+[node name="EquippedLabel" type="PanelContainer" parent="ComparedItemContainer/Item/RarityColorRect"]
 visible = false
 layout_mode = 1
 anchors_preset = 2
@@ -227,7 +230,7 @@ offset_right = 70.0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_wv456")
 
-[node name="EquippedLabel" type="Label" parent="EquippedItemContainer/Item/RarityColorRect/EquippedLabel"]
+[node name="EquippedLabel" type="Label" parent="ComparedItemContainer/Item/RarityColorRect/EquippedLabel"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 theme_override_styles/normal = SubResource("StyleBoxEmpty_u1lif")
@@ -235,10 +238,13 @@ text = "equipped"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="ItemPower" type="Label" parent="EquippedItemContainer/Item/RarityColorRect"]
+[node name="ItemPower" type="Label" parent="ComparedItemContainer/Item/RarityColorRect"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 45.0
 offset_bottom = 25.0
 text = "9"
+
+[node name="HSeparator" type="HSeparator" parent="ComparedItemContainer/Item"]
+layout_mode = 2

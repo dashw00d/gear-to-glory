@@ -121,7 +121,7 @@ func create_tooltip_instance() -> Object:
 func populate_tooltip(tooltip_instance: Object) -> Object:
 	# Set up containers
 	var stored_item_container = tooltip_instance.get_node("StoredItemContainer/Item")
-	var equipped_item_container = tooltip_instance.get_node("EquippedItemContainer/Item")
+	var equipped_item_container = tooltip_instance.get_node("ComparedItemContainer/Item")
 	var compare_item = null
 
 	# Check and populate equipped item details if applicable
@@ -129,7 +129,7 @@ func populate_tooltip(tooltip_instance: Object) -> Object:
 		compare_item = process_equipped_item(tooltip_instance, stored_item_container)
 	else:
 		stored_item_container.get_node("RarityColorRect/EquippedLabel").visible = true
-		
+
 	if compare_item:
 		populate_item_details(equipped_item_container, self)
 	else:
@@ -146,7 +146,7 @@ func populate_tooltip(tooltip_instance: Object) -> Object:
 func populate_stat_labels(tooltip_instance: Object, stash_item: InventoryItem, equipped_item: InventoryItem = null) -> void:
 	# Containers setup
 	var equipped_item_container := tooltip_instance.get_node("StoredItemContainer/Item") as VBoxContainer
-	var stash_item_container := tooltip_instance.get_node("EquippedItemContainer/Item") as VBoxContainer
+	var stash_item_container := tooltip_instance.get_node("ComparedItemContainer/Item") as VBoxContainer
 	# Always populate stats for stash_item
 	var stash_stats = stash_item.base_stats
 	var comparison_stats := equipped_item.base_stats if equipped_item else {}
@@ -199,7 +199,7 @@ func populate_container_with_stats(container: VBoxContainer, primary_stats: Dict
 			labels_with_comparison.append(new_label)
 		else:
 			labels_without_comparison.append(new_label)
-
+	
 	labels_with_comparison.sort()
 	labels_without_comparison.sort()
 	# First, add labels with comparison
@@ -209,6 +209,8 @@ func populate_container_with_stats(container: VBoxContainer, primary_stats: Dict
 	# Then, add labels without comparison
 	for label in labels_without_comparison:
 		container.add_child(label)
+	var new_hrule = HSeparator.new()
+	container.add_child(new_hrule)
 
 func populate_item_details(container: Control, inventory_item: InventoryItem) -> void:
 	print_debug(str(inventory_item['rarity']) + ' --- ' + inventory_item['item_name'])
@@ -219,26 +221,27 @@ func populate_item_details(container: Control, inventory_item: InventoryItem) ->
 	set_rarity_background(container.get_node("RarityColorRect"), inventory_item['rarity'])
 	container.get_node("RarityColorRect/TextureRect").texture = inventory_item['texture']
 	container.get_node("RarityColorRect/TextureRect").stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-				
+
+
 func process_equipped_item(tooltip_instance: Object, container: Control) -> InventoryItem:
 	for key in CharacterState.state['equipment'].keys():
 		var item = CharacterState.state['equipment'][key]
 		if item == null:
 			continue
 		if int(item['type']) == int(type):
-			tooltip_instance.get_node("EquippedItemContainer").visible = true
+			tooltip_instance.get_node("ComparedItemContainer").visible = true
 			container.get_node("RarityColorRect/EquippedLabel").visible = true
 			populate_item_details(container, item)
 			return item
 	return
 
+## Scales the tooltip so it appears in the right place
 func adjust_tooltip_size(tooltip_instance: Object, stored_container: Control, equipped_container: Control, compare_item):
 	var stored_item_label_count = count_labels_in_container(stored_container)
 	var equipped_item_label_count = count_labels_in_container(equipped_container)
 	var max_label_count = max(stored_item_label_count, equipped_item_label_count)
-	tooltip_instance.custom_minimum_size = Vector2(420 if compare_item else 200, 220 + (max_label_count * 30))
-	#tooltip_instance.get_node("StoredItemContainer/Item").custom_minimum_size = Vector2(200, 200 + (stored_item_label_count * 30))
-	#tooltip_instance.get_node("EquippedItemContainer/Item").custom_minimum_size = Vector2(200, 200 + (equipped_item_label_count * 30))
+	# make sure the root container has room
+	tooltip_instance.custom_minimum_size = Vector2(420 if compare_item else 200, 240 + (max_label_count * 30))
 
 # Custom init function so that it doesn't error
 func init(t: EquipmentManager.Type, i: Texture2D) -> void:
