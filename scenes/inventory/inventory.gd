@@ -12,98 +12,83 @@ var slot_map = {
 	EquipmentManager.Type.SHIELD: "HBoxContainer2/ShieldSlot",
 	EquipmentManager.Type.ACCESSORY: "HBoxContainer3/AccessorySlot"
 }
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	# add_demo_items()
-	pass
 
-## Iterate through list of InventoryItem's and send to slot adder
+## Adds new items to the first available slot.
 func add_new_items(items: Array) -> void:
 	for item in items:
 		add_item_to_available_slot(item)
 
-## Iterate through inventory and find open slot
-func get_available_slot():
-	for i in range($PanelContainer/HBoxContainer/ScrollContainer/GridContainer.get_child_count()):
-		var slot = $PanelContainer/HBoxContainer/ScrollContainer/GridContainer.get_child(i)
+## Finds the first available slot in the inventory.
+func get_available_slot() -> Dictionary:
+	var grid_container = $PanelContainer/HBoxContainer/ScrollContainer/GridContainer
+	for i in range(grid_container.get_child_count()):
+		var slot = grid_container.get_child(i)
 		if slot is InventorySlot and slot.get_child_count() == 0:
 			return {'slot_id': i, 'slot': slot}
-		
-## add item to available slot
-func add_item_to_available_slot(item_resource: InventoryItem) -> void:
-	var open_slot = get_available_slot()
-	init_item(item_resource, open_slot["slot"])
-	open_slot["slot"].add_child(item_resource)
-	current_character.add_inventory(open_slot["slot_id"], item_resource.to_dict())
-	return
+	return {}
 
-## Iterate through inventory and add item to available slot
-func add_item_to_slot(item_resource: InventoryItem, slot: InventorySlot) -> void:
-	if slot is InventorySlot and slot.get_child_count() == 1:
-		init_item(item_resource, slot)
-		slot.add_child(item_resource)
-		return
-			
-## Repopulate saved inventory from CharacterState inventory Dictionary
+## Finds the first available slot in the inventory.
+func get_slot_or_fail(slot_id) -> InventorySlot:
+	var grid_container = $PanelContainer/HBoxContainer/ScrollContainer/GridContainer
+	for slot in grid_container.get_children():
+		if int(slot.slot_id) == int(slot_id) and slot is InventorySlot and slot.get_child_count() == 0:
+			return slot
+	return
+	
+## Adds an item to the first available slot and updates character inventory.
+func add_item_to_available_slot(item: InventoryItem) -> void:
+	var open_slot_info = get_available_slot()
+	if open_slot_info:
+		var slot = open_slot_info["slot"]
+		init_and_add_item(item, slot)
+		current_character.add_inventory(open_slot_info["slot_id"], item.to_dict())
+
+## Initializes and adds an item to a specific slot.
+func init_and_add_item(item: InventoryItem, slot: InventorySlot) -> void:
+	item.tooltip_text = 'Item Info'  # Initialize tooltip
+	item.size = slot.size
+	item.slot_type = slot.type  # Use slot name or type as identifier
+	item.make_background()
+	slot.add_child(item)
+
+## Repopulates the inventory UI from saved data.
 func repopulate_inventory() -> void:
 	var player_character = GameState.get_character_state("player")
 	var equipment = player_character.state['equipment']
 	var inventory = player_character.state['inventory']
 
-	var container_path = 'PanelContainer/HBoxContainer/VBoxContainer2/'
-	var accessory_filled = false  # Keep track of whether the first accessory slot is filled
 	for key in equipment.keys():
-		var item = equipment[key]  # Assuming you meant to loop through equipment but use items from inventory
-		var slot_path: String
-		if item:
-			match int(item['slot_type']):
-				0: slot_path = container_path + "HBoxContainer4/HeadSlot"
-				1: slot_path = container_path + "HBoxContainer4/ChestSlot"
-				2: slot_path = container_path + "HBoxContainer/HandSlot"
-				3: slot_path = container_path + "HBoxContainer/FeetSlot"
-				4: slot_path = container_path + "HBoxContainer2/WeaponSlot"
-				5: slot_path = container_path + "HBoxContainer2/ShieldSlot"
-				6:
-					if accessory_filled:
-						slot_path = container_path + "HBoxContainer3/AccessorySlot2"
-					else:
-						slot_path = container_path + "HBoxContainer3/AccessorySlot"
-						accessory_filled = true  # Mark the first accessory slot as filled
-				_: continue  # Skip if no match is found
-
-			var slot = get_node(slot_path)
-			add_item_to_slot(EquipmentManager.load_item(item), slot)
-	
-	# Assuming the below loop is for populating items in a general inventory UI component
+		var item_data = equipment.get(key, null)
+		if item_data:
+			var item = EquipmentManager.load_item(item_data)  # Load or init InventoryItem
+			var slot_path = get_slot_path(int(item_data['slot_type']))
+			if slot_path:
+				var slot = get_node(slot_path)
+				init_and_add_item(item, slot)
+				
 	for key in inventory.keys():
-		var item_dict: Dictionary = inventory[key]
-		if item_dict:
-			var open_slot = get_available_slot()
-			var item_resource = init_item(EquipmentManager.load_item(item_dict), open_slot["slot"])
-			open_slot["slot"].add_child(item_resource)
-			current_character.add_inventory(open_slot["slot_id"], item_dict)
+		var item_data = inventory.get(key, null)
+		if item_data:
+			var item = EquipmentManager.load_item(item_data)
+			var slot = get_slot_or_fail(key)
+			init_and_add_item(item, slot)
 
-## Create InventoryItem Object
-func init_item(item_resource, slot) -> InventoryItem:
-	item_resource.tooltip_text = 'Item Info' # initialize tooltip
-	item_resource.size = slot.size
-	# Make sure to set the type of slot into the item itself
-	item_resource.slot_type = slot.type
-	item_resource.make_background()
-	item_resource._get_drag_data(item_resource.position)
-	return item_resource
-	
+@onready var accessory_filled = false  # Track first accessory slot filling
+## Determines the slot path based on the item type.
+func get_slot_path(slot_type: int) -> String:
+	var container_path = 'PanelContainer/HBoxContainer/VBoxContainer2/'
+	match slot_type:
+		0: return container_path + "HBoxContainer4/HeadSlot"
+		1: return container_path + "HBoxContainer4/ChestSlot"
+		2: return container_path + "HBoxContainer/HandSlot"
+		3: return container_path + "HBoxContainer/FeetSlot"
+		4: return container_path + "HBoxContainer2/WeaponSlot"
+		5: return container_path + "HBoxContainer2/ShieldSlot"
+		6: return container_path + "HBoxContainer3/AccessorySlot" if not accessory_filled else container_path + "HBoxContainer3/AccessorySlot2"
+	return ""
+
 ## Populate items from an action (like a button)
 func add_demo_items() -> void:
-	var current_scene_difficulty = 5
-	if current_character.state['inventory'].size() < 1:
-		var random_item = EquipmentManager.generate_random_item(current_scene_difficulty, EquipmentManager.get_random_rarity(current_scene_difficulty))
-		var random_item2 = EquipmentManager.generate_random_item(current_scene_difficulty, EquipmentManager.get_random_rarity(current_scene_difficulty))
-		var random_item3 = EquipmentManager.generate_random_item(current_scene_difficulty, EquipmentManager.get_random_rarity(current_scene_difficulty))
-		add_new_items([random_item, random_item2, random_item3])
-
-## Populate some sample items on scene load
-func init_demo_items() -> void:
 	var current_scene_difficulty = 5
 	var random_item = EquipmentManager.generate_random_item(current_scene_difficulty, EquipmentManager.get_random_rarity(current_scene_difficulty))
 	var random_item2 = EquipmentManager.generate_random_item(current_scene_difficulty, EquipmentManager.get_random_rarity(current_scene_difficulty))
@@ -111,4 +96,4 @@ func init_demo_items() -> void:
 	add_new_items([random_item, random_item2, random_item3])
 	
 func _on_button_pressed() -> void:
-	init_demo_items()
+	add_demo_items()

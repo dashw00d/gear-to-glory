@@ -34,6 +34,7 @@ func _init():
 		"experience": 0,
 		"equipment": {},
 		"inventory": {},
+		"item_ids": [],
 		"active_abilities": [],
 		"gear_modifiers": {},
 	}
@@ -63,11 +64,13 @@ func remove_inventory(slot_id: int):
 func add_gear(gear_id, gear):
 	state['equipment'][gear_id] = gear
 	state["gear_modifiers"][gear_id] = gear['base_stats']
+	Utils.save_json(state, "res://assets/data/default_save.json")
 
 # Function to remove gear
 func remove_gear(gear_id):
 	state['equipment'][gear_id] = null
 	state["gear_modifiers"].erase(gear_id)
+	Utils.save_json(state, "res://assets/data/default_save.json")
 
 # Function to calculate final stats in real-time
 func calculate_final_stats():

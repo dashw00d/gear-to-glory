@@ -9,6 +9,12 @@ func _ready():
 
 enum Type {HEAD, CHEST, HANDS, FEET, WEAPON, SHIELD, ACCESSORY, MAIN}
 
+func generate_unique_id() -> String:
+	var time = Time.get_ticks_msec()  # Get the current time in milliseconds since the engine started
+	var random_number = randi()  # Generate a random integer
+	var unique_id = str(time) + str(random_number)  # Combine them to form a unique ID
+	return unique_id
+	
 var equipment_map = {
 	Type.HEAD: "head",
 	Type.CHEST: "chest",
@@ -16,7 +22,8 @@ var equipment_map = {
 	Type.FEET: "feet",
 	Type.WEAPON: "weapon",
 	Type.SHIELD: "shield",
-	Type.ACCESSORY: "accessory"
+	Type.ACCESSORY: "accessory",
+	Type.MAIN: "main"
 }
 
 enum Rarity {
@@ -37,9 +44,11 @@ var rarity_multipliers = {
 
 func load_item(item_data: Dictionary) -> InventoryItem:
 	var new_item = InventoryItem.new()
+	new_item.set_meta("texture_path", item_data["texture_path"])
 	
 	# Assuming InventoryItem has properties or setters for these values
 	new_item.type = item_data["type"]
+	new_item.uuid = item_data["uuid"]
 	new_item.item_name = item_data["item_name"]
 	new_item.base_stats = item_data["base_stats"]
 	new_item.rarity = item_data["rarity"]
@@ -48,7 +57,7 @@ func load_item(item_data: Dictionary) -> InventoryItem:
 	new_item.slot_type = item_data["slot_type"]
 	new_item.item_power = item_data["item_power"]
 	new_item.character_key = item_data["character_key"]
-	new_item.texture = load(item_data["texture_path"])
+	new_item.texture = load(new_item.get_meta("texture_path"))
 
 	return new_item
 
@@ -112,6 +121,7 @@ func generate_random_item(difficulty: int, rarity: int):
 	var selected_item_data = item_data[item_type]
 
 	# Access item attributes
+	new_item.set_meta("texture_path", selected_item_data["texture_path"])
 	var texture_path = selected_item_data["texture_path"]
 	var cosmetic_paths = []
 
@@ -123,6 +133,7 @@ func generate_random_item(difficulty: int, rarity: int):
 	
 	new_item.item_name = item_type
 	new_item.type = item_type_enum
+	new_item.uuid = generate_unique_id()
 
 	# Initialize an empty dictionary to hold the selected stats with initial values
 	var selected_stats = {}
@@ -150,7 +161,7 @@ func generate_random_item(difficulty: int, rarity: int):
 			selected_stats[stat] = snapped(selected_stats[stat] * new_item.rarity_multiplier, 0.05)
 
 	# Load a texture and assign it to new_item
-	new_item.texture = load(texture_path)
+	new_item.texture = load(new_item.get_meta("texture_path"))
 	new_item.texture_path = texture_path
 	
 	new_item.cosmetics = cosmetic_paths

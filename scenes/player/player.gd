@@ -103,8 +103,9 @@ func _on_equipment_updated():
 	for key in current_character.wearable_types:
 		var equipment_paths = paths[key]
 		if current_character.state['equipment'].has(key):
-			var equipment = EquipmentManager.load_item(current_character.state['equipment'][key])
+			var equipment = current_character.state['equipment'][key]
 			if equipment:
+				equipment = EquipmentManager.load_item(equipment)
 				if 'cosmetics' in equipment and equipment.cosmetics.size() == equipment_paths.size():
 					for i in range(equipment_paths.size()):
 						var resource_node = get_node_or_null(equipment_paths[i])
@@ -117,7 +118,8 @@ func _on_equipment_updated():
 					for path in equipment_paths:
 						var resource_node = get_node_or_null(path)
 						if resource_node:
-							resource_node.texture = load(equipment.texture_path)
+							var texture = equipment.texture.duplicate()
+							resource_node.texture = texture
 							resource_node.visible = true
 				
 				# print_debug(current_character.state['equipment'][key]['base_stats'])
