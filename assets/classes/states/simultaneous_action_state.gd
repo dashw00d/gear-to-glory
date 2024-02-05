@@ -8,7 +8,7 @@ var is_processing_action = false
 func Enter() -> void:
 	# Populate action_queue with actions from player and enemies
 	# Example: action_queue = [player_action, enemy1_action, enemy2_action, ...]
-	print_debug('hi')
+	pass
 
 func Exit() -> void:
 	action_queue.clear()
@@ -18,7 +18,6 @@ func Update(delta: float) -> void:
 	if not is_processing_action and current_action_index < action_queue.size():
 		is_processing_action = true
 		var action = action_queue[current_action_index]
-		print_debug(action['type'])
 		if 'action_method' in action:
 			action['action_method'].call(action)  # Call the action
 		action_completed()

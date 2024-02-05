@@ -31,18 +31,16 @@ func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 
 # Helper function for updating equipment state
 func update_equipment_state(type, data, action):
-
 	var equipment_key = EquipmentManager.equipment_map[type]
 	if equipment_key:
 		if action == "add":
-			current_character.add_gear(equipment_key, data)
+			current_character.add_gear(equipment_key, data.to_dict())
 		elif action == "remove":
 			current_character.remove_gear(equipment_key)
 		current_character.update_equipment_state()
 
 # _drop_data function
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
-	print_debug(data.type)
 	if data.get_parent() == self:
 		return  # Do nothing if moving to the original slot
 

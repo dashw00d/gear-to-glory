@@ -1,13 +1,17 @@
 extends Control
 var current_scene_difficulty
 
-var character_key = "player"
-var current_character = GameState.get_character_state(character_key)
-
-var battle_scene = preload("res://scenes/battle.tscn")
+@onready var character_key = "player"
+var battle_scene
+var battle_instance
+var current_character 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# GameState.connect("scene_changed", Callable(self, "_on_scene_changed"), CONNECT_PERSIST)
+	GameState.go_to_scene.connect(switch_scenes.bind())
+	battle_scene = preload("res://scenes/battle.tscn")
+	current_character = GameState.get_character_state(character_key)
 	$MainScene/Player.animator.speed_scale = 0.5
 	$MainScene/Player.animator.play("idle")
 	current_character.update_equipment_state()
@@ -15,7 +19,7 @@ func _ready():
 
 func _on_fight_button_pressed():
 	# Instantiate the battle scene
-	var battle_instance = battle_scene.instantiate()
+	battle_instance = battle_scene.instantiate()
 
 	# Add the battle scene instance to the scene tree
 	get_tree().root.add_child(battle_instance)
@@ -27,20 +31,18 @@ func _on_fight_button_pressed():
 	hide_current_scene_elements()
 	current_character.update_equipment_state()
 
-
+func switch_scenes(scene):
+	if scene == 'main':
+		_switch_to_main()
+	
 func hide_current_scene_elements():
 	$MainScene.visible = false
-	$MainScene.set_process_mode(4)
+	$MainScene.process_mode = PROCESS_MODE_DISABLED
 	
-func _on_big_test_button_pressed():
-	# Re-enable the main scene
-	#$MainScene.visible = true
-	#$MainScene.set_process_mode(2)  # PROCESS_MODE_INHERIT
+func _switch_to_main():
+	battle_instance.queue_free()
+	$MainScene.visible = true
+	$MainScene.process_mode = PROCESS_MODE_INHERIT
+	get_tree().current_scene = $MainScene
+	$MainScene/Inventory.repopulate_inventory()
 
-	# Remove the battle scene instance from the scene tree
-	#if get_tree().current_scene != $MainScene:
-		#get_tree().current_scene.queue_free()
-
-	# Set the main scene as the current scene
-	#get_tree().current_scene = $MainScene
-	get_tree().change_scene_to_file("res://scenes/main.tscn")

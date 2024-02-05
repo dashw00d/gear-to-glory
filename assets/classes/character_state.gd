@@ -3,6 +3,7 @@ class_name CharacterState
 
 signal equipment_updated
 
+var data_path
 var wearable_types = [
 	'head',
 	'chest',
@@ -17,7 +18,9 @@ var state = {}  # Declare the state dictionary
 
 func _init():
 	# Initialize the state dictionary with default values
-	state = {
+	data_path = "res://assets/data/default_save.json"
+	var loaded_data = Utils.load_json(data_path)
+	state = loaded_data if loaded_data else {
 		"base_stats": {
 			"attack": 5,
 			"attack_speed": 5,
@@ -34,18 +37,28 @@ func _init():
 		"active_abilities": [],
 		"gear_modifiers": {},
 	}
+
 	# Additional initialization as needed
 	randomize()  # If you want to randomize any values or selections
 
 
 func update_equipment_state():
-	calculate_final_stats()
-	emit_signal("equipment_updated")
+	if calculate_final_stats():
+		emit_signal("equipment_updated")
+	Utils.save_json(state, "res://assets/data/default_save.json")
 
 # Function to add an ability
 func add_ability(ability):
 	state["active_abilities"].append(ability)
 
+func add_inventory(slot_id: int, item: Dictionary):
+	state['inventory'][slot_id] = item
+	Utils.save_json(state, "res://assets/data/default_save.json")
+	
+func remove_inventory(slot_id: int):
+	state['inventory'][slot_id] = null
+	Utils.save_json(state, "res://assets/data/default_save.json")
+	
 # Function to add gear with stat modifiers
 func add_gear(gear_id, gear):
 	state['equipment'][gear_id] = gear
@@ -87,9 +100,6 @@ func calculate_final_stats():
 		var base_stat = percent_stat.replace("_percent", "")
 		if base_stat in state["total_stats"]:
 			state["total_stats"][base_stat] *= 1 + percent_modifiers[percent_stat] / 100.0
-
-	# Signal that the total_stats have been updated (if needed)
-	emit_signal("equipment_updated")
 
 	return state["total_stats"]
 

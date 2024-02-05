@@ -9,10 +9,25 @@ class_name InventoryItem
 @export var cosmetics: Array
 @export var slot_type: EquipmentManager.Type
 @export var item_power: int
+@export var character_key = "player"
+@export var texture_path: String
 
 var bg_color_rect: ColorRect
-@export var character_key = "player"
 var current_character = GameState.get_character_state(character_key)
+
+func to_dict() -> Dictionary:
+	return {
+		"type": type,
+		"item_name": item_name,
+		"base_stats": base_stats,
+		"rarity": rarity,
+		"rarity_multiplier": rarity_multiplier,
+		"cosmetics": cosmetics,
+		"slot_type": slot_type,
+		"item_power": item_power,
+		"character_key": character_key,
+		"texture_path": texture_path
+	}
 
 func make_background() -> void:
 	# Configure the TextureRect properties
@@ -47,7 +62,7 @@ func configure_border(border: TextureRect) -> void:
 	self.add_child(border)
 
 func get_rarity_color(rarity_int) -> Color:
-	var rarity_color = Color(1, 1, 1)  # Default to white
+	var rarity_color := Color(1, 1, 1)  # Default to white
 	if rarity_int != null:
 		match rarity_int:
 			0:
@@ -64,7 +79,7 @@ func get_rarity_color(rarity_int) -> Color:
 
 	
 func get_rarity_string(rarity_int) -> String:
-	var rarity_string = "Unknown"
+	var rarity_string := "Unknown"
 	if rarity_int != null:
 		match rarity_int:
 			0:
@@ -98,7 +113,7 @@ func set_rarity_background(container: ColorRect, rarity:int) -> void:
 		container.material = shader_material
 
 func count_labels_in_container(container: Control) -> int:
-	var label_count = -1
+	var label_count := -1
 	for child in container.get_children():
 		if child is Label:
 			label_count += 1
@@ -111,7 +126,11 @@ func adjust_font_size_to_fit(label: Label, max_width: int, min_font_size: int) -
 		font_size -= 1  # Decrease font size
 		label.add_theme_font_size_override("font_size", font_size)
 		text_width = label.get_theme_font("font").get_string_size(label.text, HORIZONTAL_ALIGNMENT_CENTER, -1, label.get_theme_font_size("font_size")).x + 75
-		
+
+## Start HERE
+## --------------------
+## --------------------
+## --------------------
 func _make_custom_tooltip(_tooltip: String) -> Object:
 	var tooltip_instance = create_tooltip_instance()
 	populate_tooltip(tooltip_instance)
@@ -120,11 +139,11 @@ func _make_custom_tooltip(_tooltip: String) -> Object:
 func create_tooltip_instance() -> Object:
 	return preload("res://scenes/inventory/equipped_item_tooltip.tscn").instantiate()
 
-func populate_tooltip(tooltip_instance: Object) -> Object:
+func populate_tooltip(tooltip_instance: Object):
 	# Set up containers
-	var stored_item_container = tooltip_instance.get_node("StoredItemContainer/Item")
-	var equipped_item_container = tooltip_instance.get_node("ComparedItemContainer/Item")
-	var compare_item = null
+	var stored_item_container: VBoxContainer = tooltip_instance.get_node("StoredItemContainer/Item")
+	var equipped_item_container: VBoxContainer = tooltip_instance.get_node("ComparedItemContainer/Item")
+	var compare_item: Dictionary = {'result': false}
 
 	# Check and populate equipped item details if applicable
 	if slot_type == EquipmentManager.Type.MAIN:
@@ -132,12 +151,12 @@ func populate_tooltip(tooltip_instance: Object) -> Object:
 	else:
 		stored_item_container.get_node("RarityColorRect/EquippedLabel").visible = true
 
-	if compare_item:
-		populate_item_details(equipped_item_container, self)
+	if compare_item['result'] == true:
+		populate_item_details(equipped_item_container, to_dict())
 	else:
-		populate_item_details(stored_item_container, self)
+		populate_item_details(stored_item_container, to_dict())
 		
-	populate_stat_labels(tooltip_instance, self, compare_item)
+	populate_stat_labels(tooltip_instance, to_dict(), compare_item)
 	# Adjust tooltip size based on content
 	adjust_tooltip_size(tooltip_instance, stored_item_container, equipped_item_container, compare_item)
 
@@ -145,39 +164,47 @@ func populate_tooltip(tooltip_instance: Object) -> Object:
 
 # Assuming Utils.safe_get_property safely retrieves a property or returns a default value if not found.
 
-func populate_stat_labels(tooltip_instance: Object, stash_item: InventoryItem, equipped_item: InventoryItem = null) -> void:
+func populate_stat_labels(tooltip_instance: Object, stash_item, equipped_item) -> void:
 	# Containers setup
 	var equipped_item_container := tooltip_instance.get_node("StoredItemContainer/Item") as VBoxContainer
 	var stash_item_container := tooltip_instance.get_node("ComparedItemContainer/Item") as VBoxContainer
-	# Always populate stats for stash_item
-	var stash_stats = stash_item.base_stats
-	var comparison_stats := equipped_item.base_stats if equipped_item else {}
-	var equipped_power = equipped_item_container.get_node("RarityColorRect/ItemPower")
-	var stored_power = stash_item_container.get_node("RarityColorRect/ItemPower")
+	
+	# Initialize comparison_stats as an empty dictionary to avoid reference errors
+	var comparison_stats = {}
+	var equipped_stats = {}
+	var equipped_power: Label = equipped_item_container.get_node("RarityColorRect/ItemPower")
+	var stored_power: Label = stash_item_container.get_node("RarityColorRect/ItemPower")
 
-	# Check and populate stats for equipped_item if present
-	if equipped_item:
-		var equipped_stats := equipped_item.base_stats if equipped_item else {}
-		populate_container_with_stats(equipped_item_container, equipped_stats, stash_stats)
-		populate_container_with_stats(stash_item_container, stash_stats, comparison_stats)
+	# Populate stats for stash_item
+	var stash_stats = stash_item.get("base_stats", {})
+	populate_container_with_stats(equipped_item_container, stash_stats, comparison_stats)
+
+	# Check if equipped_item should be considered
+	if equipped_item.get("result", false) == true:
+		comparison_stats = equipped_item.get("base_stats", {})
+		equipped_stats = equipped_item.get("base_stats", {})
 		
-		equipped_power.text = str(equipped_item['item_power'])
-		stored_power.text = str(stash_item['item_power'])
+		# Populate stats considering equipped item for comparison
+		populate_container_with_stats(stash_item_container, equipped_stats, stash_stats)
 		
-		if stash_item['item_power'] > equipped_item['item_power']:
-			stored_power.add_theme_color_override("font_color", Color.LIGHT_GREEN)
-			equipped_power.add_theme_color_override("font_color", Color.INDIAN_RED)
-		elif stash_item['item_power'] < equipped_item['item_power']:
-			stored_power.add_theme_color_override("font_color", Color.INDIAN_RED)
-			equipped_power.add_theme_color_override("font_color", Color.LIGHT_GREEN)
-		elif stash_item['item_power'] == equipped_item['item_power']:
-			stored_power.add_theme_color_override("font_color", Color.LIGHT_CYAN)
-			equipped_power.add_theme_color_override("font_color", Color.CYAN)
+		# Item power comparison and color adjustments
+		equipped_power.text = str(equipped_item.get('item_power', ''))
+		stored_power.text = str(stash_item.get('item_power', ''))
+
+		if stash_item.get('item_power', 0) > equipped_item.get('item_power', 0):
+			stored_power.add_theme_color_override("font_color", Color(0, 1, 0)) # Light Green
+			equipped_power.add_theme_color_override("font_color", Color(1, 0, 0)) # Indian Red
+		elif stash_item.get('item_power', 0) < equipped_item.get('item_power', 0):
+			stored_power.add_theme_color_override("font_color", Color(1, 0, 0)) # Indian Red
+			equipped_power.add_theme_color_override("font_color", Color(0, 1, 0)) # Light Green
+		else: # Equal power
+			stored_power.add_theme_color_override("font_color", Color(0, 1, 1)) # Light Cyan
+			equipped_power.add_theme_color_override("font_color", Color(0, 1, 1)) # Cyan
 	else:
-		populate_container_with_stats(equipped_item_container, stash_stats, comparison_stats)
-		equipped_power.text = str(stash_item['item_power'])
+		# If equipped item should not be considered, only update the stash item's power label
+		stored_power.text = str(stash_item.get('item_power', ''))
 
-func populate_container_with_stats(container: VBoxContainer, primary_stats: Dictionary, comparison_stats: Dictionary = {}) -> void:
+func populate_container_with_stats(container: VBoxContainer, primary_stats: Dictionary, comparison_stats) -> void:
 	var labels_with_comparison = []
 	var labels_without_comparison = []
 	for stat_name in primary_stats.keys():
@@ -214,34 +241,35 @@ func populate_container_with_stats(container: VBoxContainer, primary_stats: Dict
 	var new_hrule = HSeparator.new()
 	container.add_child(new_hrule)
 
-func populate_item_details(container: Control, inventory_item: InventoryItem) -> void:
-	print_debug(str(inventory_item['rarity']) + ' --- ' + inventory_item['item_name'])
-	var label_node = container.get_node("ItemNameLabel")
+func populate_item_details(container: Control, inventory_item) -> void:
+	# print_debug(str(inventory_item['rarity']) + ' --- ' + inventory_item['item_name'])
+	var label_node: Label = container.get_node("ItemNameLabel")
 	label_node.text = inventory_item['item_name'].replace("_", " ")
 	adjust_font_size_to_fit(label_node, 240, 12)
 	container.get_node("RarityColorRect/PanelContainer/RarityLabel").text = get_rarity_string(inventory_item['rarity'])
 	set_rarity_background(container.get_node("RarityColorRect"), inventory_item['rarity'])
-	container.get_node("RarityColorRect/TextureRect").texture = inventory_item['texture']
+	container.get_node("RarityColorRect/TextureRect").texture = load(inventory_item['texture_path'])
 	container.get_node("RarityColorRect/TextureRect").stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 
 
-func process_equipped_item(tooltip_instance: Object, container: Control) -> InventoryItem:
+func process_equipped_item(tooltip_instance: Object, container: Control) -> Dictionary:
 	for key in current_character.state['equipment'].keys():
-		var item = current_character.state['equipment'][key]
-		if item == null:
-			continue
+		var item: Dictionary = current_character.state['equipment'][key]
+		# if its the same type is this item
 		if int(item['type']) == int(type):
 			tooltip_instance.get_node("ComparedItemContainer").visible = true
 			container.get_node("RarityColorRect/EquippedLabel").visible = true
 			populate_item_details(container, item)
+			print(item)
+			item['result'] = true
 			return item
-	return
+	return {'result': false}
 
 ## Scales the tooltip so it appears in the right place
-func adjust_tooltip_size(tooltip_instance: Object, stored_container: Control, equipped_container: Control, compare_item):
-	var stored_item_label_count = count_labels_in_container(stored_container)
-	var equipped_item_label_count = count_labels_in_container(equipped_container)
-	var max_label_count = max(stored_item_label_count, equipped_item_label_count)
+func adjust_tooltip_size(tooltip_instance: Object, stored_container: Control, equipped_container: Control, compare_item: Dictionary) -> void:
+	var stored_item_label_count: int = count_labels_in_container(stored_container)
+	var equipped_item_label_count: int = count_labels_in_container(equipped_container)
+	var max_label_count: int = max(stored_item_label_count, equipped_item_label_count)
 	# make sure the root container has room
 	tooltip_instance.custom_minimum_size = Vector2(420 if compare_item else 200, 240 + (max_label_count * 30))
 

@@ -91,7 +91,7 @@ func apply_damage(damage: int):
 	emit_signal("damage_taken", int(total_damage_taken), %DamageTarget.get_global_transform_with_canvas())
 	if health <= 0:
 		queue_free()
-		get_tree().change_scene_to_file("res://scenes/main.tscn")
+		GameState.change_scene('main')
 		
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "basic_attack":
@@ -102,8 +102,8 @@ func _on_animation_player_animation_finished(anim_name):
 func _on_equipment_updated():
 	for key in current_character.wearable_types:
 		var equipment_paths = paths[key]
-		if current_character.state['equipment'].has(key) and is_instance_valid(current_character.state['equipment'][key]):
-			var equipment = current_character.state['equipment'][key].duplicate()
+		if current_character.state['equipment'].has(key):
+			var equipment = EquipmentManager.load_item(current_character.state['equipment'][key])
 			if equipment:
 				if 'cosmetics' in equipment and equipment.cosmetics.size() == equipment_paths.size():
 					for i in range(equipment_paths.size()):
@@ -117,17 +117,16 @@ func _on_equipment_updated():
 					for path in equipment_paths:
 						var resource_node = get_node_or_null(path)
 						if resource_node:
-							resource_node.texture = equipment.texture
+							resource_node.texture = load(equipment.texture_path)
 							resource_node.visible = true
 				
-				print_debug(current_character.state['equipment'][key]['base_stats'])
+				# print_debug(current_character.state['equipment'][key]['base_stats'])
 				# Add gear stats to player state
 				# current_character.add_gear(key, current_character.state['equipment'][key]['base_stats'])
 		else:
 			for path in equipment_paths:
 				var resource_node = get_node(path)
 				resource_node.visible = false
-				print_debug('hi')
 
 			# Remove gear stats from player state if item is unequipped
 			if key in current_character.state['gear_modifiers']:

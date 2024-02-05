@@ -35,6 +35,23 @@ var rarity_multipliers = {
 	Rarity.LEGENDARY: 1.1
 }
 
+func load_item(item_data: Dictionary) -> InventoryItem:
+	var new_item = InventoryItem.new()
+	
+	# Assuming InventoryItem has properties or setters for these values
+	new_item.type = item_data["type"]
+	new_item.item_name = item_data["item_name"]
+	new_item.base_stats = item_data["base_stats"]
+	new_item.rarity = item_data["rarity"]
+	new_item.rarity_multiplier = item_data["rarity_multiplier"]
+	new_item.cosmetics = item_data["cosmetics"]
+	new_item.slot_type = item_data["slot_type"]
+	new_item.item_power = item_data["item_power"]
+	new_item.character_key = item_data["character_key"]
+	new_item.texture = load(item_data["texture_path"])
+
+	return new_item
+
 func pick_weighted_random_stat(specific_stats, all_stats):
 	var combined_stats = specific_stats.duplicate()  # Ensure we don't modify the original list
 
@@ -134,6 +151,7 @@ func generate_random_item(difficulty: int, rarity: int):
 
 	# Load a texture and assign it to new_item
 	new_item.texture = load(texture_path)
+	new_item.texture_path = texture_path
 	
 	new_item.cosmetics = cosmetic_paths
 	
