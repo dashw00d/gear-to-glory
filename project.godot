@@ -34,11 +34,12 @@ window/stretch/mode="canvas_items"
 [editor]
 
 movie_writer/movie_file="D:/Documents/Active_Projects/Godot/RPG_Auto/assets/test.avi"
+version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AS2P/plugin.cfg", "res://addons/finite_state_machine/plugin.cfg", "res://addons/fontawesome/plugin.cfg")
+enabled=PackedStringArray("res://addons/AS2P/plugin.cfg", "res://addons/finite_state_machine/plugin.cfg", "res://addons/fontawesome/plugin.cfg", "res://addons/gdscript_formatter/plugin.cfg")
 
 [file_customization]
 

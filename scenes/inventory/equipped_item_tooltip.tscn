@@ -11,17 +11,21 @@ class_name Tooltip
 
 var label: Label
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
+
 
 # Function to update tooltip text
 func update_tooltip_text(new_text: String) -> void:
 	pass
 
+
 # Function to show tooltip at mouse position
 func show_tooltip(position: Vector2) -> void:
 	pass
+
 
 # Function to hide tooltip
 func hide_tooltip() -> void:

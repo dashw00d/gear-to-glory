@@ -10,28 +10,127 @@
 	"equipment": {
 		"chest": {
 			"base_stats": {
-				"attack_percent": 0.3,
-				"projectile_speed": 0.3
+				"health_percent": 0.25,
+				"mana": 10.4,
+				"status_effect_duration": 0.95,
+				"thorns_damage": 10.4
 			},
 			"character_key": "player",
 			"cosmetics": [
-				"res://assets/sprites/gear/juggernaut_armor_1/Armor.png",
-				"res://assets/sprites/gear/juggernaut_armor_1/LShoulder.png",
-				"res://assets/sprites/gear/juggernaut_armor_1/RShoulder.png"
+				"res://assets/sprites/gear/blood_armor_1/Armor.png",
+				"res://assets/sprites/gear/blood_armor_1/LShoulder.png",
+				"res://assets/sprites/gear/blood_armor_1/RShoulder.png"
 			],
-			"item_name": "Juggernaut_Armor",
-			"item_power": 2,
-			"rarity": 0,
-			"rarity_multiplier": 1,
+			"item_name": "Blood_Armor",
+			"item_power": 70,
+			"rarity": 2,
+			"rarity_multiplier": 1.04,
 			"slot_type": 1,
-			"texture_path": "res://assets/sprites/gear/juggernaut_armor_1/Armor_i.png",
+			"texture_path": "res://assets/sprites/gear/blood_armor_1/Armor_i.png",
 			"type": 1,
-			"uuid": "2060921787067"
+			"uuid": "19581312119787"
 		},
 		"feet": {
 			"base_stats": {
-				"bonus_armor": 10,
-				"defense": 15
+				"area_of_effect_expansion": 0.4,
+				"ice_resistance": 0.55
+			},
+			"character_key": "player",
+			"cosmetics": [
+				"res://assets/sprites/gear/troll_armor_1/RBoot.png",
+				"res://assets/sprites/gear/troll_armor_1/LBoot.png"
+			],
+			"item_name": "Troll_Boots",
+			"item_power": 3,
+			"rarity": 0,
+			"rarity_multiplier": 1,
+			"slot_type": 3,
+			"texture_path": "res://assets/sprites/gear/troll_armor_1/Boots_i.png",
+			"type": 3,
+			"uuid": "1793668163876"
+		},
+		"head": {
+			"base_stats": {
+				"defense": 20,
+				"mana": 10
+			},
+			"character_key": "player",
+			"cosmetics": [
+				"res://assets/sprites/gear/barbed_armor_1/Helmet.png"
+			],
+			"item_name": "Barbed_Helmet",
+			"item_power": 40,
+			"rarity": 0,
+			"rarity_multiplier": 1,
+			"slot_type": 0,
+			"texture_path": "res://assets/sprites/gear/barbed_armor_1/Helmet_i.png",
+			"type": 0,
+			"uuid": "23052944448016"
+		}
+	},
+	"experience": 0,
+	"gear_modifiers": {
+		"chest": {
+			"health_percent": 0.25,
+			"mana": 10.4,
+			"status_effect_duration": 0.95,
+			"thorns_damage": 10.4
+		},
+		"feet": {
+			"area_of_effect_expansion": 0.4,
+			"ice_resistance": 0.55
+		},
+		"head": {
+			"defense": 20,
+			"mana": 10
+		}
+	},
+	"inventory": {
+		"0": {
+			"base_stats": {
+				"bonus_armor": 15,
+				"healing_effectiveness": 0.35
+			},
+			"character_key": "player",
+			"cosmetics": [
+				"res://assets/sprites/gear/shiny_armor_1/Armor.png",
+				"res://assets/sprites/gear/shiny_armor_1/LShoulder.png",
+				"res://assets/sprites/gear/shiny_armor_1/RShoulder.png"
+			],
+			"item_name": "Shiny_Armor",
+			"item_power": 39,
+			"rarity": 0,
+			"rarity_multiplier": 1,
+			"slot_type": 7,
+			"texture_path": "res://assets/sprites/gear/shiny_armor_1/Armor_i.png",
+			"type": 1,
+			"uuid": "16201718676556"
+		},
+		"1": {
+			"base_stats": {
+				"crowd_control_reduction": 0.45,
+				"resource_regeneration": 0.5
+			},
+			"character_key": "player",
+			"cosmetics": [
+				"res://assets/sprites/gear/wolf_armor_1/Armor.png",
+				"res://assets/sprites/gear/wolf_armor_1/LShoulder.png",
+				"res://assets/sprites/gear/wolf_armor_1/RShoulder.png"
+			],
+			"item_name": "Wolf_Armor",
+			"item_power": 4,
+			"rarity": 0,
+			"rarity_multiplier": 1,
+			"slot_type": 7,
+			"texture_path": "res://assets/sprites/gear/wolf_armor_1/Armor_i.png",
+			"type": 1,
+			"uuid": "16221732951263"
+		},
+		"10": {
+			"base_stats": {
+				"chain_hit_chance": 0.75,
+				"knockback_power": 0.25,
+				"reflect_chance": 0.05
 			},
 			"character_key": "player",
 			"cosmetics": [
@@ -39,178 +138,115 @@
 				"res://assets/sprites/gear/squid_armor_1/LBoot.png"
 			],
 			"item_name": "Squid_Boots",
-			"item_power": 40,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 3,
+			"item_power": 5,
+			"rarity": 1,
+			"rarity_multiplier": 1.02,
+			"slot_type": 7,
 			"texture_path": "res://assets/sprites/gear/squid_armor_1/Boots_i.png",
 			"type": 3,
-			"uuid": "2057549573386"
+			"uuid": "19992480373421"
 		},
-		"hands": {
+		"11": {
 			"base_stats": {
-				"bonus_exp_per_kill": 0.3,
-				"projectile_speed": 0.5
+				"chain_hit_chance": 0.3,
+				"knockback_power": 0.55
 			},
 			"character_key": "player",
 			"cosmetics": [
-				"res://assets/sprites/gear/samurai_armor_1/LGeave.png",
-				"res://assets/sprites/gear/samurai_armor_1/RGreave.png"
+				"res://assets/sprites/gear/troll_armor_1/Armor.png",
+				"res://assets/sprites/gear/troll_armor_1/LShoulder.png",
+				"res://assets/sprites/gear/troll_armor_1/RShoulder.png"
 			],
-			"item_name": "Samurai_Gloves",
-			"item_power": 2,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 2,
-			"texture_path": "res://assets/sprites/gear/samurai_armor_1/Gloves_i.png",
-			"type": 2,
-			"uuid": "195353828141"
-		},
-		"head": {
-			"base_stats": {
-				"chain_hit_chance": 0.75,
-				"health_percent": 0.4,
-				"status_effect_resistance": 0.25
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/squid_armor_1/Helmet.png"
-			],
-			"item_name": "Squid_Helmet",
-			"item_power": 6,
-			"rarity": 1,
-			"rarity_multiplier": 1.02,
-			"slot_type": 0,
-			"texture_path": "res://assets/sprites/gear/squid_armor_1/Helmet_i.png",
-			"type": 0,
-			"uuid": "16222980288595"
-		}
-	},
-	"experience": 0,
-	"gear_modifiers": {
-		"chest": {
-			"attack_percent": 0.3,
-			"projectile_speed": 0.3
-		},
-		"feet": {
-			"bonus_armor": 10,
-			"defense": 15
-		},
-		"hands": {
-			"bonus_exp_per_kill": 0.3,
-			"projectile_speed": 0.5
-		},
-		"head": {
-			"chain_hit_chance": 0.75,
-			"health_percent": 0.4,
-			"status_effect_resistance": 0.25
-		}
-	},
-	"inventory": {
-		"0": {
-			"base_stats": {
-				"fire_damage": 15,
-				"status_effect_resistance": 0.5
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/troll_armor_1/Helmet.png"
-			],
-			"item_name": "Troll_Helmet",
-			"item_power": 62,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/troll_armor_1/Helmet_i.png",
-			"type": 0,
-			"uuid": "16192964092905"
-		},
-		"1": {
-			"base_stats": {
-				"area_of_effect_expansion": 0.55,
-				"bleed_chance": 0.45,
-				"loot_quantity_increase": 0.5
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/fire_armor_1/Armor.png",
-				"res://assets/sprites/gear/fire_armor_1/LShoulder.png",
-				"res://assets/sprites/gear/fire_armor_1/RShoulder.png"
-			],
-			"item_name": "Fire_Armor",
-			"item_power": 5,
-			"rarity": 1,
-			"rarity_multiplier": 1.02,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/fire_armor_1/Armor_i.png",
-			"type": 1,
-			"uuid": "16211555270435"
-		},
-		"10": null,
-		"11": null,
-		"19": {
-			"base_stats": {
-				"area_of_effect_expansion": 0.55,
-				"bleed_chance": 0.45,
-				"loot_quantity_increase": 0.5
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/fire_armor_1/Armor.png",
-				"res://assets/sprites/gear/fire_armor_1/LShoulder.png",
-				"res://assets/sprites/gear/fire_armor_1/RShoulder.png"
-			],
-			"item_name": "Fire_Armor",
-			"item_power": 5,
-			"rarity": 1,
-			"rarity_multiplier": 1.02,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/fire_armor_1/Armor_i.png",
-			"type": 1,
-			"uuid": "16211555270435"
-		},
-		"2": null,
-		"25": {
-			"base_stats": {
-				"chain_hit_chance": 0.55,
-				"damage_reflection": 0.15
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/wolf_armor_1/Helmet.png"
-			],
-			"item_name": "Wolf_Helmet",
+			"item_name": "Troll_Armor",
 			"item_power": 3,
 			"rarity": 0,
 			"rarity_multiplier": 1,
 			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/wolf_armor_1/Helmet_i.png",
-			"type": 0,
-			"uuid": "17792725908785"
+			"texture_path": "res://assets/sprites/gear/troll_armor_1/Armor_i.png",
+			"type": 1,
+			"uuid": "2000422107681"
 		},
-		"3": {
+		"2": {
 			"base_stats": {
-				"mana": 15,
-				"wind_resistance": 0.55
+				"lightning_damage": 5,
+				"mana": 10
 			},
 			"character_key": "player",
 			"cosmetics": [
-				"res://assets/sprites/gear/bone_armor_1/RBoot.png",
-				"res://assets/sprites/gear/bone_armor_1/LBoot.png"
+				"res://assets/sprites/gear/demon_plate_1/RBoot.png",
+				"res://assets/sprites/gear/demon_plate_1/LBoot.png"
 			],
-			"item_name": "Bone_Boots",
-			"item_power": 32,
+			"item_name": "Demon_Boots",
+			"item_power": 40,
 			"rarity": 0,
 			"rarity_multiplier": 1,
 			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/bone_armor_1/Boots_i.png",
+			"texture_path": "res://assets/sprites/gear/demon_plate_1/Boots_i.png",
 			"type": 3,
-			"uuid": "1776598825361"
+			"uuid": "16231670230748"
 		},
-		"30": {
+		"3": {
 			"base_stats": {
-				"defense": 20,
-				"health_percent": 0.4
+				"earth_resistance": 0.45,
+				"knockback_power": 0.7
+			},
+			"character_key": "player",
+			"cosmetics": [
+				"res://assets/sprites/gear/juggernaut_armor_1/RBoot.png",
+				"res://assets/sprites/gear/juggernaut_armor_1/LBoot.png"
+			],
+			"item_name": "Juggernaut_Boots",
+			"item_power": 4,
+			"rarity": 0,
+			"rarity_multiplier": 1,
+			"slot_type": 7,
+			"texture_path": "res://assets/sprites/gear/juggernaut_armor_1/Boots_i.png",
+			"type": 3,
+			"uuid": "19971036469996"
+		},
+		"4": {
+			"base_stats": {
+				"attack": 15,
+				"bonus_exp_per_kill": 0.3
+			},
+			"character_key": "player",
+			"cosmetics": [
+				"res://assets/sprites/gear/holy_armor_1/LGeave.png",
+				"res://assets/sprites/gear/holy_armor_1/RGreave.png"
+			],
+			"item_name": "Holy_Gloves",
+			"item_power": 16,
+			"rarity": 0,
+			"rarity_multiplier": 1,
+			"slot_type": 7,
+			"texture_path": "res://assets/sprites/gear/holy_armor_1/Gloves_i.png",
+			"type": 2,
+			"uuid": "17952050214494"
+		},
+		"5": {
+			"base_stats": {
+				"attack_speed": 0.4,
+				"health": 15
+			},
+			"character_key": "player",
+			"cosmetics": [
+				"res://assets/sprites/gear/wolf_armor_1/Armor.png",
+				"res://assets/sprites/gear/wolf_armor_1/LShoulder.png",
+				"res://assets/sprites/gear/wolf_armor_1/RShoulder.png"
+			],
+			"item_name": "Wolf_Armor",
+			"item_power": 16,
+			"rarity": 0,
+			"rarity_multiplier": 1,
+			"slot_type": 7,
+			"texture_path": "res://assets/sprites/gear/wolf_armor_1/Armor_i.png",
+			"type": 1,
+			"uuid": "17973422017839"
+		},
+		"6": {
+			"base_stats": {
+				"block_chance": 0.2,
+				"mana_on_hit": 5
 			},
 			"character_key": "player",
 			"cosmetics": [
@@ -225,132 +261,92 @@
 			"slot_type": 7,
 			"texture_path": "res://assets/sprites/gear/blood_armor_1/Armor_i.png",
 			"type": 1,
-			"uuid": "20591336239183"
-		},
-		"36": {
-			"base_stats": {
-				"bonus_armor": 10,
-				"defense": 15
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/squid_armor_1/RBoot.png",
-				"res://assets/sprites/gear/squid_armor_1/LBoot.png"
-			],
-			"item_name": "Squid_Boots",
-			"item_power": 40,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/squid_armor_1/Boots_i.png",
-			"type": 3,
-			"uuid": "2057549573386"
-		},
-		"4": {
-			"base_stats": {
-				"attack_percent": 0.65,
-				"defense": 15.3,
-				"loot_quantity_increase": 0.6
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/juggernaut_armor_1/RBoot.png",
-				"res://assets/sprites/gear/juggernaut_armor_1/LBoot.png"
-			],
-			"item_name": "Juggernaut_Boots",
-			"item_power": 19,
-			"rarity": 1,
-			"rarity_multiplier": 1.02,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/juggernaut_armor_1/Boots_i.png",
-			"type": 3,
-			"uuid": "17783431753558"
-		},
-		"42": {
-			"base_stats": {
-				"health_percent": 0.35,
-				"reflect_chance": 0.3
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/demon_plate_1/Helmet.png"
-			],
-			"item_name": "Demon_Helmet",
-			"item_power": 2,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/demon_plate_1/Helmet_i.png",
-			"type": 0,
-			"uuid": "1949532586670"
-		},
-		"44": {
-			"base_stats": {
-				"health_percent": 0.35,
-				"reflect_chance": 0.3
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/demon_plate_1/Helmet.png"
-			],
-			"item_name": "Demon_Helmet",
-			"item_power": 2,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/demon_plate_1/Helmet_i.png",
-			"type": 0,
-			"uuid": "1949532586670"
-		},
-		"5": null,
-		"6": {
-			"base_stats": {
-				"health_percent": 0.35,
-				"reflect_chance": 0.3
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/demon_plate_1/Helmet.png"
-			],
-			"item_name": "Demon_Helmet",
-			"item_power": 2,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/demon_plate_1/Helmet_i.png",
-			"type": 0,
-			"uuid": "1949532586670"
+			"uuid": "19563880383299"
 		},
 		"7": {
 			"base_stats": {
-				"magic_resistance": 0.4,
-				"wind_damage": 5
+				"attack_speed": 0.65,
+				"knockback_resistance": 0.55
 			},
 			"character_key": "player",
 			"cosmetics": [
-				"res://assets/sprites/gear/wolf_armor_1/LGeave.png",
-				"res://assets/sprites/gear/wolf_armor_1/RGreave.png"
+				"res://assets/sprites/gear/samurai_armor_1/RBoot.png",
+				"res://assets/sprites/gear/samurai_armor_1/LBoot.png"
 			],
-			"item_name": "Wolf_Gloves",
-			"item_power": 22,
+			"item_name": "Samurai_Boots",
+			"item_power": 4,
 			"rarity": 0,
 			"rarity_multiplier": 1,
 			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/wolf_armor_1/Gloves_i.png",
-			"type": 2,
-			"uuid": "19511049123245"
+			"texture_path": "res://assets/sprites/gear/samurai_armor_1/Boots_i.png",
+			"type": 3,
+			"uuid": "23064022856649"
 		},
-		"8": null,
-		"9": null
+		"8": {
+			"base_stats": {
+				"attack_speed": 0.7,
+				"status_effect_duration": 1.35
+			},
+			"character_key": "player",
+			"cosmetics": [
+				"res://assets/sprites/gear/samurai_armor_1/LGeave.png",
+				"res://assets/sprites/gear/samurai_armor_1/RGreave.png"
+			],
+			"item_name": "Samurai_Gloves",
+			"item_power": 8,
+			"rarity": 0,
+			"rarity_multiplier": 1,
+			"slot_type": 7,
+			"texture_path": "res://assets/sprites/gear/samurai_armor_1/Gloves_i.png",
+			"type": 2,
+			"uuid": "19592723685607"
+		},
+		"9": {
+			"base_stats": {
+				"defense_percent": 0.5,
+				"resurrection_chance": 0.2
+			},
+			"character_key": "player",
+			"cosmetics": [
+				"res://assets/sprites/gear/blood_armor_1/Helmet.png"
+			],
+			"item_name": "Blood_Helmet",
+			"item_power": 3,
+			"rarity": 0,
+			"rarity_multiplier": 1,
+			"slot_type": 7,
+			"texture_path": "res://assets/sprites/gear/blood_armor_1/Helmet_i.png",
+			"type": 0,
+			"uuid": "23082833427553"
+		}
 	},
-	"item_ids": [],
+	"item_ids": [
+		"16201718676556",
+		"16221732951263",
+		"16231670230748",
+		"1793668163876",
+		"17952050214494",
+		"17973422017839",
+		"19563880383299",
+		"19581312119787",
+		"19592723685607",
+		"19581312119787",
+		"1793668163876",
+		"23052944448016",
+		"23064022856649",
+		"23082833427553",
+		"23052944448016",
+		"19971036469996",
+		"19992480373421",
+		"2000422107681"
+	],
 	"level": 1,
 	"skill_points": 99,
 	"total_stats": {
-		"attack": 5.015,
+		"attack": 5,
 		"attack_speed": 5,
 		"crit": 5,
-		"defense": 20,
-		"health": 5.02
+		"defense": 25,
+		"health": 5.0125
 	}
 }

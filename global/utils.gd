@@ -1,11 +1,13 @@
 extends Node
 
+
 ## Safely returns a property without breaking
 func safe_get_property(obj, prop_name, default_value):
 	if obj and obj.has_method("has_property") and obj.has_property(prop_name):
 		return obj.get(prop_name)
 	else:
 		return default_value
+
 
 ## Load a JSON file and return as Dict (returns empty dict on fail)
 func load_json(path: String) -> Dictionary:
@@ -20,19 +22,20 @@ func load_json(path: String) -> Dictionary:
 		print_debug("Failed to parse JSON data from file.")
 	return {}
 
+
 func save_json(item_data: Dictionary, path: String):
 	if !path:
 		path = "res://assets/data/default_save.json"
-	
+
 	# Initialize a variable to hold the existing data
 	var data: Dictionary = {}
-	
+
 	# Open the file for reading
 	var file = FileAccess.open(path, FileAccess.ModeFlags.READ_WRITE)
 	if file:
 		var content = file.get_as_text()  # Get the entire file content as text
 		file.close()  # Close the file after reading
-		
+
 		var json = JSON.new()
 		var error = json.parse(content)
 		if error == OK:
@@ -40,10 +43,19 @@ func save_json(item_data: Dictionary, path: String):
 			if typeof(data) != TYPE_DICTIONARY:
 				print("Unexpected data")
 		else:
-			print("JSON Parse Error: ", json.get_error_message(), " in ", content, " at line ", json.get_error_line())
+			print(
+				"JSON Parse Error: ",
+				json.get_error_message(),
+				" in ",
+				content,
+				" at line ",
+				json.get_error_line()
+			)
 	# Update the dictionary with the new item data
 	for key in item_data.keys():
-		data[key] = item_data[key]  # Update or add the new item
+		var value = item_data[key]
+		data[key] = value
+
 	# Open the file again, this time for writing
 	file = FileAccess.open(path, FileAccess.ModeFlags.WRITE)
 	if file:
@@ -51,9 +63,19 @@ func save_json(item_data: Dictionary, path: String):
 		file.store_string(json_string)  # Write the JSON string to the file
 		file.close()  # Close the file
 
+
 ## Round to nearest .05
 func round_to_05(num) -> float:
 	var scaled = num / 0.05
 	var rounded_scaled = floor(scaled + 0.5)  # GDScript's way to round
 	return rounded_scaled * 0.05
 
+
+func is_value_empty(value) -> bool:
+	if value == null:
+		return true
+	elif typeof(value) == TYPE_STRING and value.strip() == "":
+		return true
+	elif typeof(value) in [TYPE_ARRAY, TYPE_DICTIONARY] and value.size() == 0:
+		return true
+	return false
