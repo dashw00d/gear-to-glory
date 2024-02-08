@@ -18,3 +18,6 @@ mono_crash.*.json
 # Ignore concept art
 _assets/
 *.psd
+
+# Variable Game State Files
+default_save.json
