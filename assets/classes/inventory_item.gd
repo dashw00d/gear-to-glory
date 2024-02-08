@@ -78,15 +78,15 @@ func get_rarity_color(rarity_int) -> Color:
 	if rarity_int != null:
 		match rarity_int:
 			0:
-				rarity_color = Color(0.3, 0.3, 0.3)  # Gray for Common
+				rarity_color = GlobalTheme.COMMON  # Gray for Common
 			1:
-				rarity_color = Color.html("507d50")  # Adjusted Green for Uncommon
+				rarity_color = GlobalTheme.UNCOMMON  # Adjusted Green for Uncommon
 			2:
-				rarity_color = Color.html("50789d")  # Adjusted Blue for Rare
+				rarity_color = GlobalTheme.RARE  # Adjusted Blue for Rare
 			3:
-				rarity_color = Color.html("7d5079")  # Adjusted Purple for Epic
+				rarity_color = GlobalTheme.EPIC  # Adjusted Purple for Epic
 			4:
-				rarity_color = Color.html("d1b456")  # Adjusted Yellow for Legendary
+				rarity_color = GlobalTheme.LEGENDARY  # Adjusted Yellow for Legendary
 	return rarity_color
 
 
@@ -245,14 +245,14 @@ func populate_stat_labels(
 		stored_power.text = str(stash_item["item_power"])
 
 		if stash_item["item_power"] > equipped_item["item_power"]:
-			stored_power.add_theme_color_override("font_color", Color.LIGHT_GREEN)
-			equipped_power.add_theme_color_override("font_color", Color.INDIAN_RED)
+			stored_power.add_theme_color_override("font_color", GlobalTheme.GREEN)
+			equipped_power.add_theme_color_override("font_color", GlobalTheme.RED)
 		elif stash_item["item_power"] < equipped_item["item_power"]:
-			stored_power.add_theme_color_override("font_color", Color.INDIAN_RED)
-			equipped_power.add_theme_color_override("font_color", Color.LIGHT_GREEN)
+			stored_power.add_theme_color_override("font_color", GlobalTheme.RED)
+			equipped_power.add_theme_color_override("font_color", GlobalTheme.GREEN)
 		elif stash_item["item_power"] == equipped_item["item_power"]:
-			stored_power.add_theme_color_override("font_color", Color.LIGHT_CYAN)
-			equipped_power.add_theme_color_override("font_color", Color.CYAN)
+			stored_power.add_theme_color_override("font_color", GlobalTheme.CYAN)
+			equipped_power.add_theme_color_override("font_color", GlobalTheme.CYAN)
 	else:
 		populate_container_with_stats(equipped_item_container, stash_stats, comparison_stats)
 		equipped_power.text = str(stash_item["item_power"])
@@ -278,11 +278,11 @@ func populate_container_with_stats(
 		# Check for comparison and adjust font color accordingly
 		if comparison_stat_value != null:
 			if primary_stat_value > comparison_stat_value:
-				new_label.add_theme_color_override("font_color", Color.LIGHT_GREEN)  # Better
+				new_label.add_theme_color_override("font_color", GlobalTheme.GREEN)  # Better
 			elif primary_stat_value < comparison_stat_value:
-				new_label.add_theme_color_override("font_color", Color.INDIAN_RED)  # Worse
+				new_label.add_theme_color_override("font_color", GlobalTheme.RED)  # Worse
 			elif primary_stat_value == comparison_stat_value:
-				new_label.add_theme_color_override("font_color", Color.CYAN)
+				new_label.add_theme_color_override("font_color", GlobalTheme.CYAN)
 			labels_with_comparison.append(new_label)
 		else:
 			labels_without_comparison.append(new_label)

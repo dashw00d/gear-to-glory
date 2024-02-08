@@ -22,6 +22,7 @@ EquipmentManager="*res://global/equipment_manager.gd"
 UserSettings="*res://global/UserSettings.gd"
 SaveItemTool="*res://global/tools/save_item_tool.gd"
 Utils="*res://global/utils.gd"
+GlobalTheme="*res://global/global_theme.gd"
 
 [debug]
 

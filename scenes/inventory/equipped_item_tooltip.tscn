@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dshj3p1wmuoyn"]
+[gd_scene load_steps=12 format=3 uid="uid://dshj3p1wmuoyn"]
 
 [ext_resource type="Theme" uid="uid://d24xi7m4k637h" path="res://assets/theme/default_theme.tres" id="1_iojlu"]
 [ext_resource type="FontVariation" uid="uid://dmvsqve2osdlv" path="res://assets/theme/Fonts/inter_bold.tres" id="2_w3xfx"]
 [ext_resource type="Texture2D" uid="uid://tsula71ffmuh" path="res://assets/sprites/gear/fire_armor_1/Armor_i.png" id="3_iecyv"]
 [ext_resource type="Texture2D" uid="uid://drqorr0v740wj" path="res://assets/sprites/faded_border.png" id="3_lecqs"]
+[ext_resource type="Shader" path="res://assets/shaders/outline2D_inner_outer.gdshader" id="4_864lr"]
 
 [sub_resource type="GDScript" id="GDScript_a752j"]
 script/source = "extends Control
@@ -34,12 +35,22 @@ func hide_tooltip() -> void:
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ax1qg"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_61w6i"]
+shader = ExtResource("4_864lr")
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/line_thickness = 1.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wv456"]
 bg_color = Color(0, 0, 0, 0.537255)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u1lif"]
 content_margin_left = 5.0
 content_margin_right = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o433k"]
+shader = ExtResource("4_864lr")
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/line_thickness = 1.0
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -90,7 +101,7 @@ texture = ExtResource("3_lecqs")
 expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="StoredItemContainer/Item/RarityColorRect"]
-texture_filter = 1
+material = SubResource("ShaderMaterial_61w6i")
 custom_minimum_size = Vector2(184, 184)
 layout_mode = 0
 offset_left = 8.0
@@ -194,7 +205,7 @@ texture = ExtResource("3_lecqs")
 expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="ComparedItemContainer/Item/RarityColorRect"]
-texture_filter = 1
+material = SubResource("ShaderMaterial_o433k")
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
