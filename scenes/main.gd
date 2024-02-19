@@ -4,7 +4,8 @@ var current_scene_difficulty
 @onready var character_key = "player"
 var battle_scene
 var battle_instance
-var current_character 
+var current_character
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,6 +17,7 @@ func _ready():
 	$MainScene/Player.animator.play("idle")
 	current_character.update_equipment_state()
 	$MainScene/Inventory.repopulate_inventory()
+
 
 func _on_fight_button_pressed():
 	# Instantiate the battle scene
@@ -31,18 +33,20 @@ func _on_fight_button_pressed():
 	hide_current_scene_elements()
 	current_character.update_equipment_state()
 
+
 func switch_scenes(scene):
-	if scene == 'main':
+	if scene == "main":
 		_switch_to_main()
-	
+
+
 func hide_current_scene_elements():
 	$MainScene.visible = false
 	$MainScene.process_mode = PROCESS_MODE_DISABLED
-	
+
+
 func _switch_to_main():
 	battle_instance.queue_free()
 	$MainScene.visible = true
 	$MainScene.process_mode = PROCESS_MODE_INHERIT
 	get_tree().current_scene = $MainScene
 	$MainScene/Inventory.repopulate_inventory()
-

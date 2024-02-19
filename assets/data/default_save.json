@@ -10,839 +10,28 @@
 	"equipment": {
 		"chest": {
 			"base_stats": {
-				"crafting_quality": 0.35,
-				"spell_penetration": 0.3
+				"defense_percent": 0.75,
+				"projectile_count": 10
 			},
 			"character_key": "player",
 			"cosmetics": [
-				"res://assets/sprites/gear/shiny_armor_1/Armor.png",
-				"res://assets/sprites/gear/shiny_armor_1/LShoulder.png",
-				"res://assets/sprites/gear/shiny_armor_1/RShoulder.png"
+				"res://assets/sprites/gear/juggernaut_armor_1/Armor.png",
+				"res://assets/sprites/gear/juggernaut_armor_1/LShoulder.png",
+				"res://assets/sprites/gear/juggernaut_armor_1/RShoulder.png"
 			],
-			"item_name": "Shiny_Armor",
-			"item_power": 2,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 1,
-			"texture_path": "res://assets/sprites/gear/shiny_armor_1/Armor_i.png",
-			"type": 1,
-			"uuid": "29713100834211"
-		},
-		"feet": {
-			"base_stats": {
-				"physical_penetration": 0.45,
-				"reflect_chance": 0.2
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/holy_armor_1/RBoot.png",
-				"res://assets/sprites/gear/holy_armor_1/LBoot.png"
-			],
-			"item_name": "Holy_Boots",
-			"item_power": 3,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 3,
-			"texture_path": "res://assets/sprites/gear/holy_armor_1/Boots_i.png",
-			"type": 3,
-			"uuid": "34371413234596"
-		},
-		"hands": {
-			"base_stats": {
-				"accuracy": 0.45,
-				"magic_resistance": 0.25
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/samurai_armor_1/LGeave.png",
-				"res://assets/sprites/gear/samurai_armor_1/RGreave.png"
-			],
-			"item_name": "Samurai_Gloves",
-			"item_power": 2,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 2,
-			"texture_path": "res://assets/sprites/gear/samurai_armor_1/Gloves_i.png",
-			"type": 2,
-			"uuid": "36012808414043"
-		},
-		"head": {
-			"base_stats": {
-				"dodge_chance": 0.15,
-				"knockback_resistance": 0.7,
-				"lightning_damage": 20.4
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/shiny_armor_1/Helmet.png"
-			],
-			"item_name": "Shiny_Helmet",
-			"item_power": 86,
-			"rarity": 1,
-			"rarity_multiplier": 1.02,
-			"slot_type": 0,
-			"texture_path": "res://assets/sprites/gear/shiny_armor_1/Helmet_i.png",
-			"type": 0,
-			"uuid": "32802846321855"
-		}
-	},
-	"experience": 0,
-	"gear_modifiers": {
-		"chest": {
-			"crafting_quality": 0.35,
-			"spell_penetration": 0.3
-		},
-		"feet": {
-			"physical_penetration": 0.45,
-			"reflect_chance": 0.2
-		},
-		"hands": {
-			"accuracy": 0.45,
-			"magic_resistance": 0.25
-		},
-		"head": {
-			"dodge_chance": 0.15,
-			"knockback_resistance": 0.7,
-			"lightning_damage": 20.4
-		}
-	},
-	"inventory": {
-		"4": {
-			"base_stats": {
-				"crit_percent": 0.7,
-				"lightning_resistance": 0.55
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/samurai_armor_1/RBoot.png",
-				"res://assets/sprites/gear/samurai_armor_1/LBoot.png"
-			],
-			"item_name": "Samurai_Boots",
-			"item_power": 5,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/samurai_armor_1/Boots_i.png",
-			"type": 3,
-			"uuid": "2274149177442"
-		},
-		"9": {
-			"base_stats": {
-				"defense_percent": 0.4,
-				"fire_damage": 25
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/troll_armor_1/Armor.png",
-				"res://assets/sprites/gear/troll_armor_1/LShoulder.png",
-				"res://assets/sprites/gear/troll_armor_1/RShoulder.png"
-			],
-			"item_name": "Troll_Armor",
-			"item_power": 101,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/troll_armor_1/Armor_i.png",
-			"type": 1,
-			"uuid": "227659406385"
-		},
-		"12": {
-			"base_stats": {
-				"bonus_armor": 20,
-				"exp_bonus": 0.35
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/fire_armor_2/RBoot.png",
-				"res://assets/sprites/gear/fire_armor_2/LBoot.png"
-			],
-			"item_name": "Scorched_Boots",
-			"item_power": 51,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/fire_armor_2/Boots_i.png",
-			"type": 3,
-			"uuid": "22761729573930"
-		},
-		"0": {
-			"base_stats": {
-				"earth_damage": 15,
-				"lightning_damage": 15
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/shiny_armor_1/Armor.png",
-				"res://assets/sprites/gear/shiny_armor_1/LShoulder.png",
-				"res://assets/sprites/gear/shiny_armor_1/RShoulder.png"
-			],
-			"item_name": "Shiny_Armor",
-			"item_power": 120,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/shiny_armor_1/Armor_i.png",
-			"type": 1,
-			"uuid": "28093628198973"
-		},
-		"1": {
-			"base_stats": {
-				"attack_speed": 0.35,
-				"lightning_resistance": 0.3
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/barbed_armor_1/Helmet.png"
-			],
-			"item_name": "Barbed_Helmet",
-			"item_power": 2,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/barbed_armor_1/Helmet_i.png",
-			"type": 0,
-			"uuid": "28123337980286"
-		},
-		"10": {
-			"base_stats": {
-				"block_chance": 0.25,
-				"cooldown_reduction": 0.2,
-				"exp_bonus": 0.3,
-				"mana_cost_reduction": 0.6,
-				"spell_penetration": 0.3
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/shiny_armor_1/LGeave.png",
-				"res://assets/sprites/gear/shiny_armor_1/RGreave.png"
-			],
-			"item_name": "Shiny_Gloves",
-			"item_power": 7,
-			"rarity": 3,
-			"rarity_multiplier": 1.08,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/shiny_armor_1/Gloves_i.png",
-			"type": 2,
-			"uuid": "3282945440080"
-		},
-		"11": {
-			"base_stats": {
-				"defense": 20,
-				"fire_damage": 25
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/barbed_armor_1/Helmet.png"
-			],
-			"item_name": "Barbed_Helmet",
-			"item_power": 120,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/barbed_armor_1/Helmet_i.png",
-			"type": 0,
-			"uuid": "3284900003151"
-		},
-		"13": {
-			"base_stats": {
-				"crowd_control_reduction": 0.3,
-				"knockback_power": 0.4
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/shiny_armor_1/Helmet.png"
-			],
-			"item_name": "Shiny_Helmet",
-			"item_power": 3,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/shiny_armor_1/Helmet_i.png",
-			"type": 0,
-			"uuid": "34382744475821"
-		},
-		"14": {
-			"base_stats": {
-				"healing_effectiveness": 0.4,
-				"spell_penetration": 0.6
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/juggernaut_armor_1/Helmet.png"
-			],
-			"item_name": "Juggernaut_Helmet",
-			"item_power": 4,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/juggernaut_armor_1/Helmet_i.png",
-			"type": 0,
-			"uuid": "34391270984122"
-		},
-		"15": {
-			"base_stats": {
-				"projectile_count": 10,
-				"resource_regeneration": 0.65
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/troll_armor_1/Armor.png",
-				"res://assets/sprites/gear/troll_armor_1/LShoulder.png",
-				"res://assets/sprites/gear/troll_armor_1/RShoulder.png"
-			],
-			"item_name": "Troll_Armor",
+			"item_name": "Juggernaut_Armor",
 			"item_power": 47,
 			"rarity": 0,
 			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/troll_armor_1/Armor_i.png",
+			"slot_type": 1,
+			"texture_path": "res://assets/sprites/gear/juggernaut_armor_1/Armor_i.png",
 			"type": 1,
-			"uuid": "35992822910484"
+			"uuid": "154911868732580"
 		},
-		"17": {
+		"feet": {
 			"base_stats": {
-				"bonus_armor": 20,
-				"mana_on_hit": 5
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/holy_armor_1/Helmet.png"
-			],
-			"item_name": "Holy_Helmet",
-			"item_power": 70,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/holy_armor_1/Helmet_i.png",
-			"type": 0,
-			"uuid": "36013062726966"
-		},
-		"18": {
-			"base_stats": {
-				"knockback_power": 0.25,
-				"loot_quality_increase": 0.5
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/bone_armor_1/LGeave.png",
-				"res://assets/sprites/gear/bone_armor_1/RGreave.png"
-			],
-			"item_name": "Bone_Gloves",
-			"item_power": 2,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/bone_armor_1/Gloves_i.png",
-			"type": 2,
-			"uuid": "37612962227887"
-		},
-		"19": {
-			"base_stats": {
-				"crowd_control_reduction": 0.45,
-				"projectile_speed": 0.7,
-				"thorns_damage": 15.3
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/fire_armor_1/RBoot.png",
-				"res://assets/sprites/gear/fire_armor_1/LBoot.png"
-			],
-			"item_name": "Fire_Boots",
-			"item_power": 67,
-			"rarity": 1,
-			"rarity_multiplier": 1.02,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/fire_armor_1/Boots_i.png",
-			"type": 3,
-			"uuid": "37622969132652"
-		},
-		"2": {
-			"base_stats": {
-				"dodge_chance": 0.25,
-				"physical_penetration": 0.45
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/fire_armor_1/LGeave.png",
-				"res://assets/sprites/gear/fire_armor_1/RGreave.png"
-			],
-			"item_name": "Fire_Gloves",
-			"item_power": 3,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/fire_armor_1/Gloves_i.png",
-			"type": 2,
-			"uuid": "28134057843970"
-		},
-		"20": {
-			"base_stats": {
-				"crit_percent": 0.25,
-				"lightning_damage": 5.1,
-				"mana_on_hit": 5.1
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/fire_armor_1/LGeave.png",
-				"res://assets/sprites/gear/fire_armor_1/RGreave.png"
-			],
-			"item_name": "Fire_Gloves",
-			"item_power": 43,
-			"rarity": 1,
-			"rarity_multiplier": 1.02,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/fire_armor_1/Gloves_i.png",
-			"type": 2,
-			"uuid": "37631609920039"
-		},
-		"21": {
-			"base_stats": {
-				"mana_regen": 0.35,
-				"projectile_speed": 0.25
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/samurai_armor_1/LGeave.png",
-				"res://assets/sprites/gear/samurai_armor_1/RGreave.png"
-			],
-			"item_name": "Samurai_Gloves",
-			"item_power": 2,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/samurai_armor_1/Gloves_i.png",
-			"type": 2,
-			"uuid": "39124189241356"
-		},
-		"22": {
-			"base_stats": {
-				"attack_percent": 0.95,
-				"attack_speed": 0.65,
-				"lightning_resistance": 0.35
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/wolf_armor_1/Armor.png",
-				"res://assets/sprites/gear/wolf_armor_1/LShoulder.png",
-				"res://assets/sprites/gear/wolf_armor_1/RShoulder.png"
-			],
-			"item_name": "Wolf_Armor",
-			"item_power": 7,
-			"rarity": 2,
-			"rarity_multiplier": 1.04,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/wolf_armor_1/Armor_i.png",
-			"type": 1,
-			"uuid": "39132751430536"
-		},
-		"23": {
-			"base_stats": {
-				"defense_percent": 0.3,
-				"fire_resistance": 2.5,
-				"healing_effectiveness": 0.6
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/barbed_armor_1/RBoot.png",
-				"res://assets/sprites/gear/barbed_armor_1/LBoot.png"
-			],
-			"item_name": "Barbed_Boots",
-			"item_power": 12,
-			"rarity": 1,
-			"rarity_multiplier": 1.02,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/barbed_armor_1/Boots_i.png",
-			"type": 3,
-			"uuid": "3915494211565"
-		},
-		"24": {
-			"base_stats": {
-				"area_of_effect_expansion": 0.6,
-				"bonus_armor": 10.4,
-				"damage_over_time_reduction": 0.75,
-				"magic_damage": 10.4
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/troll_armor_1/RBoot.png",
-				"res://assets/sprites/gear/troll_armor_1/LBoot.png"
-			],
-			"item_name": "Troll_Boots",
-			"item_power": 81,
-			"rarity": 2,
-			"rarity_multiplier": 1.04,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/troll_armor_1/Boots_i.png",
-			"type": 3,
-			"uuid": "40743903253198"
-		},
-		"25": {
-			"base_stats": {
-				"fire_damage": 20,
-				"resurrection_chance": 0.2
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/fire_armor_2/LGeave.png",
-				"res://assets/sprites/gear/fire_armor_2/RGreave.png"
-			],
-			"item_name": "Scorched_Gloves",
-			"item_power": 81,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/fire_armor_2/Gloves_i.png",
-			"type": 2,
-			"uuid": "40763455183332"
-		},
-		"26": {
-			"base_stats": {
-				"attack_speed": 0.85,
-				"resurrection_chance": 0.3
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/samurai_armor_1/Helmet.png"
-			],
-			"item_name": "Samurai_Helmet",
-			"item_power": 5,
-			"rarity": 1,
-			"rarity_multiplier": 1.02,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/samurai_armor_1/Helmet_i.png",
-			"type": 0,
-			"uuid": "4078606313287"
-		},
-		"27": {
-			"base_stats": {
-				"chain_hit_chance": 0.7,
-				"defense": 20
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/barbed_armor_1/Helmet.png"
-			],
-			"item_name": "Barbed_Helmet",
-			"item_power": 23,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/barbed_armor_1/Helmet_i.png",
-			"type": 0,
-			"uuid": "42521193778216"
-		},
-		"28": {
-			"base_stats": {
-				"attack_percent": 0.4,
-				"spell_penetration": 0.3
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/wolf_armor_1/LGeave.png",
-				"res://assets/sprites/gear/wolf_armor_1/RGreave.png"
-			],
-			"item_name": "Wolf_Gloves",
-			"item_power": 3,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/wolf_armor_1/Gloves_i.png",
-			"type": 2,
-			"uuid": "42531357004777"
-		},
-		"29": {
-			"base_stats": {
-				"chain_hit_chance": 0.6,
-				"reflect_chance": 0.2
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/bone_armor_1/RBoot.png",
-				"res://assets/sprites/gear/bone_armor_1/LBoot.png"
-			],
-			"item_name": "Bone_Boots",
-			"item_power": 4,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/bone_armor_1/Boots_i.png",
-			"type": 3,
-			"uuid": "42551703404880"
-		},
-		"3": {
-			"base_stats": {
-				"earth_resistance": 0.55,
-				"poison_damage": 15
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/squid_armor_1/LGeave.png",
-				"res://assets/sprites/gear/squid_armor_1/RGreave.png"
-			],
-			"item_name": "Squid_Gloves",
-			"item_power": 62,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/squid_armor_1/Gloves_i.png",
-			"type": 2,
-			"uuid": "29721081624754"
-		},
-		"30": {
-			"base_stats": {
-				"resource_regeneration": 0.65,
-				"spell_vamp": 0.1
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/shiny_armor_1/Armor.png",
-				"res://assets/sprites/gear/shiny_armor_1/LShoulder.png",
-				"res://assets/sprites/gear/shiny_armor_1/RShoulder.png"
-			],
-			"item_name": "Shiny_Armor",
-			"item_power": 2,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/shiny_armor_1/Armor_i.png",
-			"type": 1,
-			"uuid": "44202998789574"
-		},
-		"31": {
-			"base_stats": {
-				"cooldown_reduction": 0.05,
-				"spell_cast_speed": 0.7
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/fire_armor_1/RBoot.png",
-				"res://assets/sprites/gear/fire_armor_1/LBoot.png"
-			],
-			"item_name": "Fire_Boots",
-			"item_power": 3,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/fire_armor_1/Boots_i.png",
-			"type": 3,
-			"uuid": "44211066071440"
-		},
-		"32": {
-			"base_stats": {
-				"dodge_chance": 0.1,
-				"poison_damage": 5
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/blood_armor_1/Helmet.png"
-			],
-			"item_name": "Blood_Helmet",
-			"item_power": 20,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/blood_armor_1/Helmet_i.png",
-			"type": 0,
-			"uuid": "442197949125"
-		},
-		"33": {
-			"base_stats": {
-				"lightning_resistance": 0.35,
-				"reflect_chance": 0.1
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/fire_armor_2/Helmet.png"
-			],
-			"item_name": "Scorched_Helmet",
-			"item_power": 2,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/fire_armor_2/Helmet_i.png",
-			"type": 0,
-			"uuid": "46042364478854"
-		},
-		"34": {
-			"base_stats": {
-				"defense": 20.4,
-				"defense_percent": 0.45,
-				"knockback_resistance": 0.7
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/squid_armor_1/Armor.png",
-				"res://assets/sprites/gear/squid_armor_1/LShoulder.png",
-				"res://assets/sprites/gear/squid_armor_1/RShoulder.png"
-			],
-			"item_name": "Squid_Armor",
-			"item_power": 24,
-			"rarity": 1,
-			"rarity_multiplier": 1.02,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/squid_armor_1/Armor_i.png",
-			"type": 1,
-			"uuid": "4606746283290"
-		},
-		"35": {
-			"base_stats": {
-				"defense_percent": 0.45,
-				"mana_regen": 0.4
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/demon_plate_1/LGeave.png",
-				"res://assets/sprites/gear/demon_plate_1/RGreave.png"
-			],
-			"item_name": "Demon_Gloves",
-			"item_power": 3,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/demon_plate_1/Gloves_i.png",
-			"type": 2,
-			"uuid": "46081114046354"
-		},
-		"36": {
-			"base_stats": {
-				"damage_over_time_reduction": 0.75,
-				"health": 20.8,
-				"ice_damage": 15.6,
-				"wind_damage": 5.2
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/holy_armor_1/LGeave.png",
-				"res://assets/sprites/gear/holy_armor_1/RGreave.png"
-			],
-			"item_name": "Holy_Gloves",
-			"item_power": 111,
-			"rarity": 2,
-			"rarity_multiplier": 1.04,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/holy_armor_1/Gloves_i.png",
-			"type": 2,
-			"uuid": "4787621185594"
-		},
-		"37": {
-			"base_stats": {
-				"attack_speed": 0.7,
-				"mana_steal": 0.1
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/wolf_armor_1/Helmet.png"
-			],
-			"item_name": "Wolf_Helmet",
-			"item_power": 3,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/wolf_armor_1/Helmet_i.png",
-			"type": 0,
-			"uuid": "47882228392412"
-		},
-		"38": {
-			"base_stats": {
-				"loot_quality_increase": 0.9
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/holy_armor_1/Helmet.png"
-			],
-			"item_name": "Holy_Helmet",
-			"item_power": 3,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/holy_armor_1/Helmet_i.png",
-			"type": 0,
-			"uuid": "47903869258887"
-		},
-		"39": {
-			"base_stats": {
-				"attack": 15.3,
-				"crowd_control_reduction": 0.3,
-				"resurrection_chance": 0.25
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/bone_armor_1/Armor.png",
-				"res://assets/sprites/gear/bone_armor_1/LShoulder.png",
-				"res://assets/sprites/gear/bone_armor_1/RShoulder.png"
-			],
-			"item_name": "Bone_Armor",
-			"item_power": 18,
-			"rarity": 1,
-			"rarity_multiplier": 1.02,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/bone_armor_1/Armor_i.png",
-			"type": 1,
-			"uuid": "52202453273003"
-		},
-		"40": {
-			"base_stats": {
-				"aura_range": 0.55,
-				"block_chance": 0.15
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/shiny_armor_1/Armor.png",
-				"res://assets/sprites/gear/shiny_armor_1/LShoulder.png",
-				"res://assets/sprites/gear/shiny_armor_1/RShoulder.png"
-			],
-			"item_name": "Shiny_Armor",
-			"item_power": 2,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/shiny_armor_1/Armor_i.png",
-			"type": 1,
-			"uuid": "52222611388924"
-		},
-		"41": {
-			"base_stats": {
-				"area_of_effect_expansion": 0.55,
-				"crit_percent": 0.55
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/fire_armor_1/LGeave.png",
-				"res://assets/sprites/gear/fire_armor_1/RGreave.png"
-			],
-			"item_name": "Fire_Gloves",
-			"item_power": 4,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/fire_armor_1/Gloves_i.png",
-			"type": 2,
-			"uuid": "52222175260368"
-		},
-		"42": {
-			"base_stats": {
-				"health": 10,
-				"poison_damage": 5
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/fire_armor_1/Armor.png",
-				"res://assets/sprites/gear/fire_armor_1/LShoulder.png",
-				"res://assets/sprites/gear/fire_armor_1/RShoulder.png"
-			],
-			"item_name": "Fire_Armor",
-			"item_power": 30,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/fire_armor_1/Armor_i.png",
-			"type": 1,
-			"uuid": "56092140697192"
-		},
-		"43": {
-			"base_stats": {
-				"life_on_hit": 10,
-				"magic_resistance": 0.3
+				"block_chance": 0.25,
+				"mana": 20
 			},
 			"character_key": "player",
 			"cosmetics": [
@@ -853,163 +42,260 @@
 			"item_power": 41,
 			"rarity": 0,
 			"rarity_multiplier": 1,
-			"slot_type": 7,
+			"slot_type": 3,
 			"texture_path": "res://assets/sprites/gear/squid_armor_1/Boots_i.png",
 			"type": 3,
-			"uuid": "56102320626607"
+			"uuid": "32323550747811"
 		},
-		"44": {
+		"hands": {
 			"base_stats": {
-				"aura_range": 0.35,
-				"crit_percent": 0.7
+				"aura_range": 0.4,
+				"critical_hit_resistance": 0.6,
+				"skill_cooldown_reduction": 0.65,
+				"stun_chance": 4.5
 			},
 			"character_key": "player",
 			"cosmetics": [
-				"res://assets/sprites/gear/fire_armor_1/RBoot.png",
-				"res://assets/sprites/gear/fire_armor_1/LBoot.png"
+				"res://assets/sprites/gear/bone_armor_1/LGeave.png",
+				"res://assets/sprites/gear/bone_armor_1/RGreave.png"
 			],
-			"item_name": "Fire_Boots",
+			"item_name": "Bone_Gloves",
+			"item_power": 28,
+			"rarity": 2,
+			"rarity_multiplier": 1.04,
+			"slot_type": 2,
+			"texture_path": "res://assets/sprites/gear/bone_armor_1/Gloves_i.png",
+			"type": 2,
+			"uuid": "153151102688761"
+		},
+		"head": {
+			"base_stats": {
+				"earth_damage": 5.1,
+				"life_steal": 0.2,
+				"magic_damage": 10.2
+			},
+			"character_key": "player",
+			"cosmetics": [
+				"res://assets/sprites/gear/holy_armor_1/Helmet.png"
+			],
+			"item_name": "Holy_Helmet",
+			"item_power": 68,
+			"rarity": 1,
+			"rarity_multiplier": 1.02,
+			"slot_type": 0,
+			"texture_path": "res://assets/sprites/gear/holy_armor_1/Helmet_i.png",
+			"type": 0,
+			"uuid": "32953545333530"
+		}
+	},
+	"experience": 0,
+	"gear_modifiers": {
+		"chest": {
+			"defense_percent": 0.75,
+			"projectile_count": 10
+		},
+		"feet": {
+			"block_chance": 0.25,
+			"mana": 20
+		},
+		"hands": {
+			"aura_range": 0.4,
+			"critical_hit_resistance": 0.6,
+			"skill_cooldown_reduction": 0.65,
+			"stun_chance": 4.5
+		},
+		"head": {
+			"earth_damage": 5.1,
+			"life_steal": 0.2,
+			"magic_damage": 10.2
+		}
+	},
+	"inventory": {
+		"0": {
+			"base_stats": {
+				"health_percent": 0.5,
+				"mana_regen": 0.7
+			},
+			"character_key": "player",
+			"cosmetics": [
+				"res://assets/sprites/gear/demon_plate_1/Helmet.png"
+			],
+			"item_name": "Demon_Helmet",
 			"item_power": 4,
 			"rarity": 0,
 			"rarity_multiplier": 1,
 			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/fire_armor_1/Boots_i.png",
+			"texture_path": "res://assets/sprites/gear/demon_plate_1/Helmet_i.png",
+			"type": 0,
+			"uuid": "53414184159831"
+		},
+		"1": {
+			"base_stats": {
+				"ice_damage": 10,
+				"mana_cost_reduction": 0.6
+			},
+			"character_key": "player",
+			"cosmetics": [
+				"res://assets/sprites/gear/juggernaut_armor_1/Armor.png",
+				"res://assets/sprites/gear/juggernaut_armor_1/LShoulder.png",
+				"res://assets/sprites/gear/juggernaut_armor_1/RShoulder.png"
+			],
+			"item_name": "Juggernaut_Armor",
+			"item_power": 42,
+			"rarity": 0,
+			"rarity_multiplier": 1,
+			"slot_type": 7,
+			"texture_path": "res://assets/sprites/gear/juggernaut_armor_1/Armor_i.png",
+			"type": 1,
+			"uuid": "534393249525"
+		},
+		"2": {
+			"base_stats": {
+				"damage_reflection": 0.2,
+				"defense": 10.4,
+				"poison_damage": 15.6,
+				"projectile_count": 5.2
+			},
+			"character_key": "player",
+			"cosmetics": [
+				"res://assets/sprites/gear/barbed_armor_1/LGeave.png",
+				"res://assets/sprites/gear/barbed_armor_1/RGreave.png"
+			],
+			"item_name": "Barbed_Gloves",
+			"item_power": 101,
+			"rarity": 2,
+			"rarity_multiplier": 1.04,
+			"slot_type": 7,
+			"texture_path": "res://assets/sprites/gear/barbed_armor_1/Gloves_i.png",
+			"type": 2,
+			"uuid": "53433220872983"
+		},
+		"3": {
+			"base_stats": {
+				"accuracy": 0.4,
+				"attack": 15
+			},
+			"character_key": "player",
+			"cosmetics": [
+				"res://assets/sprites/gear/squid_armor_1/RBoot.png",
+				"res://assets/sprites/gear/squid_armor_1/LBoot.png"
+			],
+			"item_name": "Squid_Boots",
+			"item_power": 16,
+			"rarity": 0,
+			"rarity_multiplier": 1,
+			"slot_type": 7,
+			"texture_path": "res://assets/sprites/gear/squid_armor_1/Boots_i.png",
 			"type": 3,
-			"uuid": "5612997775930"
+			"uuid": "5497417756939"
+		},
+		"4": {
+			"base_stats": {
+				"mana_cost_reduction": 0.3,
+				"projectile_count": 10
+			},
+			"character_key": "player",
+			"cosmetics": [
+				"res://assets/sprites/gear/blood_armor_1/Helmet.png"
+			],
+			"item_name": "Blood_Helmet",
+			"item_power": 46,
+			"rarity": 0,
+			"rarity_multiplier": 1,
+			"slot_type": 7,
+			"texture_path": "res://assets/sprites/gear/blood_armor_1/Helmet_i.png",
+			"type": 0,
+			"uuid": "54982674543090"
 		},
 		"5": {
 			"base_stats": {
-				"aura_range": 0.25,
-				"block_chance": 0.25
+				"mana_cost_reduction": 0.7,
+				"resource_regeneration": 0.35
 			},
 			"character_key": "player",
 			"cosmetics": [
-				"res://assets/sprites/gear/samurai_armor_1/LGeave.png",
-				"res://assets/sprites/gear/samurai_armor_1/RGreave.png"
+				"res://assets/sprites/gear/troll_armor_1/Armor.png",
+				"res://assets/sprites/gear/troll_armor_1/LShoulder.png",
+				"res://assets/sprites/gear/troll_armor_1/RShoulder.png"
 			],
-			"item_name": "Samurai_Gloves",
-			"item_power": 2,
+			"item_name": "Troll_Armor",
+			"item_power": 4,
 			"rarity": 0,
 			"rarity_multiplier": 1,
 			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/samurai_armor_1/Gloves_i.png",
-			"type": 2,
-			"uuid": "29751461535483"
+			"texture_path": "res://assets/sprites/gear/troll_armor_1/Armor_i.png",
+			"type": 1,
+			"uuid": "55043039730971"
 		},
 		"6": {
 			"base_stats": {
-				"bleed_chance": 0.55,
-				"life_on_hit": 5
+				"attack": 10,
+				"attack_speed": 0.65
 			},
 			"character_key": "player",
 			"cosmetics": [
-				"res://assets/sprites/gear/holy_armor_1/LGeave.png",
-				"res://assets/sprites/gear/holy_armor_1/RGreave.png"
+				"res://assets/sprites/gear/bone_armor_1/RBoot.png",
+				"res://assets/sprites/gear/bone_armor_1/LBoot.png"
 			],
-			"item_name": "Holy_Gloves",
-			"item_power": 22,
+			"item_name": "Bone_Boots",
+			"item_power": 12,
 			"rarity": 0,
 			"rarity_multiplier": 1,
 			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/holy_armor_1/Gloves_i.png",
-			"type": 2,
-			"uuid": "31293772719094"
+			"texture_path": "res://assets/sprites/gear/bone_armor_1/Boots_i.png",
+			"type": 3,
+			"uuid": "56713406014912"
 		},
 		"7": {
 			"base_stats": {
-				"attack": 20.4,
-				"earth_resistance": 0.35,
-				"wind_resistance": 0.4
+				"critical_hit_resistance": 0.3,
+				"spell_penetration": 0.45,
+				"status_effect_duration": 1.35
 			},
 			"character_key": "player",
 			"cosmetics": [
-				"res://assets/sprites/gear/blood_armor_1/LGeave.png",
-				"res://assets/sprites/gear/blood_armor_1/RGreave.png"
+				"res://assets/sprites/gear/squid_armor_1/RBoot.png",
+				"res://assets/sprites/gear/squid_armor_1/LBoot.png"
 			],
-			"item_name": "Blood_Gloves",
-			"item_power": 23,
+			"item_name": "Squid_Boots",
+			"item_power": 9,
 			"rarity": 1,
 			"rarity_multiplier": 1.02,
 			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/blood_armor_1/Gloves_i.png",
-			"type": 2,
-			"uuid": "31313088309668"
+			"texture_path": "res://assets/sprites/gear/squid_armor_1/Boots_i.png",
+			"type": 3,
+			"uuid": "5673824439171"
 		},
 		"8": {
 			"base_stats": {
-				"attack": 10.2,
-				"attack_speed": 0.3,
-				"crowd_control_reduction": 0.7
+				"aura_effectiveness": 0.25,
+				"chain_hit_chance": 0.7
 			},
 			"character_key": "player",
 			"cosmetics": [
-				"res://assets/sprites/gear/fire_armor_1/RBoot.png",
-				"res://assets/sprites/gear/fire_armor_1/LBoot.png"
+				"res://assets/sprites/gear/blood_armor_1/RBoot.png",
+				"res://assets/sprites/gear/blood_armor_1/LBoot.png"
 			],
-			"item_name": "Fire_Boots",
-			"item_power": 15,
-			"rarity": 1,
-			"rarity_multiplier": 1.02,
+			"item_name": "Blood_Boots",
+			"item_power": 4,
+			"rarity": 0,
+			"rarity_multiplier": 1,
 			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/fire_armor_1/Boots_i.png",
+			"texture_path": "res://assets/sprites/gear/blood_armor_1/Boots_i.png",
 			"type": 3,
-			"uuid": "31333838107053"
+			"uuid": "5674807636317"
 		}
 	},
 	"item_ids": [
-		"28093628198973",
-		"28123337980286",
-		"28134057843970",
-		"29713100834211",
-		"29721081624754",
-		"29751461535483",
-		"31293772719094",
-		"31313088309668",
-		"31333838107053",
-		"32802846321855",
-		"3282945440080",
-		"3284900003151",
-		"34371413234596",
-		"34382744475821",
-		"34391270984122",
-		"35992822910484",
-		"36012808414043",
-		"36013062726966",
-		"37612962227887",
-		"37622969132652",
-		"37631609920039",
-		"39124189241356",
-		"39132751430536",
-		"3915494211565",
-		"40743903253198",
-		"40763455183332",
-		"4078606313287",
-		"42521193778216",
-		"42531357004777",
-		"42551703404880",
-		"44202998789574",
-		"44211066071440",
-		"442197949125",
-		"46042364478854",
-		"4606746283290",
-		"46081114046354",
-		"4787621185594",
-		"47882228392412",
-		"47903869258887",
-		"52202453273003",
-		"52222611388924",
-		"52222175260368",
-		"56092140697192",
-		"56102320626607",
-		"5612997775930",
-		"32802846321855",
-		"34371413234596",
-		"29713100834211",
-		"36012808414043",
-		"29721081624754",
-		"2274149177442",
-		"227659406385",
-		"22761729573930"
+		"53414184159831",
+		"534393249525",
+		"53433220872983",
+		"5497417756939",
+		"54982674543090",
+		"55043039730971",
+		"56713406014912",
+		"5673824439171",
+		"5674807636317"
 	],
 	"level": 1,
 	"skill_points": 99,

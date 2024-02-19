@@ -4,6 +4,8 @@ var settings = {}
 var character_states = {}
 @onready var character_state = load("res://assets/classes/character_state.gd")
 
+var stat_generators = Utils.load_json("res://assets/data/possible_stats.json")
+
 signal go_to_scene
 
 

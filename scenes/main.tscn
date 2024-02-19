@@ -95,6 +95,14 @@ offset_right = 1144.0
 offset_bottom = 359.0
 text = "Get More Items"
 
+[node name="ResetButton" type="Button" parent="MainScene"]
+layout_mode = 0
+offset_left = 886.0
+offset_top = 331.0
+offset_right = 1011.0
+offset_bottom = 359.0
+text = "Reset Items"
+
 [node name="FightButton" type="Button" parent="MainScene"]
 layout_mode = 1
 anchors_preset = 1
@@ -113,6 +121,8 @@ text = "FIGHT"
 position = Vector2(576, 128)
 scale = Vector2(0.75, 0.75)
 
+[node name="ActiveCharacter" type="Node2D" parent="MainScene/Player"]
+
 [node name="MainCamera" type="Camera2D" parent="."]
 anchor_mode = 0
 
@@ -130,4 +140,5 @@ mouse_filter = 2
 
 [connection signal="pressed" from="BigTestButton" to="." method="_on_big_test_button_pressed"]
 [connection signal="pressed" from="MainScene/Button" to="MainScene/Inventory" method="_on_button_pressed"]
+[connection signal="pressed" from="MainScene/ResetButton" to="MainScene/Inventory" method="_on_reset_button_pressed"]
 [connection signal="pressed" from="MainScene/FightButton" to="." method="_on_fight_button_pressed"]

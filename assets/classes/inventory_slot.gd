@@ -36,16 +36,19 @@ func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 func update_equipment_state(slot, data, action):
 	var equipment_key = EquipmentManager.equipment_map[slot.type]
 	if equipment_key:
-		if action == "add":
-			if slot.type == EquipmentManager.Type.MAIN:
-				current_character.add_inventory(slot.slot_id, data.to_dict())
-			else:
-				current_character.add_gear(equipment_key, data.to_dict())
-		elif action == "remove":
-			if slot.type == EquipmentManager.Type.MAIN:
-				current_character.remove_inventory(slot.slot_id)
-			else:
-				current_character.remove_gear(equipment_key)
+		match action:
+			"add":
+				match slot.type:
+					EquipmentManager.Type.MAIN:
+						current_character.add_inventory(slot.slot_id, data.to_dict())
+					_:
+						current_character.add_gear(equipment_key, data.to_dict())
+			"remove":
+				match slot.type:
+					EquipmentManager.Type.MAIN:
+						current_character.remove_inventory(slot.slot_id)
+					_:
+						current_character.remove_gear(equipment_key)
 		current_character.update_equipment_state()
 
 

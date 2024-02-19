@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://c41mku3pthk03"]
+
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_bnikp"]
+[ext_resource type="Texture2D" uid="uid://barjrskiajsnl" path="res://assets/sprites/ui/main_menu.png" id="2_20bko"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_bnikp")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 4672
+limit_bottom = 1024
+
+[node name="BackgroundContainer" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="BackgroundContainer"]
+position = Vector2(2336, 512)
+texture = ExtResource("2_20bko")
+
+[node name="ButtonControl" type="Control" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonContainer" type="HBoxContainer" parent="ButtonControl"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Button" type="Button" parent="ButtonControl/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Test
+"
+
+[node name="Button2" type="Button" parent="ButtonControl/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Test
+"

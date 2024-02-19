@@ -15,7 +15,8 @@ var wearable_types = [
 ]
 
 var state = {}  # Declare the state dictionary
-
+var stat_converter_script = preload("res://assets/classes/stat_conversion.gd")
+var stat_converter
 
 func _init():
 	# Initialize the state dictionary with default values
@@ -47,6 +48,7 @@ func _init():
 
 	# Additional initialization as needed
 	randomize()  # If you want to randomize any values or selections
+	stat_converter = stat_converter_script.new(self)
 
 
 func update_equipment_state():
@@ -83,6 +85,7 @@ func add_gear(gear_id, gear):
 	state["item_ids"].append(uuid)
 	state["equipment"][gear_id] = gear
 	state["gear_modifiers"][gear_id] = gear["base_stats"]
+	print(state["gear_modifiers"])
 	Utils.save_json(state, "res://assets/data/default_save.json")
 
 
@@ -112,6 +115,12 @@ func remove_item_by_uuid(uuid: String):
 			return  # Item found and removed, exit the function.
 
 
+func reset_inventory():
+	state["inventory"] = {}
+	state["item_ids"] = []
+	Utils.save_json(state, "res://assets/data/default_save.json")
+
+
 # Function to calculate final stats in real-time
 func calculate_final_stats():
 	state["total_stats"] = state["base_stats"].duplicate()
@@ -134,19 +143,13 @@ func calculate_final_stats():
 		var gear_stats = state["gear_modifiers"][gear_id]
 		for gear_stat in gear_stats.keys():
 			if gear_stat in percent_modifiers:
-				percent_modifiers[gear_stat] += gear_stats[gear_stat]
-			elif gear_stat in state["total_stats"]:
-				state["total_stats"][gear_stat] += gear_stats[gear_stat]
-
-	# Second pass: Apply percentage modifiers
-	for percent_stat in percent_modifiers.keys():
-		var base_stat = percent_stat.replace("_percent", "")
-		if base_stat in state["total_stats"]:
-			state["total_stats"][base_stat] *= 1 + percent_modifiers[percent_stat] / 100.0
+				stat_converter.modify_stat(gear_stat, gear_stats[gear_stat])
 
 	return state["total_stats"]
 
-
+'''
+{ "feet": { "block_chance": 0.25, "mana": 20 }, "hands": { "aura_range": 0.4, "critical_hit_resistance": 0.6, "skill_cooldown_reduction": 0.65, "stun_chance": 4.5 }, "head": { "aura_range": 0.45, "chain_hit_chance": 0.4 }, "chest": { "projectile_count": 10, "defense_percent": 0.75 } }
+'''
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# calls the randomizer in the project

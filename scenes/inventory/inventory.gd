@@ -61,6 +61,17 @@ func init_and_add_item(item: InventoryItem, slot: InventorySlot) -> void:
 	slot.add_child(item)
 
 
+## Removes all items from the inventory and updates character inventory.
+func clear_inventory() -> void:
+	var grid_container = $PanelContainer/HBoxContainer/ScrollContainer/GridContainer
+	for slot in grid_container.get_children():
+		if slot is InventorySlot:
+			for n in slot.get_children():
+				slot.remove_child(n)
+				n.queue_free()
+	current_character.reset_inventory()
+
+
 ## Repopulates the inventory UI from saved data.
 func repopulate_inventory() -> void:
 	var player_character = GameState.get_character_state("player")
@@ -128,3 +139,7 @@ func add_demo_items() -> void:
 
 func _on_button_pressed() -> void:
 	add_demo_items()
+
+
+func _on_reset_button_pressed() -> void:
+	clear_inventory()

@@ -1,6 +1,16 @@
 extends Node
 class_name stat_conversion
+var character_state:
+	set(_character_state):
+		character_state = _character_state
+		base_stats = character_state.state["base_stats"]
+	get:
+		return character_state
 
+var base_stats
+
+func _init(_character_state: CharacterState):
+	character_state = _character_state
 
 func call_function_by_name(function_name: String):
 	if has_method(function_name):
@@ -9,24 +19,46 @@ func call_function_by_name(function_name: String):
 		print("Function does not exist:", function_name)
 
 
-func health():
-	pass
+func modify_stat(stat_name: String, value: float):
+	if base_stats.has(stat_name):
+		if GameState.stat_generators[stat_name]["Type"] == "float":
+			var mod_name = stat_name
+			if "_percent" in stat_name:
+				mod_name.replace("_percent", "")
+			base_stats[mod_name] *= 1 + value / 100
+		else:
+			base_stats[stat_name] += value
+	else:
+		print("Stat does not exist:", stat_name)
 
 
-func health_percent():
-	pass
+func health(value: float):
+	if "health" in base_stats:
+		base_stats["health"] += value
+	else:
+		base_stats["health"] = value
 
 
-func crit_percent():
-	pass
+
+func health_percent(value: float):
+	# If health does not exist, initialize it with a default value
+	if "health" not in base_stats:
+		base_stats["health"] = 5  # Default health value
+	# Apply the percentage increase
+	base_stats["health"] *= 1 + value / 100
 
 
-func attack():
-	pass
+
+func crit_percent(value: float):
+	character_state.state["base_stats"]["crit"] *= 1 + value / 100
 
 
-func attack_percent():
-	pass
+func attack(value: float):
+	character_state.state["base_stats"]["attack"] += value
+
+
+func attack_percent(value: float):
+	character_state.state["base_stats"]["attack"] *= 1 + value / 100
 
 
 func accuracy():
@@ -57,8 +89,12 @@ func poison_resistance():
 	pass
 
 
-func fire_damage():
-	pass
+func fire_damage(target: Node2D, damage: float) -> float:
+	var total_resistance := 0.0
+	for gear in target.current_character.state["gear_modifiers"]:
+		if gear.has_key("fire_resistance"):
+			total_resistance += gear["fire_resistance"]
+	return damage - (damage * total_resistance)
 
 
 func fire_resistance():
