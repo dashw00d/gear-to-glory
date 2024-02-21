@@ -70,22 +70,21 @@
 		},
 		"head": {
 			"base_stats": {
-				"earth_damage": 5.1,
-				"life_steal": 0.2,
-				"magic_damage": 10.2
+				"health_percent": 0.5,
+				"mana_regen": 0.7
 			},
 			"character_key": "player",
 			"cosmetics": [
-				"res://assets/sprites/gear/holy_armor_1/Helmet.png"
+				"res://assets/sprites/gear/demon_plate_1/Helmet.png"
 			],
-			"item_name": "Holy_Helmet",
-			"item_power": 68,
-			"rarity": 1,
-			"rarity_multiplier": 1.02,
+			"item_name": "Demon_Helmet",
+			"item_power": 4,
+			"rarity": 0,
+			"rarity_multiplier": 1,
 			"slot_type": 0,
-			"texture_path": "res://assets/sprites/gear/holy_armor_1/Helmet_i.png",
+			"texture_path": "res://assets/sprites/gear/demon_plate_1/Helmet_i.png",
 			"type": 0,
-			"uuid": "32953545333530"
+			"uuid": "53414184159831"
 		}
 	},
 	"experience": 0,
@@ -105,30 +104,11 @@
 			"stun_chance": 4.5
 		},
 		"head": {
-			"earth_damage": 5.1,
-			"life_steal": 0.2,
-			"magic_damage": 10.2
+			"health_percent": 0.5,
+			"mana_regen": 0.7
 		}
 	},
 	"inventory": {
-		"0": {
-			"base_stats": {
-				"health_percent": 0.5,
-				"mana_regen": 0.7
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/demon_plate_1/Helmet.png"
-			],
-			"item_name": "Demon_Helmet",
-			"item_power": 4,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/demon_plate_1/Helmet_i.png",
-			"type": 0,
-			"uuid": "53414184159831"
-		},
 		"1": {
 			"base_stats": {
 				"ice_damage": 10,
@@ -149,7 +129,7 @@
 			"type": 1,
 			"uuid": "534393249525"
 		},
-		"2": {
+		"11": {
 			"base_stats": {
 				"damage_reflection": 0.2,
 				"defense": 10.4,
@@ -295,7 +275,12 @@
 		"55043039730971",
 		"56713406014912",
 		"5673824439171",
-		"5674807636317"
+		"5674807636317",
+		"53433220872983",
+		"154911868732580",
+		"154911868732580",
+		"32953545333530",
+		"53414184159831"
 	],
 	"level": 1,
 	"skill_points": 99,

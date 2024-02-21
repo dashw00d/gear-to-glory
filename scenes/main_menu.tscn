@@ -1,68 +1,184 @@
-[gd_scene load_steps=3 format=3 uid="uid://c41mku3pthk03"]
+[gd_scene load_steps=14 format=3 uid="uid://c41mku3pthk03"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_bnikp"]
 [ext_resource type="Texture2D" uid="uid://barjrskiajsnl" path="res://assets/sprites/ui/main_menu.png" id="2_20bko"]
+[ext_resource type="PackedScene" uid="uid://dgyp53n3k4kvp" path="res://scenes/inventory/inventory.tscn" id="3_hbg71"]
+[ext_resource type="Shader" path="res://assets/shaders/god_ray.gdshader" id="3_vi7np"]
+[ext_resource type="PackedScene" uid="uid://dw0a6getl6jwy" path="res://scenes/ui/components/close_button.tscn" id="4_d3c7f"]
+[ext_resource type="FontFile" uid="uid://3laylbry7cvb" path="res://assets/theme/Fonts/Inter-VariableFont_slnt,wght.ttf" id="7_ve5e8"]
+[ext_resource type="StyleBox" uid="uid://d1gubnww8bqar" path="res://assets/theme/menu_button.tres" id="8_g1vpo"]
+[ext_resource type="StyleBox" uid="uid://cdlfr5khlf7jn" path="res://assets/theme/menu_button_focus.tres" id="9_gcmuj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mvik5"]
+shader = ExtResource("3_vi7np")
+shader_parameter/angle = 0.6
+shader_parameter/position = 0.2
+shader_parameter/spread = 0.425
+shader_parameter/cutoff = 0.122
+shader_parameter/falloff = 0.265
+shader_parameter/edge_fade = 0.322
+shader_parameter/speed = 2.0
+shader_parameter/ray1_density = 8.0
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.365
+shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
+shader_parameter/hdr = false
+shader_parameter/seed = 5.0
+
+[sub_resource type="GDScript" id="GDScript_i0hms"]
+script/source = "extends ColorRect
+
+
+func _ready():
+	mouse_filter = Control.MOUSE_FILTER_STOP  # Make sure to capture the input
+	custom_minimum_size = get_viewport_rect().size
+"
+
+[sub_resource type="FontVariation" id="FontVariation_stysg"]
+base_font = ExtResource("7_ve5e8")
+variation_embolden = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhw1v"]
+content_margin_left = 10.0
+content_margin_top = 2.0
+content_margin_right = 10.0
+content_margin_bottom = 2.0
+bg_color = Color(0.2, 0.211765, 0.215686, 0.898039)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.960784, 0.717647, 0.521569, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_size = 3
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_el0se"]
+base_font = ExtResource("7_ve5e8")
+variation_embolden = 0.5
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_bnikp")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-limit_left = 0
-limit_top = 0
-limit_right = 4672
-limit_bottom = 1024
-
 [node name="BackgroundContainer" type="Node2D" parent="."]
 
 [node name="Background" type="Sprite2D" parent="BackgroundContainer"]
-position = Vector2(2336, 136)
+position = Vector2(2464, 540)
 texture = ExtResource("2_20bko")
 
-[node name="ButtonControl" type="Control" parent="."]
-custom_minimum_size = Vector2(1152, 648)
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="ColorRect" type="ColorRect" parent="BackgroundContainer"]
+material = SubResource("ShaderMaterial_mvik5")
+offset_left = 1872.0
+offset_right = 3608.0
+offset_bottom = 840.0
 
-[node name="ButtonContainer" type="HBoxContainer" parent="ButtonControl"]
-layout_mode = 1
-anchors_preset = 12
+[node name="MenuGroup" type="CanvasLayer" parent="."]
+
+[node name="ModalBG" type="ColorRect" parent="MenuGroup"]
+unique_name_in_owner = true
+visible = false
+self_modulate = Color(1, 1, 1, 0.0313726)
+color = Color(0, 0, 0, 1)
+script = SubResource("GDScript_i0hms")
+
+[node name="Inventory" parent="MenuGroup" instance=ExtResource("3_hbg71")]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(1.5, 1.5)
+
+[node name="CloseButton" parent="MenuGroup" instance=ExtResource("4_d3c7f")]
+unique_name_in_owner = true
+visible = false
+
+[node name="ButtonControl" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="ButtonControl"]
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = -31.0
+offset_left = -249.5
+offset_top = -40.0
+offset_right = 249.5
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/margin_bottom = 25
+
+[node name="ButtonContainer" type="HBoxContainer" parent="ButtonControl/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
 alignment = 1
 
-[node name="Travel" type="Button" parent="ButtonControl/ButtonContainer"]
+[node name="Travel" type="Button" parent="ButtonControl/MarginContainer/ButtonContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.898039, 0.898039, 0.898039, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_stysg")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("8_g1vpo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jhw1v")
+theme_override_styles/pressed = ExtResource("8_g1vpo")
+theme_override_styles/focus = ExtResource("9_gcmuj")
 text = "Travel
 "
 
-[node name="Storage" type="Button" parent="ButtonControl/ButtonContainer"]
+[node name="Storage" type="Button" parent="ButtonControl/MarginContainer/ButtonContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_fonts/font = SubResource("FontVariation_el0se")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("8_g1vpo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jhw1v")
+theme_override_styles/pressed = ExtResource("8_g1vpo")
+theme_override_styles/focus = ExtResource("9_gcmuj")
 text = "Storage"
 
-[node name="Skills" type="Button" parent="ButtonControl/ButtonContainer"]
+[node name="Skills" type="Button" parent="ButtonControl/MarginContainer/ButtonContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_el0se")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("8_g1vpo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jhw1v")
+theme_override_styles/pressed = ExtResource("8_g1vpo")
+theme_override_styles/focus = ExtResource("9_gcmuj")
 text = "Skills"
 
-[node name="Crafting" type="Button" parent="ButtonControl/ButtonContainer"]
+[node name="Crafting" type="Button" parent="ButtonControl/MarginContainer/ButtonContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_el0se")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("8_g1vpo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jhw1v")
+theme_override_styles/pressed = ExtResource("8_g1vpo")
+theme_override_styles/focus = ExtResource("9_gcmuj")
 text = "Crafting"
 
-[node name="Alchemy" type="Button" parent="ButtonControl/ButtonContainer"]
+[node name="Alchemy" type="Button" parent="ButtonControl/MarginContainer/ButtonContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_el0se")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("8_g1vpo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jhw1v")
+theme_override_styles/pressed = ExtResource("8_g1vpo")
+theme_override_styles/focus = ExtResource("9_gcmuj")
 text = "Alchemy"
 
-[node name="Quests" type="Button" parent="ButtonControl/ButtonContainer"]
+[node name="Quests" type="Button" parent="ButtonControl/MarginContainer/ButtonContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_el0se")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("8_g1vpo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jhw1v")
+theme_override_styles/pressed = ExtResource("8_g1vpo")
+theme_override_styles/focus = ExtResource("9_gcmuj")
 text = "Quests"
+
+[connection signal="gui_input" from="MenuGroup/ModalBG" to="." method="_on_modal_bg_gui_input"]

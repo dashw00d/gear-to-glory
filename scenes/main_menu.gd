@@ -8,6 +8,8 @@ var edge_threshold_y_percentage = 0.3 # 5% of the viewport height
 var max_speed = 1500
 
 var current_target_position = Vector2()
+var open_menu: Dictionary = {}  # Assuming all menus are Control nodes
+
 
 var button_targets = {
 	"Travel": Vector2(-100, 0), # These are example values
@@ -19,10 +21,11 @@ var button_targets = {
 }
 
 func _ready() -> void:
+	%CloseButton.close_button_pressed.connect(_on_close_button_pressed.bind())
 	$BackgroundContainer.position = Vector2()
 	current_target_position = button_targets["Crafting"]
 	for button_name in button_targets.keys():
-		var button_path = "ButtonControl/ButtonContainer/" + button_name
+		var button_path = "ButtonControl/MarginContainer/ButtonContainer/" + button_name
 		var button = get_node_or_null(button_path)
 		if button:
 			button.mouse_entered.connect(_on_Button_hovered.bind(button_name))
@@ -35,7 +38,67 @@ func _on_Button_hovered(button_name: String):
 	current_target_position = button_targets[button_name]
 	
 func _on_Button_pressed(button_name: String):
-	pass
+	# hide_all_menus() # make sure no other menu is open
+	if open_menu.has(button_name):
+		_on_close_button_pressed(button_name)
+		return
+	else:
+		max_speed = 0
+		hide_all_menus() # Make sure no other menu is open
+		%ModalBG.visible = true
+		match button_name:
+			"Travel":
+				pass
+			"Storage":
+				%Inventory.visible = true
+				%CloseButton.visible = true
+				open_menu[button_name] = %Inventory
+			"Skills":
+				pass
+			"Crafting":
+				pass
+			"Alchemy":
+				pass
+			"Quests":
+				pass
+			_:
+				print("Button with name '%s' not found in button_targets." % button_name)
+
+func _on_close_button_pressed(button_name: String = ""):
+	# Check if a specific button_name was provided
+	if button_name != "" and open_menu.has(button_name):
+		var menu_to_close = open_menu[button_name]
+		menu_to_close.visible = false
+		open_menu.erase(button_name)
+	else:
+		# No specific button_name, so close the last opened menu
+		if open_menu.size() > 0:
+			var last_menu_name = open_menu.keys()[open_menu.size() - 1]
+			var menu_to_close = open_menu[last_menu_name]
+			menu_to_close.visible = false
+			open_menu.erase(last_menu_name)
+
+	max_speed = 1500
+	%ModalBG.visible = false
+	%CloseButton.visible = false
+	clear_focus()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		# Check if there is any menu open before attempting to close
+		if open_menu.size() > 0:
+			for menu_name in open_menu.keys():
+				_on_close_button_pressed(menu_name)
+			# Optionally, clear the open_menu dictionary if you want to close all menus at once
+			# open_menu.clear()
+
+
+func hide_all_menus():
+	for menu in open_menu.values():
+		menu.visible = false
+	open_menu.clear()
+	%ModalBG.visible = false
+	%CloseButton.visible = false
 
 func _process(delta: float) -> void:
 	var viewport_size = get_viewport_rect().size
@@ -73,3 +136,25 @@ func _process(delta: float) -> void:
 	var scene_height = get_viewport_rect().size.y # Set to bg image height to activate
 	$BackgroundContainer.position.x = clamp($BackgroundContainer.position.x, viewport_size.x - scene_width, 0)
 	$BackgroundContainer.position.y = clamp($BackgroundContainer.position.y, viewport_size.y - scene_height, 0)
+
+
+func _on_modal_bg_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		# The ColorRect was clicked, check if it's outside the currently open menu
+		var clicked_outside = true
+		for menu_name in open_menu:
+			var menu = open_menu[menu_name]
+			if menu.get_global_rect().has_point(event.global_position):
+				clicked_outside = false
+				break
+		
+		if clicked_outside:
+			for menu_name in open_menu.keys():
+				_on_close_button_pressed(menu_name) # Assuming this function now takes a menu name
+			clear_focus()
+
+func clear_focus():
+	for child in $ButtonControl/MarginContainer/ButtonContainer.get_children():
+		child.release_focus()
+
+

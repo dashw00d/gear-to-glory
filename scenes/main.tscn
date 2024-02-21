@@ -75,10 +75,7 @@ offset_right = 1144.0
 offset_bottom = 360.0
 
 [node name="Inventory" parent="MainScene" instance=ExtResource("5_032ry")]
-offset_left = 528.0
-offset_top = 368.0
-offset_right = 568.0
-offset_bottom = 408.0
+layout_mode = 1
 scale = Vector2(0.5, 0.5)
 
 [node name="Char Stats" parent="MainScene" instance=ExtResource("3_3krfl")]
@@ -130,6 +127,7 @@ anchor_mode = 0
 layer = 2
 
 [node name="ScreenShader" type="ColorRect" parent="MainCamera/CanvasLayer"]
+visible = false
 material = SubResource("ShaderMaterial_x8t8l")
 anchors_preset = 15
 anchor_right = 1.0

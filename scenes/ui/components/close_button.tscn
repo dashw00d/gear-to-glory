@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dw0a6getl6jwy"]
+
+[ext_resource type="Script" path="res://scenes/ui/components/close_button.gd" id="1_ddvhu"]
+[ext_resource type="Texture2D" uid="uid://bfoal6q5yw2w4" path="res://assets/sprites/ui/x_button/normal.png" id="1_of3fp"]
+[ext_resource type="Texture2D" uid="uid://dsf5g4k2jv34y" path="res://assets/sprites/ui/x_button/clicked.png" id="2_tbt5a"]
+[ext_resource type="Texture2D" uid="uid://dkkulval8m35k" path="res://assets/sprites/ui/x_button/hover.png" id="3_lebln"]
+
+[node name="CloseButton" type="Control"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+script = ExtResource("1_ddvhu")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -73.0
+offset_bottom = 75.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 170
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 0
+
+[node name="CloseButton" type="TextureButton" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("1_of3fp")
+texture_pressed = ExtResource("2_tbt5a")
+texture_hover = ExtResource("3_lebln")
+texture_focused = ExtResource("3_lebln")
+
+[connection signal="button_up" from="MarginContainer/CloseButton" to="." method="_on_close_button_button_up"]
