@@ -1,14 +1,14 @@
 extends Node2D
-var character_key = "player"
-var current_character = GameState.get_character_state(character_key)
+@onready var character_key = "player"
+var current_character
 
-@onready var total_health: float = current_character.state["total_stats"]["health"]:
+@onready var total_health: float:
 	set(new_total_health):
 		# can apply temp health buffs here
 		total_health = new_total_health
 		get_node("ProgressBar").max_value = new_total_health
 
-@onready var health: float = current_character.state["total_stats"]["health"]:
+@onready var health: float:
 	set(new_health):
 		health = new_health
 		get_node("ProgressBar").value = new_health
@@ -48,8 +48,11 @@ signal damage_taken(damage: int, location: Vector2)
 
 
 func _ready():
+	GameState.create_character("player")
+	current_character = GameState.get_character_state(character_key)
 	current_character.equipment_updated.connect(_on_equipment_updated.bind())
 	total_health = current_character.state["total_stats"]["health"]
+	health = current_character.state["total_stats"]["health"]
 
 
 func _process(delta):

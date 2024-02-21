@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dgyp53n3k4kvp"]
+[gd_scene load_steps=16 format=3 uid="uid://dgyp53n3k4kvp"]
 
 [ext_resource type="Script" path="res://scenes/inventory/inventory.gd" id="1_2016b"]
 [ext_resource type="Theme" uid="uid://d24xi7m4k637h" path="res://assets/theme/default_theme.tres" id="1_q1prd"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dqe6hxh214ij5" path="res://assets/sprites/Item__48.png" id="9_oc2if"]
 [ext_resource type="Texture2D" uid="uid://cdid7cbm4nbit" path="res://assets/sprites/Item__43.png" id="10_n1djk"]
 [ext_resource type="Texture2D" uid="uid://dwjsh247otcxp" path="res://assets/sprites/Item__32.png" id="11_g4dlw"]
+[ext_resource type="PackedScene" uid="uid://cchf1y12qq15v" path="res://scenes/player/player.tscn" id="13_1atyd"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_px2yv"]
 
@@ -203,6 +204,8 @@ columns = 7
 [node name="InventorySlot" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer" groups=["inventory_items"]]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 theme = SubResource("Theme_c8qxw")
 script = ExtResource("3_muru4")
 type = 7
@@ -210,455 +213,611 @@ type = 7
 [node name="InventorySlot2" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer" groups=["inventory_items"]]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot3" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer" groups=["inventory_items"]]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot4" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer" groups=["inventory_items"]]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot5" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot6" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot7" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot8" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot9" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot10" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot11" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot12" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot13" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot14" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot15" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot16" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot17" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot18" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot19" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot20" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot21" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot22" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot23" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot24" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot25" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot26" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot27" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot28" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot29" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot30" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot31" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot32" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot33" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot34" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot35" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot36" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot37" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot38" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot39" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot40" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot41" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot42" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot43" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot44" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot45" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot46" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot47" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot48" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot49" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot50" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot51" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot52" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot53" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot54" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot55" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot56" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot57" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot58" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot59" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot60" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot61" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot62" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot63" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot64" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot65" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot66" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot67" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot68" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot69" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot70" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot71" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot72" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot73" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot74" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot75" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot76" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
 
 [node name="InventorySlot77" type="PanelContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 script = ExtResource("3_muru4")
 type = 7
+
+[node name="Player" parent="." instance=ExtResource("13_1atyd")]
+position = Vector2(-136, 4)
+scale = Vector2(0.75, 0.75)

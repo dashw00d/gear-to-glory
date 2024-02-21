@@ -54,7 +54,8 @@ func make_background() -> void:
 
 func configure_bg_color_rect(bg_color_rect: ColorRect) -> void:
 	# Set the size to match the TextureRect and configure properties
-	bg_color_rect.custom_minimum_size = self.size
+	bg_color_rect.custom_minimum_size = Vector2(36,36)
+	print(self.size)
 	bg_color_rect.show_behind_parent = true
 	bg_color_rect.color = get_rarity_color(rarity)  # Assuming `rarity` is defined elsewhere
 	bg_color_rect.mouse_filter = Control.MOUSE_FILTER_PASS
@@ -65,7 +66,7 @@ func configure_border(border: TextureRect) -> void:
 	# Load and configure border properties
 	border.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	border.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	border.custom_minimum_size = self.size
+	border.custom_minimum_size = Vector2(36,36)
 	border.texture = preload("res://assets/sprites/faded_border.png")
 	# You can add a shader here if u want 2
 	border.self_modulate.a = .5  # lighten it up if u want 2

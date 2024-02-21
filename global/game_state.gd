@@ -11,7 +11,11 @@ signal go_to_scene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	character_states["player"] = character_state.new()
+	pass
+
+
+func create_character(name: String):
+	character_states[name] = character_state.new()
 
 
 func change_scene(scene):

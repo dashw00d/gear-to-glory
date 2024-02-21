@@ -1,7 +1,7 @@
 extends Control
 @onready var current_scene_difficulty = 5
 @export var character_key = "player"
-var current_character = GameState.get_character_state(character_key)
+@onready var current_character = GameState.get_character_state(character_key)
 
 var slot_map = {
 	EquipmentManager.Type.HEAD: "HBoxContainer4/HeadSlot",
@@ -14,6 +14,14 @@ var slot_map = {
 }
 
 
+func _ready():
+	# GameState.connect("scene_changed", Callable(self, "_on_scene_changed"), CONNECT_PERSIST)
+	$Player.animator.speed_scale = 0.5
+	$Player.animator.play("idle")
+	current_character.update_equipment_state()
+	repopulate_inventory()
+	
+	
 ## Adds new items to the first available slot.
 func add_new_items(items: Array) -> void:
 	for item in items:

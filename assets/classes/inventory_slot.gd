@@ -4,7 +4,6 @@ class_name InventorySlot
 @export var type: EquipmentManager.Type
 @export var character_key = "player"
 @onready var slot_id = get_index()
-var current_character = GameState.get_character_state(character_key)
 
 
 # Custom init function so that it doesn't error
@@ -35,6 +34,7 @@ func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 # Helper function for updating equipment state
 func update_equipment_state(slot, data, action):
 	var equipment_key = EquipmentManager.equipment_map[slot.type]
+	var current_character = GameState.get_character_state(character_key)
 	if equipment_key:
 		match action:
 			"add":

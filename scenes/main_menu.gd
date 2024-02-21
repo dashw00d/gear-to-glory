@@ -1,8 +1,8 @@
 extends Node2D
 
 # Edge threshold percentages of the viewport size (0.0 to 1.0)
-var edge_threshold_x_percentage = 0.3 # 10% of the viewport width
-var edge_threshold_y_percentage = 0.3 # 5% of the viewport height
+var edge_threshold_x_percentage = 0.3  # 10% of the viewport width
+var edge_threshold_y_percentage = 0.3  # 5% of the viewport height
 
 # Maximum speed of the background movement
 var max_speed = 1500
@@ -10,15 +10,15 @@ var max_speed = 1500
 var current_target_position = Vector2()
 var open_menu: Dictionary = {}  # Assuming all menus are Control nodes
 
-
 var button_targets = {
-	"Travel": Vector2(-100, 0), # These are example values
+	"Travel": Vector2(-100, 0),  # These are example values
 	"Storage": Vector2(-750, 0),
 	"Skills": Vector2(-1100, 0),
 	"Crafting": Vector2(-1800, 0),
 	"Alchemy": Vector2(-2500, 0),
 	"Quests": Vector2(-3500, 0)
 }
+
 
 func _ready() -> void:
 	%CloseButton.close_button_pressed.connect(_on_close_button_pressed.bind())
@@ -34,9 +34,11 @@ func _ready() -> void:
 		else:
 			print("Button with name '%s' not found in path '%s'." % [button_name, button_path])
 
+
 func _on_Button_hovered(button_name: String):
 	current_target_position = button_targets[button_name]
-	
+
+
 func _on_Button_pressed(button_name: String):
 	# hide_all_menus() # make sure no other menu is open
 	if open_menu.has(button_name):
@@ -44,11 +46,11 @@ func _on_Button_pressed(button_name: String):
 		return
 	else:
 		max_speed = 0
-		hide_all_menus() # Make sure no other menu is open
+		hide_all_menus()  # Make sure no other menu is open
 		%ModalBG.visible = true
 		match button_name:
 			"Travel":
-				pass
+				switch_to_battle_scene()
 			"Storage":
 				%Inventory.visible = true
 				%CloseButton.visible = true
@@ -63,6 +65,12 @@ func _on_Button_pressed(button_name: String):
 				pass
 			_:
 				print("Button with name '%s' not found in button_targets." % button_name)
+
+
+func switch_to_battle_scene():
+	# Instantiate the battle scene
+	get_tree().change_scene_to_file("res://scenes/battle.tscn")
+
 
 func _on_close_button_pressed(button_name: String = ""):
 	# Check if a specific button_name was provided
@@ -83,6 +91,7 @@ func _on_close_button_pressed(button_name: String = ""):
 	%CloseButton.visible = false
 	clear_focus()
 
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		# Check if there is any menu open before attempting to close
@@ -99,6 +108,7 @@ func hide_all_menus():
 	open_menu.clear()
 	%ModalBG.visible = false
 	%CloseButton.visible = false
+
 
 func _process(delta: float) -> void:
 	var viewport_size = get_viewport_rect().size
@@ -128,14 +138,20 @@ func _process(delta: float) -> void:
 
 	# Smooth transition towards the current target position using lerp
 	var lerp_speed = 5.0  # Adjust the speed of the transition
-	$BackgroundContainer.position = $BackgroundContainer.position.lerp(current_target_position, lerp_speed * delta)
+	$BackgroundContainer.position = $BackgroundContainer.position.lerp(
+		current_target_position, lerp_speed * delta
+	)
 
 	# Optional: Clamp the background position to prevent it from moving too far
 	var scene_width = 4672  # Adjust to your background size
-	# prevent y axis from moving 
-	var scene_height = get_viewport_rect().size.y # Set to bg image height to activate
-	$BackgroundContainer.position.x = clamp($BackgroundContainer.position.x, viewport_size.x - scene_width, 0)
-	$BackgroundContainer.position.y = clamp($BackgroundContainer.position.y, viewport_size.y - scene_height, 0)
+	# prevent y axis from moving
+	var scene_height = get_viewport_rect().size.y  # Set to bg image height to activate
+	$BackgroundContainer.position.x = clamp(
+		$BackgroundContainer.position.x, viewport_size.x - scene_width, 0
+	)
+	$BackgroundContainer.position.y = clamp(
+		$BackgroundContainer.position.y, viewport_size.y - scene_height, 0
+	)
 
 
 func _on_modal_bg_gui_input(event: InputEvent) -> void:
@@ -147,14 +163,13 @@ func _on_modal_bg_gui_input(event: InputEvent) -> void:
 			if menu.get_global_rect().has_point(event.global_position):
 				clicked_outside = false
 				break
-		
+
 		if clicked_outside:
 			for menu_name in open_menu.keys():
-				_on_close_button_pressed(menu_name) # Assuming this function now takes a menu name
+				_on_close_button_pressed(menu_name)  # Assuming this function now takes a menu name
 			clear_focus()
+
 
 func clear_focus():
 	for child in $ButtonControl/MarginContainer/ButtonContainer.get_children():
 		child.release_focus()
-
-
