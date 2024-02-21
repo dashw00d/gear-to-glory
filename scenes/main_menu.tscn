@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://c41mku3pthk03"]
+[gd_scene load_steps=16 format=3 uid="uid://c41mku3pthk03"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_bnikp"]
 [ext_resource type="Texture2D" uid="uid://barjrskiajsnl" path="res://assets/sprites/ui/main_menu.png" id="2_20bko"]
 [ext_resource type="PackedScene" uid="uid://dgyp53n3k4kvp" path="res://scenes/inventory/inventory.tscn" id="3_hbg71"]
 [ext_resource type="Shader" path="res://assets/shaders/god_ray.gdshader" id="3_vi7np"]
 [ext_resource type="PackedScene" uid="uid://dw0a6getl6jwy" path="res://scenes/ui/components/close_button.tscn" id="4_d3c7f"]
+[ext_resource type="Shader" path="res://assets/shaders/nubula.gdshader" id="4_spncr"]
 [ext_resource type="FontFile" uid="uid://3laylbry7cvb" path="res://assets/theme/Fonts/Inter-VariableFont_slnt,wght.ttf" id="7_ve5e8"]
 [ext_resource type="StyleBox" uid="uid://d1gubnww8bqar" path="res://assets/theme/menu_button.tres" id="8_g1vpo"]
 [ext_resource type="StyleBox" uid="uid://cdlfr5khlf7jn" path="res://assets/theme/menu_button_focus.tres" id="9_gcmuj"]
@@ -24,6 +25,21 @@ shader_parameter/ray2_intensity = 0.365
 shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
 shader_parameter/hdr = false
 shader_parameter/seed = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k81dv"]
+shader = ExtResource("4_spncr")
+shader_parameter/OCTAVE = 2
+shader_parameter/timescale = 2.0
+shader_parameter/CLOUD1_COL = Color(0.41, 0.64, 0.78, 0.4)
+shader_parameter/CLOUD2_COL = Color(0.99, 0.79, 0.46, 0.2)
+shader_parameter/CLOUD3_COL = Color(0.811765, 0.309804, 0.588235, 0.372549)
+shader_parameter/CLOUD4_COL = Color(0.270588, 0.14902, 0.329412, 0.305882)
+shader_parameter/SPACE = Color(0.0901961, 0.0588235, 0.278431, 0.572549)
+shader_parameter/zoomScale = 10.0
+shader_parameter/size = 10.0
+shader_parameter/starscale = 20.0
+shader_parameter/opacity = 0.4
+shader_parameter/prob = 0.98
 
 [sub_resource type="GDScript" id="GDScript_i0hms"]
 script/source = "extends ColorRect
@@ -81,7 +97,7 @@ offset_bottom = 840.0
 [node name="ModalBG" type="ColorRect" parent="MenuGroup"]
 unique_name_in_owner = true
 visible = false
-self_modulate = Color(1, 1, 1, 0.0313726)
+material = SubResource("ShaderMaterial_k81dv")
 color = Color(0, 0, 0, 1)
 script = SubResource("GDScript_i0hms")
 
