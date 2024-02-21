@@ -16,9 +16,10 @@
 script = ExtResource("1_7743i")
 
 [node name="Enemy" parent="." groups=["enemy"] instance=ExtResource("2_6ci4s")]
-position = Vector2(776, 288)
+position = Vector2(1165, 535)
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("3_xkxwp")]
+position = Vector2(840, 496)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_right = 40.0

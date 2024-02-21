@@ -1,4 +1,6 @@
 extends Node2D
+@export var character_key = "player"
+@onready var current_character = GameState.get_character_state(character_key)
 
 var damage_number_2d_pool:Array[DamageNumber2D] = []
 
@@ -9,6 +11,10 @@ var damage_number_2d_pool:Array[DamageNumber2D] = []
 func _ready():
 	player.damage_taken.connect(on_hit.bind())
 	enemy.damage_taken.connect(on_hit.bind())
+	# add equipment to character | Temp
+	current_character.update_equipment_state()
+	print(current_character.state["total_stats"]["attack"])
+	$Player.get_node("ProgressBar").visible = true
 
 func on_hit(damage, position):
 	spawn_damage_number(damage, position[2])

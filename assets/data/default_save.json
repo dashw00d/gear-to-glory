@@ -30,22 +30,22 @@
 		},
 		"feet": {
 			"base_stats": {
-				"block_chance": 0.25,
-				"mana": 20
+				"attack": 10,
+				"attack_speed": 0.65
 			},
 			"character_key": "player",
 			"cosmetics": [
-				"res://assets/sprites/gear/squid_armor_1/RBoot.png",
-				"res://assets/sprites/gear/squid_armor_1/LBoot.png"
+				"res://assets/sprites/gear/bone_armor_1/RBoot.png",
+				"res://assets/sprites/gear/bone_armor_1/LBoot.png"
 			],
-			"item_name": "Squid_Boots",
-			"item_power": 41,
+			"item_name": "Bone_Boots",
+			"item_power": 12,
 			"rarity": 0,
 			"rarity_multiplier": 1,
 			"slot_type": 3,
-			"texture_path": "res://assets/sprites/gear/squid_armor_1/Boots_i.png",
+			"texture_path": "res://assets/sprites/gear/bone_armor_1/Boots_i.png",
 			"type": 3,
-			"uuid": "32323550747811"
+			"uuid": "56713406014912"
 		},
 		"hands": {
 			"base_stats": {
@@ -94,8 +94,8 @@
 			"projectile_count": 10
 		},
 		"feet": {
-			"block_chance": 0.25,
-			"mana": 20
+			"attack": 10,
+			"attack_speed": 0.65
 		},
 		"hands": {
 			"aura_range": 0.4,
@@ -534,25 +534,6 @@
 			"type": 1,
 			"uuid": "55043039730971"
 		},
-		"6": {
-			"base_stats": {
-				"attack": 10,
-				"attack_speed": 0.65
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/bone_armor_1/RBoot.png",
-				"res://assets/sprites/gear/bone_armor_1/LBoot.png"
-			],
-			"item_name": "Bone_Boots",
-			"item_power": 12,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/bone_armor_1/Boots_i.png",
-			"type": 3,
-			"uuid": "56713406014912"
-		},
 		"7": {
 			"base_stats": {
 				"critical_hit_resistance": 0.3,
@@ -654,7 +635,9 @@
 		"154911868732580",
 		"154911868732580",
 		"154911868732580",
-		"154911868732580"
+		"154911868732580",
+		"32323550747811",
+		"56713406014912"
 	],
 	"level": 1,
 	"skill_points": 99,
