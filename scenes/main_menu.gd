@@ -1,15 +1,17 @@
 extends Node2D
 
-# Edge threshold percentages of the viewport size (0.0 to 1.0)
-var edge_threshold_x_percentage = 0.3  # 10% of the viewport width
-var edge_threshold_y_percentage = 0.3  # 5% of the viewport height
-
 # Maximum speed of the background movement
 var max_speed = 1500
 
+# Dragging Vars
+var is_dragging = false
+var last_mouse_position = Vector2.ZERO
+var min_drag_distance = 10  # Pixels
+var drag_multiplier = 2.0
+
+# Button Vars
 var current_target_position = Vector2()
 var open_menu: Dictionary = {}  # Assuming all menus are Control nodes
-
 var button_targets = {
 	"Travel": Vector2(-100, 0),  # These are example values
 	"Storage": Vector2(-750, 0),
@@ -93,6 +95,15 @@ func _on_close_button_pressed(button_name: String = ""):
 
 
 func _input(event: InputEvent) -> void:
+	if open_menu.size() == 0:  # Dragging is disabled if a menu is open.
+		if event is InputEventMouseButton:
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				if event.pressed:
+					is_dragging = true
+					last_mouse_position = event.position
+				else:
+					is_dragging = false
+
 	if event.is_action_pressed("ui_cancel"):
 		# Check if there is any menu open before attempting to close
 		if open_menu.size() > 0:
@@ -110,42 +121,37 @@ func hide_all_menus():
 	%CloseButton.visible = false
 
 
-func _process(delta: float) -> void:
+func handle_drag_movement(delta: float) -> void:
 	var viewport_size = get_viewport_rect().size
-	# Edge scrolling logic
-	# Ensure it doesn't interfere with button-driven movement by checking if we are close to the target
+	var mouse_position = get_viewport().get_mouse_position()
+	# Invert the drag direction by subtracting the current mouse position from the last mouse position
+	var drag_distance = last_mouse_position - mouse_position
 
-	var edge_threshold_x = viewport_size.x * edge_threshold_x_percentage
-	var edge_threshold_y = viewport_size.y * edge_threshold_y_percentage
-	var mouse_pos = get_viewport().get_mouse_position()
+	# Apply a conditional drag multiplier based on drag distance
+	var drag_multiplier = 3 if abs(drag_distance.x) >= 200 or abs(drag_distance.y) >= 200 else 0
 
-	var move_speed_x = 0.0
-	var move_speed_y = 0.0
+	var move_speed_x = clamp(drag_distance.x * drag_multiplier, -max_speed, max_speed)
+	var move_speed_y = clamp(drag_distance.y * drag_multiplier, -max_speed, max_speed)
 
-	if mouse_pos.x < edge_threshold_x:
-		move_speed_x = max_speed * (1 - mouse_pos.x / edge_threshold_x)
-	elif mouse_pos.x > viewport_size.x - edge_threshold_x:
-		move_speed_x = -max_speed * (1 - (viewport_size.x - mouse_pos.x) / edge_threshold_x)
-
-	if mouse_pos.y < edge_threshold_y:
-		move_speed_y = max_speed * (1 - mouse_pos.y / edge_threshold_y)
-	elif mouse_pos.y > viewport_size.y - edge_threshold_y:
-		move_speed_y = -max_speed * (1 - (viewport_size.y - mouse_pos.y) / edge_threshold_y)
-
-	# Incremental movement towards the edge if not already moving towards a target
+	# Apply the movement speed to the target position
 	current_target_position.x += move_speed_x * delta
 	current_target_position.y += move_speed_y * delta
 
 	# Smooth transition towards the current target position using lerp
-	var lerp_speed = 5.0  # Adjust the speed of the transition
+	var lerp_speed = 15.0
 	$BackgroundContainer.position = $BackgroundContainer.position.lerp(
 		current_target_position, lerp_speed * delta
 	)
 
-	# Optional: Clamp the background position to prevent it from moving too far
+	# Clamp the background and target positions
+	clamp_positions(viewport_size)
+
+
+func clamp_positions(viewport_size: Vector2) -> void:
 	var scene_width = 4672  # Adjust to your background size
-	# prevent y axis from moving
-	var scene_height = get_viewport_rect().size.y  # Set to bg image height to activate
+	var scene_height = viewport_size.y  # Assuming vertical movement is not desired
+
+	# Clamp background position
 	$BackgroundContainer.position.x = clamp(
 		$BackgroundContainer.position.x, viewport_size.x - scene_width, 0
 	)
@@ -153,6 +159,23 @@ func _process(delta: float) -> void:
 		$BackgroundContainer.position.y, viewport_size.y - scene_height, 0
 	)
 
+	# Clamp target position to prevent it from invisibly moving off-screen
+	var min_x = viewport_size.x - scene_width
+	var min_y = viewport_size.y - scene_height
+	current_target_position.x = clamp(current_target_position.x, min_x, 0)
+	current_target_position.y = clamp(current_target_position.y, min_y, 0)
+
+
+func _process(delta: float) -> void:
+	var viewport_size = get_viewport_rect().size
+	if is_dragging:
+		handle_drag_movement(delta)
+		# last_mouse_position = get_viewport().get_mouse_position()  # Update for next frame
+	else:
+		# This block handles smooth movement towards the target position
+		var lerp_speed = 5.0  # Adjust this value as needed for a smoother or faster transition
+		$BackgroundContainer.position = $BackgroundContainer.position.lerp(current_target_position, lerp_speed * delta)
+		clamp_positions(get_viewport_rect().size)
 
 func _on_modal_bg_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:

@@ -363,25 +363,6 @@
 			"type": 1,
 			"uuid": "53763865211093"
 		},
-		"22": {
-			"base_stats": {
-				"attack_speed": 0.5,
-				"projectile_count": 10
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/demon_plate_1/LGeave.png",
-				"res://assets/sprites/gear/demon_plate_1/RGreave.png"
-			],
-			"item_name": "Demon_Gloves",
-			"item_power": 47,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/demon_plate_1/Gloves_i.png",
-			"type": 2,
-			"uuid": "54122762318783"
-		},
 		"23": {
 			"base_stats": {
 				"critical_hit_resistance": 0.3,
@@ -418,6 +399,25 @@
 			"texture_path": "res://assets/sprites/gear/troll_armor_1/Gloves_i.png",
 			"type": 2,
 			"uuid": "51311794084954"
+		},
+		"29": {
+			"base_stats": {
+				"attack_speed": 0.5,
+				"projectile_count": 10
+			},
+			"character_key": "player",
+			"cosmetics": [
+				"res://assets/sprites/gear/demon_plate_1/LGeave.png",
+				"res://assets/sprites/gear/demon_plate_1/RGreave.png"
+			],
+			"item_name": "Demon_Gloves",
+			"item_power": 47,
+			"rarity": 0,
+			"rarity_multiplier": 1,
+			"slot_type": 7,
+			"texture_path": "res://assets/sprites/gear/demon_plate_1/Gloves_i.png",
+			"type": 2,
+			"uuid": "54122762318783"
 		},
 		"3": {
 			"base_stats": {
@@ -622,7 +622,8 @@
 		"56713406014912",
 		"58972365180072",
 		"53414184159831",
-		"54092369865909"
+		"54092369865909",
+		"54122762318783"
 	],
 	"level": 1,
 	"skill_points": 99,
