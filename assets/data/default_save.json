@@ -70,21 +70,21 @@
 		},
 		"head": {
 			"base_stats": {
-				"health_percent": 0.5,
-				"mana_regen": 0.7
+				"cooldown_reduction": 0.1,
+				"invulnerability_chance": 0.05
 			},
 			"character_key": "player",
 			"cosmetics": [
-				"res://assets/sprites/gear/demon_plate_1/Helmet.png"
+				"res://assets/sprites/gear/barbed_armor_1/Helmet.png"
 			],
-			"item_name": "Demon_Helmet",
-			"item_power": 4,
+			"item_name": "Barbed_Helmet",
+			"item_power": 1,
 			"rarity": 0,
 			"rarity_multiplier": 1,
 			"slot_type": 0,
-			"texture_path": "res://assets/sprites/gear/demon_plate_1/Helmet_i.png",
+			"texture_path": "res://assets/sprites/gear/barbed_armor_1/Helmet_i.png",
 			"type": 0,
-			"uuid": "53414184159831"
+			"uuid": "54092369865909"
 		}
 	},
 	"experience": 0,
@@ -104,8 +104,8 @@
 			"stun_chance": 4.5
 		},
 		"head": {
-			"health_percent": 0.5,
-			"mana_regen": 0.7
+			"cooldown_reduction": 0.1,
+			"invulnerability_chance": 0.05
 		}
 	},
 	"inventory": {
@@ -363,24 +363,6 @@
 			"type": 1,
 			"uuid": "53763865211093"
 		},
-		"21": {
-			"base_stats": {
-				"cooldown_reduction": 0.1,
-				"invulnerability_chance": 0.05
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/barbed_armor_1/Helmet.png"
-			],
-			"item_name": "Barbed_Helmet",
-			"item_power": 1,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/barbed_armor_1/Helmet_i.png",
-			"type": 0,
-			"uuid": "54092369865909"
-		},
 		"22": {
 			"base_stats": {
 				"attack_speed": 0.5,
@@ -456,26 +438,6 @@
 			"type": 3,
 			"uuid": "5497417756939"
 		},
-		"31": {
-			"base_stats": {
-				"physical_penetration": 0.3,
-				"poison_damage": 10
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/holy_armor_1/Armor.png",
-				"res://assets/sprites/gear/holy_armor_1/LShoulder.png",
-				"res://assets/sprites/gear/holy_armor_1/RShoulder.png"
-			],
-			"item_name": "Holy_Armor",
-			"item_power": 41,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/holy_armor_1/Armor_i.png",
-			"type": 1,
-			"uuid": "58972365180072"
-		},
 		"32": {
 			"base_stats": {
 				"area_of_effect_expansion": 0.35,
@@ -495,6 +457,26 @@
 			"texture_path": "res://assets/sprites/gear/barbed_armor_1/Armor_i.png",
 			"type": 1,
 			"uuid": "59003368225706"
+		},
+		"38": {
+			"base_stats": {
+				"physical_penetration": 0.3,
+				"poison_damage": 10
+			},
+			"character_key": "player",
+			"cosmetics": [
+				"res://assets/sprites/gear/holy_armor_1/Armor.png",
+				"res://assets/sprites/gear/holy_armor_1/LShoulder.png",
+				"res://assets/sprites/gear/holy_armor_1/RShoulder.png"
+			],
+			"item_name": "Holy_Armor",
+			"item_power": 41,
+			"rarity": 0,
+			"rarity_multiplier": 1,
+			"slot_type": 7,
+			"texture_path": "res://assets/sprites/gear/holy_armor_1/Armor_i.png",
+			"type": 1,
+			"uuid": "58972365180072"
 		},
 		"4": {
 			"base_stats": {
@@ -637,7 +619,10 @@
 		"154911868732580",
 		"154911868732580",
 		"32323550747811",
-		"56713406014912"
+		"56713406014912",
+		"58972365180072",
+		"53414184159831",
+		"54092369865909"
 	],
 	"level": 1,
 	"skill_points": 99,
