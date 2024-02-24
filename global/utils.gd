@@ -64,6 +64,20 @@ func save_json(item_data: Dictionary, path: String):
 		file.close()  # Close the file
 
 
+## Load a JSON file and return as Dict (returns empty dict on fail)
+func load_json_array(path: String) -> Array:
+	# Attempt to open the file for reading to check if it exists and is not empty
+	var file = FileAccess.open(path, FileAccess.ModeFlags.READ)
+	var json = JSON.new()
+	var error = json.parse(file.get_as_text())
+	file.close()
+	if error == OK:
+		return json.get_data()
+	else:
+		print_debug("Failed to parse JSON data from file.")
+	return []
+
+
 ## Round to nearest .05
 func round_to_05(num) -> float:
 	var scaled = num / 0.05
