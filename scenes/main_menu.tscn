@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c41mku3pthk03"]
+[gd_scene load_steps=13 format=3 uid="uid://c41mku3pthk03"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_bnikp"]
 [ext_resource type="Texture2D" uid="uid://barjrskiajsnl" path="res://assets/sprites/ui/main_menu.png" id="2_20bko"]
@@ -6,7 +6,6 @@
 [ext_resource type="Shader" path="res://assets/shaders/god_ray.gdshader" id="3_vi7np"]
 [ext_resource type="PackedScene" uid="uid://dw0a6getl6jwy" path="res://scenes/ui/components/close_button.tscn" id="4_d3c7f"]
 [ext_resource type="Shader" path="res://assets/shaders/nubula.gdshader" id="4_spncr"]
-[ext_resource type="FontFile" uid="uid://3laylbry7cvb" path="res://assets/theme/Fonts/Inter-VariableFont_slnt,wght.ttf" id="7_ve5e8"]
 [ext_resource type="StyleBox" uid="uid://d1gubnww8bqar" path="res://assets/theme/menu_button.tres" id="8_g1vpo"]
 [ext_resource type="StyleBox" uid="uid://cdlfr5khlf7jn" path="res://assets/theme/menu_button_focus.tres" id="9_gcmuj"]
 
@@ -50,10 +49,6 @@ func _ready():
 	custom_minimum_size = get_viewport_rect().size
 "
 
-[sub_resource type="FontVariation" id="FontVariation_stysg"]
-base_font = ExtResource("7_ve5e8")
-variation_embolden = 0.5
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhw1v"]
 content_margin_left = 10.0
 content_margin_top = 2.0
@@ -73,10 +68,6 @@ corner_radius_bottom_left = 3
 shadow_size = 3
 shadow_offset = Vector2(1, 1)
 
-[sub_resource type="FontVariation" id="FontVariation_el0se"]
-base_font = ExtResource("7_ve5e8")
-variation_embolden = 0.5
-
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_bnikp")
 
@@ -93,6 +84,7 @@ offset_right = 3608.0
 offset_bottom = 840.0
 
 [node name="MenuGroup" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
 [node name="ModalBG" type="ColorRect" parent="MenuGroup"]
 unique_name_in_owner = true
@@ -104,11 +96,17 @@ script = SubResource("GDScript_i0hms")
 [node name="Inventory" parent="MenuGroup" instance=ExtResource("3_hbg71")]
 unique_name_in_owner = true
 visible = false
-scale = Vector2(1.5, 1.5)
 
-[node name="CloseButton" parent="MenuGroup" instance=ExtResource("4_d3c7f")]
+[node name="CloseButton" parent="MenuGroup/Inventory" instance=ExtResource("4_d3c7f")]
 unique_name_in_owner = true
 visible = false
+layout_mode = 1
+offset_left = 584.0
+offset_top = -308.0
+offset_right = 584.0
+offset_bottom = -308.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="ButtonControl" type="CanvasLayer" parent="."]
 
@@ -118,9 +116,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -249.5
-offset_top = -40.0
-offset_right = 249.5
+offset_left = -390.0
+offset_top = -67.0
+offset_right = 390.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/margin_bottom = 25
@@ -136,12 +134,11 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.898039, 0.898039, 0.898039, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("FontVariation_stysg")
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = ExtResource("8_g1vpo")
+theme_override_styles/focus = ExtResource("9_gcmuj")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jhw1v")
 theme_override_styles/pressed = ExtResource("8_g1vpo")
-theme_override_styles/focus = ExtResource("9_gcmuj")
+theme_override_styles/normal = ExtResource("8_g1vpo")
 text = "Travel
 "
 
@@ -149,52 +146,47 @@ text = "Travel
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_fonts/font = SubResource("FontVariation_el0se")
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = ExtResource("8_g1vpo")
+theme_override_styles/focus = ExtResource("9_gcmuj")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jhw1v")
 theme_override_styles/pressed = ExtResource("8_g1vpo")
-theme_override_styles/focus = ExtResource("9_gcmuj")
+theme_override_styles/normal = ExtResource("8_g1vpo")
 text = "Storage"
 
 [node name="Skills" type="Button" parent="ButtonControl/MarginContainer/ButtonContainer"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("FontVariation_el0se")
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = ExtResource("8_g1vpo")
+theme_override_styles/focus = ExtResource("9_gcmuj")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jhw1v")
 theme_override_styles/pressed = ExtResource("8_g1vpo")
-theme_override_styles/focus = ExtResource("9_gcmuj")
+theme_override_styles/normal = ExtResource("8_g1vpo")
 text = "Skills"
 
 [node name="Crafting" type="Button" parent="ButtonControl/MarginContainer/ButtonContainer"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("FontVariation_el0se")
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = ExtResource("8_g1vpo")
+theme_override_styles/focus = ExtResource("9_gcmuj")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jhw1v")
 theme_override_styles/pressed = ExtResource("8_g1vpo")
-theme_override_styles/focus = ExtResource("9_gcmuj")
+theme_override_styles/normal = ExtResource("8_g1vpo")
 text = "Crafting"
 
 [node name="Alchemy" type="Button" parent="ButtonControl/MarginContainer/ButtonContainer"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("FontVariation_el0se")
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = ExtResource("8_g1vpo")
+theme_override_styles/focus = ExtResource("9_gcmuj")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jhw1v")
 theme_override_styles/pressed = ExtResource("8_g1vpo")
-theme_override_styles/focus = ExtResource("9_gcmuj")
+theme_override_styles/normal = ExtResource("8_g1vpo")
 text = "Alchemy"
 
 [node name="Quests" type="Button" parent="ButtonControl/MarginContainer/ButtonContainer"]
 layout_mode = 2
-theme_override_fonts/font = SubResource("FontVariation_el0se")
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = ExtResource("8_g1vpo")
+theme_override_styles/focus = ExtResource("9_gcmuj")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jhw1v")
 theme_override_styles/pressed = ExtResource("8_g1vpo")
-theme_override_styles/focus = ExtResource("9_gcmuj")
+theme_override_styles/normal = ExtResource("8_g1vpo")
 text = "Quests"
 
 [connection signal="gui_input" from="MenuGroup/ModalBG" to="." method="_on_modal_bg_gui_input"]

@@ -31,15 +31,9 @@ script = ExtResource("1_2016b")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -568.0
-offset_top = -324.0
-offset_right = 558.0
-offset_bottom = 283.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_r2ax8")
@@ -49,10 +43,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -357.0
-offset_top = -200.5
-offset_right = 419.0
-offset_bottom = 207.5
+offset_left = -409.5
+offset_top = -180.0
+offset_right = 409.5
+offset_bottom = 230.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_q1prd")
@@ -189,12 +183,14 @@ layout_mode = 2
 texture = ExtResource("11_g4dlw")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/HBoxContainer"]
-custom_minimum_size = Vector2(350, 0)
+custom_minimum_size = Vector2(525, 410)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 8
+size_flags_vertical = 0
 horizontal_scroll_mode = 3
 
 [node name="GridContainer" type="GridContainer" parent="PanelContainer/HBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_constants/h_separation = 10
@@ -819,5 +815,5 @@ script = ExtResource("3_muru4")
 type = 7
 
 [node name="Player" parent="." instance=ExtResource("13_1atyd")]
-position = Vector2(-141, -16.5)
+position = Vector2(-192, -20)
 scale = Vector2(0.75, 0.75)

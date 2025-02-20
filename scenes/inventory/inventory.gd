@@ -13,14 +13,12 @@ var slot_map = {
 	EquipmentManager.Type.ACCESSORY: "HBoxContainer3/AccessorySlot"
 }
 
-
 func _ready():
 	# GameState.connect("scene_changed", Callable(self, "_on_scene_changed"), CONNECT_PERSIST)
 	$Player.animator.speed_scale = 0.5
 	$Player.animator.play("idle")
 	current_character.update_equipment_state()
 	repopulate_inventory()
-	
 	
 ## Adds new items to the first available slot.
 func add_new_items(items: Array) -> void:
@@ -40,7 +38,7 @@ func get_available_slot() -> Dictionary:
 
 ## Finds the first available slot in the inventory.
 func get_slot_or_fail(slot_id) -> InventorySlot:
-	var grid_container = $PanelContainer/HBoxContainer/ScrollContainer/GridContainer
+	var grid_container = %GridContainer
 	for slot in grid_container.get_children():
 		if (
 			int(slot.slot_id) == int(slot_id)
@@ -71,14 +69,13 @@ func init_and_add_item(item: InventoryItem, slot: InventorySlot) -> void:
 
 ## Removes all items from the inventory and updates character inventory.
 func clear_inventory() -> void:
-	var grid_container = $PanelContainer/HBoxContainer/ScrollContainer/GridContainer
+	var grid_container = %GridContainer
 	for slot in grid_container.get_children():
 		if slot is InventorySlot:
 			for n in slot.get_children():
 				slot.remove_child(n)
 				n.queue_free()
 	current_character.reset_inventory()
-
 
 ## Repopulates the inventory UI from saved data.
 func repopulate_inventory() -> void:

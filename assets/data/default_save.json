@@ -30,22 +30,22 @@
 		},
 		"feet": {
 			"base_stats": {
-				"attack": 10,
-				"attack_speed": 0.65
+				"accuracy": 0.4,
+				"attack": 15
 			},
 			"character_key": "player",
 			"cosmetics": [
-				"res://assets/sprites/gear/bone_armor_1/RBoot.png",
-				"res://assets/sprites/gear/bone_armor_1/LBoot.png"
+				"res://assets/sprites/gear/squid_armor_1/RBoot.png",
+				"res://assets/sprites/gear/squid_armor_1/LBoot.png"
 			],
-			"item_name": "Bone_Boots",
-			"item_power": 12,
+			"item_name": "Squid_Boots",
+			"item_power": 16,
 			"rarity": 0,
 			"rarity_multiplier": 1,
 			"slot_type": 3,
-			"texture_path": "res://assets/sprites/gear/bone_armor_1/Boots_i.png",
+			"texture_path": "res://assets/sprites/gear/squid_armor_1/Boots_i.png",
 			"type": 3,
-			"uuid": "56713406014912"
+			"uuid": "5497417756939"
 		},
 		"hands": {
 			"base_stats": {
@@ -70,21 +70,21 @@
 		},
 		"head": {
 			"base_stats": {
-				"cooldown_reduction": 0.1,
-				"invulnerability_chance": 0.05
+				"critical_hit_resistance": 0.3,
+				"skill_damage_increase": 2.55
 			},
 			"character_key": "player",
 			"cosmetics": [
-				"res://assets/sprites/gear/barbed_armor_1/Helmet.png"
+				"res://assets/sprites/gear/squid_armor_1/Helmet.png"
 			],
-			"item_name": "Barbed_Helmet",
-			"item_power": 1,
+			"item_name": "Squid_Helmet",
+			"item_power": 13,
 			"rarity": 0,
 			"rarity_multiplier": 1,
 			"slot_type": 0,
-			"texture_path": "res://assets/sprites/gear/barbed_armor_1/Helmet_i.png",
+			"texture_path": "res://assets/sprites/gear/squid_armor_1/Helmet_i.png",
 			"type": 0,
-			"uuid": "54092369865909"
+			"uuid": "58953108459848"
 		}
 	},
 	"experience": 0,
@@ -94,8 +94,8 @@
 			"projectile_count": 10
 		},
 		"feet": {
-			"attack": 10,
-			"attack_speed": 0.65
+			"accuracy": 0.4,
+			"attack": 15
 		},
 		"hands": {
 			"aura_range": 0.4,
@@ -104,8 +104,8 @@
 			"stun_chance": 4.5
 		},
 		"head": {
-			"cooldown_reduction": 0.1,
-			"invulnerability_chance": 0.05
+			"critical_hit_resistance": 0.3,
+			"skill_damage_increase": 2.55
 		}
 	},
 	"inventory": {
@@ -248,23 +248,23 @@
 		},
 		"15": {
 			"base_stats": {
-				"lightning_damage": 5.1,
-				"loot_quality_increase": 0.35,
-				"magic_resistance": 0.65
+				"aura_effectiveness": 0.7,
+				"mana_on_hit": 15.3,
+				"stun_chance": 4.6
 			},
 			"character_key": "player",
 			"cosmetics": [
-				"res://assets/sprites/gear/shiny_armor_1/RBoot.png",
-				"res://assets/sprites/gear/shiny_armor_1/LBoot.png"
+				"res://assets/sprites/gear/samurai_armor_1/RBoot.png",
+				"res://assets/sprites/gear/samurai_armor_1/LBoot.png"
 			],
-			"item_name": "Shiny_Boots",
-			"item_power": 25,
+			"item_name": "Samurai_Boots",
+			"item_power": 86,
 			"rarity": 1,
 			"rarity_multiplier": 1.02,
 			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/shiny_armor_1/Boots_i.png",
+			"texture_path": "res://assets/sprites/gear/samurai_armor_1/Boots_i.png",
 			"type": 3,
-			"uuid": "49551529923648"
+			"uuid": "4327504213960"
 		},
 		"16": {
 			"base_stats": {
@@ -363,23 +363,24 @@
 			"type": 1,
 			"uuid": "53763865211093"
 		},
-		"23": {
+		"22": {
 			"base_stats": {
-				"critical_hit_resistance": 0.3,
-				"skill_damage_increase": 2.55
+				"attack_speed": 0.5,
+				"projectile_count": 10
 			},
 			"character_key": "player",
 			"cosmetics": [
-				"res://assets/sprites/gear/squid_armor_1/Helmet.png"
+				"res://assets/sprites/gear/demon_plate_1/LGeave.png",
+				"res://assets/sprites/gear/demon_plate_1/RGreave.png"
 			],
-			"item_name": "Squid_Helmet",
-			"item_power": 13,
+			"item_name": "Demon_Gloves",
+			"item_power": 47,
 			"rarity": 0,
 			"rarity_multiplier": 1,
 			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/squid_armor_1/Helmet_i.png",
-			"type": 0,
-			"uuid": "58953108459848"
+			"texture_path": "res://assets/sprites/gear/demon_plate_1/Gloves_i.png",
+			"type": 2,
+			"uuid": "54122762318783"
 		},
 		"25": {
 			"base_stats": {
@@ -400,45 +401,7 @@
 			"type": 2,
 			"uuid": "51311794084954"
 		},
-		"29": {
-			"base_stats": {
-				"attack_speed": 0.5,
-				"projectile_count": 10
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/demon_plate_1/LGeave.png",
-				"res://assets/sprites/gear/demon_plate_1/RGreave.png"
-			],
-			"item_name": "Demon_Gloves",
-			"item_power": 47,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/demon_plate_1/Gloves_i.png",
-			"type": 2,
-			"uuid": "54122762318783"
-		},
-		"3": {
-			"base_stats": {
-				"accuracy": 0.4,
-				"attack": 15
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/squid_armor_1/RBoot.png",
-				"res://assets/sprites/gear/squid_armor_1/LBoot.png"
-			],
-			"item_name": "Squid_Boots",
-			"item_power": 16,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/squid_armor_1/Boots_i.png",
-			"type": 3,
-			"uuid": "5497417756939"
-		},
-		"32": {
+		"31": {
 			"base_stats": {
 				"area_of_effect_expansion": 0.35,
 				"damage_reflection": 0.25
@@ -554,26 +517,6 @@
 			"texture_path": "res://assets/sprites/gear/blood_armor_1/Boots_i.png",
 			"type": 3,
 			"uuid": "5674807636317"
-		},
-		"9": {
-			"base_stats": {
-				"aura_effectiveness": 0.7,
-				"mana_on_hit": 15.3,
-				"stun_chance": 4.6
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/samurai_armor_1/RBoot.png",
-				"res://assets/sprites/gear/samurai_armor_1/LBoot.png"
-			],
-			"item_name": "Samurai_Boots",
-			"item_power": 86,
-			"rarity": 1,
-			"rarity_multiplier": 1.02,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/samurai_armor_1/Boots_i.png",
-			"type": 3,
-			"uuid": "4327504213960"
 		}
 	},
 	"item_ids": [
@@ -623,7 +566,31 @@
 		"58972365180072",
 		"53414184159831",
 		"54092369865909",
-		"54122762318783"
+		"54122762318783",
+		"49551529923648",
+		"49551529923648",
+		"54092369865909",
+		"54092369865909",
+		"54092369865909",
+		"54092369865909",
+		"59003368225706",
+		"54122762318783",
+		"58953108459848",
+		"153151102688761",
+		"153151102688761",
+		"153151102688761",
+		"153151102688761",
+		"153151102688761",
+		"153151102688761",
+		"58953108459848",
+		"56713406014912",
+		"49551529923648",
+		"58953108459848",
+		"54092369865909",
+		"58953108459848",
+		"49551529923648",
+		"5497417756939",
+		"4327504213960"
 	],
 	"level": 1,
 	"skill_points": 99,

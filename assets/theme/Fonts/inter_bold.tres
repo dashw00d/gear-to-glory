@@ -1,7 +1,6 @@
 [gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://dmvsqve2osdlv"]
 
-[ext_resource type="FontFile" uid="uid://3laylbry7cvb" path="res://assets/theme/Fonts/Inter-VariableFont_slnt,wght.ttf" id="1_f0rsn"]
+[ext_resource type="FontFile" uid="uid://ccrfd8al8076h" path="res://assets/theme/Fonts/Inter-Bold.ttf" id="1_tq7pq"]
 
 [resource]
-base_font = ExtResource("1_f0rsn")
-variation_embolden = 1.0
+base_font = ExtResource("1_tq7pq")

@@ -1,5 +1,7 @@
-# Gear to Glory - RPG Auto Battler
-
+---
+title: Gear to Glory
+subtitle: RPG Auto Battler
+---
 Welcome to "Gear to Glory", an immersive RPG Auto Battler where strategy, customization, and epic battles define your path to victory. Embark on a journey through mystical lands, equip your heroes with the mightiest armor, and clash against formidable foes in automated strategic combat.
 
 ![Preview Image](preview.png)
@@ -17,39 +19,40 @@ Welcome to "Gear to Glory", an immersive RPG Auto Battler where strategy, custom
 
 To dive into "Gear to Glory", follow these simple steps:
 
-1. **Clone the repository**:
-
-   ```bash
-   git clone https://github.com/dashw00d/gear-to-glory.git
-   ```
-
-2. **Navigate to the project directory**:
-
-   ```bash
-   cd gear-to-glory
-   ```
-
-3. **Run the game** (make sure you have [Godot Engine](https://godotengine.org/download) installed):
-
-   ```bash
-   godot .
-   ```
+1.  **Clone the repository**:
+    
+    ```bash
+    git clone https://github.com/dashw00d/gear-to-glory.git
+    ```
+    
+2.  **Navigate to the project directory**:
+    
+    ```bash
+    cd gear-to-glory
+    ```
+    
+3.  **Run the game** (make sure you have [Godot Engine](https://godotengine.org/download "Godot Engine") installed):
+    
+    ```bash
+    godot .
+    ```
+    
 
 ## Contribution
 
-Interested in contributing to "Gear to Glory"? We welcome contributions of all forms, from bug fixes and feature suggestions to new gear designs and story expansions. Please read through our [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to make a contribution.
+Interested in contributing to "Gear to Glory"? We welcome contributions of all forms, from bug fixes and feature suggestions to new gear designs and story expansions. Please read through our [CONTRIBUTING.md](CONTRIBUTING.md "CONTRIBUTING.md") for guidelines on how to make a contribution.
 
 ## Support
 
-Encountered a bug or have a question? Open an issue on our [GitHub issues page](https://github.com/dashw00d/gear-to-glory/issues), and we'll get back to you as soon as possible.
+Encountered a bug or have a question? Open an issue on our [GitHub issues page](https://github.com/dashw00d/gear-to-glory/issues "GitHub issues page"), and we'll get back to you as soon as possible.
 
 ## License
 
-"Gear to Glory" is licensed under the [MIT License](LICENSE). Feel free to fork, modify, and use it in your projects according to the license terms.
+"Gear to Glory" is licensed under the [MIT License](LICENSE "MIT License"). Feel free to fork, modify, and use it in your projects according to the license terms.
 
 ## Acknowledgments
 
-- Special thanks to [Godot Engine](https://godotengine.org) for making game development accessible and fun.
+- Special thanks to [Godot Engine](https://godotengine.org "Godot Engine") for making game development accessible and fun.
 - To our amazing community of players and contributors - thank you for making "Gear to Glory" what it is!
 
 Gear up, strategize, and may glory be yours!
