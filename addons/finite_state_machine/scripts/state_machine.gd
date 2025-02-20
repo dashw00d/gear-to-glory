@@ -2,9 +2,9 @@
 class_name StateMachine
 extends Node
 
-@export var initial_state : State
+@export var initial_state: State
 var current_state: State
-var states : Dictionary = {}
+var states: Dictionary = {}
 
 
 func _ready():
@@ -13,30 +13,35 @@ func _ready():
 			states[child.name.to_lower()] = child
 			child.Transitioned.connect(on_child_transition)
 	print_debug(states)
-	
+
 	if initial_state:
 		initial_state.Enter()
 		current_state = initial_state
-		
+
+
 func _process(delta):
 	if current_state:
 		current_state.Update(delta)
-		
+
+
 func _physics_process(delta):
 	if current_state:
 		current_state.Physics_Update(delta)
 
+
 func on_child_transition(state, new_state_name):
+	print("Transition requested from ", state.name, " to ", new_state_name)
 	if state != current_state:
+		print("Not current state, ignoring")
 		return
-		
+
 	var new_state = states.get(new_state_name.to_lower())
 	if !new_state:
+		print("State not found: ", new_state_name)
 		return
-		
+
 	if current_state:
 		current_state.Exit()
-		
+
 	new_state.Enter()
-	
 	current_state = new_state
