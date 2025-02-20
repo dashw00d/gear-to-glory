@@ -3,35 +3,21 @@ extends State
 
 @export var player: Node2D
 
-func Enter() -> void:
-	#await get_tree().create_timer(.1).timeout 
-	pass
 
-func is_player_defeated() -> bool:
-	return player.health <= 0
+func _enter() -> void:
+	print("Entering CheckEndConditionsState (self: ", self.name, ")")
+	print("Current state name: ", get_parent().current_state.name)
+	print("Player valid: ", is_instance_valid(player), " Health: ", player.health if is_instance_valid(player) else "N/A")
 
-func are_enemies_defeated() -> bool:
-	var enemies = get_tree().get_nodes_in_group('enemy')
-	var total_enemy_health = sum_enemy_health(enemies)
-	return total_enemy_health <= 0
-
-func sum_enemy_health(enemies: Array) -> float:
-	var total_health = 0.0
-	for enemy in enemies:
-		total_health += enemy.health
-	return total_health
-	
-func Exit() -> void:
-	pass
-	
-func Update(_delta: float) -> void:
-	if is_player_defeated():
-		Transitioned.emit(self, 'DefeatState')
-
-	if are_enemies_defeated():
-		Transitioned.emit(self, 'VictoryState')
-
-	Transitioned.emit(self, "PlayerTurnState")
-	
-func Physics_Update(_delta: float) -> void:
-	pass
+	var enemies = get_tree().get_nodes_in_group("enemy")
+	print("Enemies: ", enemies.size())
+	if not is_instance_valid(player) or player.health <= 0:
+		print("Emitting defeatstate from ", self.name)
+		Transitioned.emit(self, "defeatstate")
+		return
+	if enemies.all(func(e): return not is_instance_valid(e) or e.health <= 0):
+		print("Emitting victorystate from ", self.name)
+		Transitioned.emit(self, "victorystate")
+		return
+	print("Emitting determineturnstate from ", self.name)
+	Transitioned.emit(self, "DetermineTurnState")
