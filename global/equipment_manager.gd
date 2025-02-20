@@ -33,13 +33,7 @@ var equipment_map = {
 
 enum Rarity { COMMON, UNCOMMON, RARE, EPIC, LEGENDARY }
 
-var rarity_multipliers = {
-	Rarity.COMMON: 1.0,
-	Rarity.UNCOMMON: 1.02,
-	Rarity.RARE: 1.04,
-	Rarity.EPIC: 1.08,
-	Rarity.LEGENDARY: 1.1
-}
+var rarity_multipliers = {Rarity.COMMON: 1.0, Rarity.UNCOMMON: 1.02, Rarity.RARE: 1.04, Rarity.EPIC: 1.08, Rarity.LEGENDARY: 1.1}
 
 
 func load_item(data: Dictionary) -> InventoryItem:
@@ -114,7 +108,7 @@ func generate_stat(stat_name: String, difficulty: int) -> Variant:
 
 func generate_random_item(difficulty: int, rarity: int) -> InventoryItem:
 	var new_item = InventoryItem.new()
-
+	
 	# Randomly select an item type from available data
 	var item_keys = item_data.keys()
 	var item_type = item_keys[randi() % item_keys.size()]
@@ -138,14 +132,10 @@ func generate_random_item(difficulty: int, rarity: int) -> InventoryItem:
 	var max_stat_types = rarity + 2  # Determines the maximum number of stats based on rarity
 	var selected_stats = {}
 	for i in range(max_stat_types):
-		var stat_name = pick_weighted_random_stat(
-			selected_item_data["possible_stats"], stat_generators
-		)
+		var stat_name = pick_weighted_random_stat(selected_item_data["possible_stats"], stat_generators)
 		if stat_name in stat_generators:
 			var initial_value = generate_stat(stat_name, difficulty)
-			selected_stats[stat_name] = (
-				(selected_stats.get(stat_name, 0) + initial_value) * new_item.rarity_multiplier
-			)
+			selected_stats[stat_name] = ((selected_stats.get(stat_name, 0) + initial_value) * new_item.rarity_multiplier)
 			selected_stats[stat_name] = snapped(selected_stats[stat_name], 0.05)  # Apply snapping to the final value
 
 	new_item.base_stats = selected_stats
@@ -169,9 +159,7 @@ func get_random_rarity(difficulty):
 
 	var uncommon_start = 0.2  # At difficulty 1
 	var uncommon_end = 0.35  # At difficulty 100
-	var uncommon_chance = (
-		uncommon_start + (uncommon_end - uncommon_start) * (min(difficulty, 100) / 100)
-	)
+	var uncommon_chance = uncommon_start + (uncommon_end - uncommon_start) * (min(difficulty, 100) / 100)
 
 	# Calculate common_chance for documentation purposes, but it's not used directly.
 	# var common_chance = 1 - (legendary_chance + epic_chance + rare_chance + uncommon_chance)

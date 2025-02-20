@@ -1,5 +1,7 @@
 extends Node
 
+# Secret key as a string (matching the working example's approach)
+const ENCRYPTION_KEY = "my_secret_key_12345_padding_to_32_chars"
 
 ## Safely returns a property without breaking
 func safe_get_property(obj, prop_name, default_value):
@@ -8,82 +10,74 @@ func safe_get_property(obj, prop_name, default_value):
 	else:
 		return default_value
 
-
-## Load a JSON file and return as Dict (returns empty dict on fail)
+## Load an unencrypted JSON file and return as Dict (for resource files)
 func load_json(path: String) -> Dictionary:
-	# Attempt to open the file for reading to check if it exists and is not empty
 	var file = FileAccess.open(path, FileAccess.ModeFlags.READ)
-	var json = JSON.new()
-	var error = json.parse(file.get_as_text())
+	if file == null:
+		print_debug("File not found: ", path)
+		return {}
+	var content = file.get_as_text()
 	file.close()
+	var json = JSON.new()
+	var error = json.parse(content)
 	if error == OK:
 		return json.get_data()
 	else:
-		print_debug("Failed to parse JSON data from file.")
-	return {}
+		print_debug("Failed to parse JSON data from file: ", json.get_error_message())
+		return {}
 
+## Load an encrypted JSON file and return as Dict (for save files)
+func load_encrypted_json(path: String) -> Dictionary:
+	var file = FileAccess.open_encrypted_with_pass(path, FileAccess.ModeFlags.READ, ENCRYPTION_KEY)
+	if file == null:
+		print_debug("File not found or failed to decrypt: ", path)
+		return {}
+	var content = file.get_as_text()
+	file.close()
+	var json = JSON.new()
+	var error = json.parse(content)
+	if error == OK:
+		return json.get_data()
+	else:
+		print_debug("Failed to parse JSON data from file: ", json.get_error_message())
+		return {}
 
-func save_json(item_data: Dictionary, path: String):
+## Save a JSON file with the provided data, encrypting it
+func save_json(data: Dictionary, path: String):
+	print("save_json called with path: ", path)
 	if !path:
-		path = "res://assets/data/default_save.json"
-
-	# Initialize a variable to hold the existing data
-	var data: Dictionary = {}
-
-	# Open the file for reading
-	var file = FileAccess.open(path, FileAccess.ModeFlags.READ_WRITE)
+		path = "user://save.json"
+	var file = FileAccess.open_encrypted_with_pass(path, FileAccess.ModeFlags.WRITE, ENCRYPTION_KEY)
 	if file:
-		var content = file.get_as_text()  # Get the entire file content as text
-		file.close()  # Close the file after reading
+		var json_string = JSON.new().stringify(data, "\t")
+		file.store_string(json_string)
+		file.flush()  # Ensure data is written
+		file.close()
+	else:
+		var error = FileAccess.get_open_error()
+		print_debug("Failed to open file for encrypted writing: ", path, " Error: ", error)
 
-		var json = JSON.new()
-		var error = json.parse(content)
-		if error == OK:
-			data = json.data
-			if typeof(data) != TYPE_DICTIONARY:
-				print("Unexpected data")
-		else:
-			print(
-				"JSON Parse Error: ",
-				json.get_error_message(),
-				" in ",
-				content,
-				" at line ",
-				json.get_error_line()
-			)
-	# Update the dictionary with the new item data
-	for key in item_data.keys():
-		var value = item_data[key]
-		data[key] = value
-
-	# Open the file again, this time for writing
-	file = FileAccess.open(path, FileAccess.ModeFlags.WRITE)
-	if file:
-		var json_string = JSON.new().stringify(data, "\t")  # Convert the updated dictionary back to a JSON string
-		file.store_string(json_string)  # Write the JSON string to the file
-		file.close()  # Close the file
-
-
-## Load a JSON file and return as Dict (returns empty dict on fail)
+## Load an unencrypted JSON file and return as Array (for resource files)
 func load_json_array(path: String) -> Array:
-	# Attempt to open the file for reading to check if it exists and is not empty
 	var file = FileAccess.open(path, FileAccess.ModeFlags.READ)
-	var json = JSON.new()
-	var error = json.parse(file.get_as_text())
+	if file == null:
+		print_debug("File not found: ", path)
+		return []
+	var content = file.get_as_text()
 	file.close()
+	var json = JSON.new()
+	var error = json.parse(content)
 	if error == OK:
 		return json.get_data()
 	else:
-		print_debug("Failed to parse JSON data from file.")
-	return []
-
+		print_debug("Failed to parse JSON data from file: ", json.get_error_message())
+		return []
 
 ## Round to nearest .05
 func round_to_05(num) -> float:
 	var scaled = num / 0.05
-	var rounded_scaled = floor(scaled + 0.5)  # GDScript's way to round
+	var rounded_scaled = floor(scaled + 0.5)
 	return rounded_scaled * 0.05
-
 
 func is_value_empty(value) -> bool:
 	if value == null:

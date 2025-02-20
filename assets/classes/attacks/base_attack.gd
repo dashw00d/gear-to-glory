@@ -7,16 +7,19 @@ var damage: int
 var animation_name: String
 var actor: Node2D
 
+
 func _init(_targets, _damage, _animation_name):
 	targets = _targets
 	damage = _damage
 	animation_name = _animation_name
 
+
 func execute(_actor: Node2D, state: State):
 	actor = _actor
 	actor.attack_hit.connect(apply_damage.bind())
 	actor.play_attack_animation(self)
-	
+
+
 func apply_damage():
 	for target in targets:
 		target.apply_damage(damage)

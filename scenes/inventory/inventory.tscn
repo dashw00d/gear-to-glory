@@ -38,6 +38,14 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_r2ax8")
 
+[node name="Button" type="Button" parent="TextureRect"]
+layout_mode = 1
+offset_left = 59.0
+offset_top = 51.5
+offset_right = 196.0
+offset_bottom = 82.5
+text = "Add Demo Items"
+
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -817,3 +825,5 @@ type = 7
 [node name="Player" parent="." instance=ExtResource("13_1atyd")]
 position = Vector2(-192, -20)
 scale = Vector2(0.75, 0.75)
+
+[connection signal="pressed" from="TextureRect/Button" to="." method="_on_button_pressed"]

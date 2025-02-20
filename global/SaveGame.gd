@@ -30,9 +30,7 @@ static func save_game(tree: SceneTree):
 	if OS.is_debug_build():
 		save_game = FileAccess.open("user://" + SAVE_GAME_TEMPLATE, FileAccess.WRITE)
 	else:
-		save_game = FileAccess.open_encrypted_with_pass(
-			"user://" + SAVE_GAME_TEMPLATE, FileAccess.WRITE, ENCRYPTION_KEY
-		)
+		save_game = FileAccess.open_encrypted_with_pass("user://" + SAVE_GAME_TEMPLATE, FileAccess.WRITE, ENCRYPTION_KEY)
 
 	var save_nodes = tree.get_nodes_in_group(SAVE_GROUP_NAME)
 
@@ -108,9 +106,7 @@ static func load_game(tree: SceneTree) -> void:
 	if OS.is_debug_build():
 		save_game = FileAccess.open("user://" + SAVE_GAME_TEMPLATE, FileAccess.READ)
 	else:
-		save_game = FileAccess.open_encrypted_with_pass(
-			"user://" + SAVE_GAME_TEMPLATE, FileAccess.READ, ENCRYPTION_KEY
-		)
+		save_game = FileAccess.open_encrypted_with_pass("user://" + SAVE_GAME_TEMPLATE, FileAccess.READ, ENCRYPTION_KEY)
 
 	while save_game.get_position() < save_game.get_length():
 		# Get the saved dictionary from the next line in the save file
@@ -141,27 +137,18 @@ static func load_game(tree: SceneTree) -> void:
 		if node is Node2D:
 			node.rotation = save_data["rotation"]
 		elif node is Node3D:
-			node.rotation = Vector3(
-				save_data["rotation_x"], save_data["rotation_y"], save_data["rotation_z"]
-			)
+			node.rotation = Vector3(save_data["rotation_x"], save_data["rotation_y"], save_data["rotation_z"])
 
 		if "scale" in node:
 			if node.scale is Vector2:
 				node.scale = Vector2(save_data["scale_x"], save_data["scale_y"])
 			elif node.scale is Vector3:
-				node.scale = Vector3(
-					save_data["scale_x"], save_data["scale_y"], save_data["scale_z"]
-				)
+				node.scale = Vector3(save_data["scale_x"], save_data["scale_y"], save_data["scale_z"])
 
 		node.visible = save_data["visible"]
 
 		if node is CanvasItem:
-			node.modulate = Color(
-				save_data["modulate_r"],
-				save_data["modulate_g"],
-				save_data["modulate_b"],
-				save_data["modulate_a"]
-			)
+			node.modulate = Color(save_data["modulate_r"], save_data["modulate_g"], save_data["modulate_b"], save_data["modulate_a"])
 
 		if node.has_method("load_data") and save_data.has("node_data"):
 			node.call("load_data", save_data["node_data"])

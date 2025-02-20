@@ -109,6 +109,26 @@
 		}
 	},
 	"inventory": {
+		"39": {
+			"base_stats": {
+				"physical_penetration": 0.3,
+				"poison_damage": 10
+			},
+			"character_key": "player",
+			"cosmetics": [
+				"res://assets/sprites/gear/holy_armor_1/Armor.png",
+				"res://assets/sprites/gear/holy_armor_1/LShoulder.png",
+				"res://assets/sprites/gear/holy_armor_1/RShoulder.png"
+			],
+			"item_name": "Holy_Armor",
+			"item_power": 41,
+			"rarity": 0,
+			"rarity_multiplier": 1,
+			"slot_type": 7,
+			"texture_path": "res://assets/sprites/gear/holy_armor_1/Armor_i.png",
+			"type": 1,
+			"uuid": "58972365180072"
+		},
 		"0": {
 			"base_stats": {
 				"defense_percent": 0.4,
@@ -246,26 +266,6 @@
 			"type": 1,
 			"uuid": "49543771374009"
 		},
-		"15": {
-			"base_stats": {
-				"aura_effectiveness": 0.7,
-				"mana_on_hit": 15.3,
-				"stun_chance": 4.6
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/samurai_armor_1/RBoot.png",
-				"res://assets/sprites/gear/samurai_armor_1/LBoot.png"
-			],
-			"item_name": "Samurai_Boots",
-			"item_power": 86,
-			"rarity": 1,
-			"rarity_multiplier": 1.02,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/samurai_armor_1/Boots_i.png",
-			"type": 3,
-			"uuid": "4327504213960"
-		},
 		"16": {
 			"base_stats": {
 				"life_on_hit": 5,
@@ -363,24 +363,25 @@
 			"type": 1,
 			"uuid": "53763865211093"
 		},
-		"22": {
+		"21": {
 			"base_stats": {
-				"attack_speed": 0.5,
-				"projectile_count": 10
+				"aura_effectiveness": 0.7,
+				"mana_on_hit": 15.3,
+				"stun_chance": 4.6
 			},
 			"character_key": "player",
 			"cosmetics": [
-				"res://assets/sprites/gear/demon_plate_1/LGeave.png",
-				"res://assets/sprites/gear/demon_plate_1/RGreave.png"
+				"res://assets/sprites/gear/samurai_armor_1/RBoot.png",
+				"res://assets/sprites/gear/samurai_armor_1/LBoot.png"
 			],
-			"item_name": "Demon_Gloves",
-			"item_power": 47,
-			"rarity": 0,
-			"rarity_multiplier": 1,
+			"item_name": "Samurai_Boots",
+			"item_power": 86,
+			"rarity": 1,
+			"rarity_multiplier": 1.02,
 			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/demon_plate_1/Gloves_i.png",
-			"type": 2,
-			"uuid": "54122762318783"
+			"texture_path": "res://assets/sprites/gear/samurai_armor_1/Boots_i.png",
+			"type": 3,
+			"uuid": "4327504213960"
 		},
 		"25": {
 			"base_stats": {
@@ -401,6 +402,25 @@
 			"type": 2,
 			"uuid": "51311794084954"
 		},
+		"29": {
+			"base_stats": {
+				"attack_speed": 0.5,
+				"projectile_count": 10
+			},
+			"character_key": "player",
+			"cosmetics": [
+				"res://assets/sprites/gear/demon_plate_1/LGeave.png",
+				"res://assets/sprites/gear/demon_plate_1/RGreave.png"
+			],
+			"item_name": "Demon_Gloves",
+			"item_power": 47,
+			"rarity": 0,
+			"rarity_multiplier": 1,
+			"slot_type": 7,
+			"texture_path": "res://assets/sprites/gear/demon_plate_1/Gloves_i.png",
+			"type": 2,
+			"uuid": "54122762318783"
+		},
 		"31": {
 			"base_stats": {
 				"area_of_effect_expansion": 0.35,
@@ -420,26 +440,6 @@
 			"texture_path": "res://assets/sprites/gear/barbed_armor_1/Armor_i.png",
 			"type": 1,
 			"uuid": "59003368225706"
-		},
-		"38": {
-			"base_stats": {
-				"physical_penetration": 0.3,
-				"poison_damage": 10
-			},
-			"character_key": "player",
-			"cosmetics": [
-				"res://assets/sprites/gear/holy_armor_1/Armor.png",
-				"res://assets/sprites/gear/holy_armor_1/LShoulder.png",
-				"res://assets/sprites/gear/holy_armor_1/RShoulder.png"
-			],
-			"item_name": "Holy_Armor",
-			"item_power": 41,
-			"rarity": 0,
-			"rarity_multiplier": 1,
-			"slot_type": 7,
-			"texture_path": "res://assets/sprites/gear/holy_armor_1/Armor_i.png",
-			"type": 1,
-			"uuid": "58972365180072"
 		},
 		"4": {
 			"base_stats": {
@@ -590,7 +590,10 @@
 		"58953108459848",
 		"49551529923648",
 		"5497417756939",
-		"4327504213960"
+		"4327504213960",
+		"4327504213960",
+		"54122762318783",
+		"58972365180072"
 	],
 	"level": 1,
 	"skill_points": 99,

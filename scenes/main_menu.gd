@@ -11,9 +11,9 @@ var drag_multiplier = 2.0
 
 # Button Vars
 var current_target_position = Vector2()
-var open_menu: Dictionary = {}  # Assuming all menus are Control nodes
+var open_menu: Dictionary = {}
 var button_targets = {
-	"Travel": Vector2(-100, 0),  # These are example values
+	"Travel": Vector2(-100, 0),
 	"Storage": Vector2(-750, 0),
 	"Skills": Vector2(-1100, 0),
 	"Crafting": Vector2(-1800, 0),
@@ -139,9 +139,7 @@ func handle_drag_movement(delta: float) -> void:
 
 	# Smooth transition towards the current target position using lerp
 	var lerp_speed = 15.0
-	$BackgroundContainer.position = $BackgroundContainer.position.lerp(
-		current_target_position, lerp_speed * delta
-	)
+	$BackgroundContainer.position = $BackgroundContainer.position.lerp(current_target_position, lerp_speed * delta)
 
 	# Clamp the background and target positions
 	clamp_positions(viewport_size)
@@ -152,12 +150,8 @@ func clamp_positions(viewport_size: Vector2) -> void:
 	var scene_height = viewport_size.y  # Assuming vertical movement is not desired
 
 	# Clamp background position
-	$BackgroundContainer.position.x = clamp(
-		$BackgroundContainer.position.x, viewport_size.x - scene_width, 0
-	)
-	$BackgroundContainer.position.y = clamp(
-		$BackgroundContainer.position.y, viewport_size.y - scene_height, 0
-	)
+	$BackgroundContainer.position.x = clamp($BackgroundContainer.position.x, viewport_size.x - scene_width, 0)
+	$BackgroundContainer.position.y = clamp($BackgroundContainer.position.y, viewport_size.y - scene_height, 0)
 
 	# Clamp target position to prevent it from invisibly moving off-screen
 	var min_x = viewport_size.x - scene_width
@@ -176,6 +170,7 @@ func _process(delta: float) -> void:
 		var lerp_speed = 5.0  # Adjust this value as needed for a smoother or faster transition
 		$BackgroundContainer.position = $BackgroundContainer.position.lerp(current_target_position, lerp_speed * delta)
 		clamp_positions(get_viewport_rect().size)
+
 
 func _on_modal_bg_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
